@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1019564919773",
+    "project_id": "isa-vit",
+    "storage_bucket": "isa-vit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019564919773:android:c4969b9b59429e1f07c434",
+        "android_client_info": {
+          "package_name": "com.example.isa_vitapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019564919773-a62ro2q2l93h88im8au4c1csabl795sv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfE9YwxKwBef5tupl7pkq0GV5mMr0W8kE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019564919773-a62ro2q2l93h88im8au4c1csabl795sv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

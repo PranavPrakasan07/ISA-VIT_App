@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class NotMemberPage extends AppCompatActivity {
 
-    Button github_isa;
+    Button github_isa, flagship_button, events_button, technitudes_button;
     ImageView member_image;
 
     @Override
@@ -22,6 +22,17 @@ public class NotMemberPage extends AppCompatActivity {
         github_isa = findViewById(R.id.github_link);
         member_image = findViewById(R.id.member_photo);
 
+        flagship_button = findViewById(R.id.flagship_event_button);
+        events_button = findViewById(R.id.events_button);
+        technitudes_button = findViewById(R.id.technitudes_button);
+
+        member_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Home.class));
+            }
+        });
+
         github_isa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,12 +41,26 @@ public class NotMemberPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-/*
-        member_image.setOnClickListener(new View.OnClickListener() {
+
+        flagship_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), MyActivity.class));
             }
-        });*/
+        });
+
+        events_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MyActivity.class));
+            }
+        });
+
+        technitudes_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MyActivity.class));
+            }
+        });
     }
 }
