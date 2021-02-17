@@ -1,6 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add_Fragment"/>
+    android:background="#121212"
+    tools:context=".Add_Fragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_task_cardView"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                app:cardBackgroundColor="#121212"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/del_task_cardView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/add_task_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#73D69B"
+
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/add_task_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:background="#00FFC700"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Add Task"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/add_task_icon"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/add_task" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/del_task_cardView"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                app:cardBackgroundColor="#121212"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/add_member_cardView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_task_cardView">
+
+                <LinearLayout
+                    android:id="@+id/del_task_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#00B2FF"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/del_task_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:background="#00FFC700"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Remove Task"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/del_task_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/del_task" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_member_cardView"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                app:cardBackgroundColor="#121212"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/del_member_cardview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/del_task_cardView">
+
+                <LinearLayout
+                    android:id="@+id/add_member_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#FF6363"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/add_member_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:background="#00FFC700"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Add Meber"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/add_member_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/add_member" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/del_member_cardview"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="48dp"
+                app:cardBackgroundColor="#121212"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_member_cardView">
+
+                <LinearLayout
+                    android:id="@+id/del_member_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#FFC700"
+
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/del_member_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:background="#00FFC700"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Remove Member"
+                        android:textAlignment="textStart"
+                        android:textAllCaps="false"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/del_member_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/del_member" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</FrameLayout>

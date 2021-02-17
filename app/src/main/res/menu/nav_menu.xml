@@ -6,25 +6,24 @@
         android:id="@+id/nav_new_add"
         android:icon="@drawable/ic_baseline_add_circle_24"
         android:title="Add"
-        app:cnb_iconColor="#4CAF50"/>
+        app:cnb_iconColor="#73D69B"/>
 
     <item
         android:id="@+id/nav_search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="Search"
-        app:cnb_iconColor="#03A9F4"/>
+        app:cnb_iconColor="#00B2FF"/>
 
     <item
         android:id="@+id/nav_task"
         android:icon="@drawable/ic_baseline_content_paste_24"
         android:title="Task"
-        app:cnb_iconColor="#F44336"
-        />
+        app:cnb_iconColor="#FF6363" />
 
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile"
-        app:cnb_iconColor="#FFEB3B"/>
+        app:cnb_iconColor="#FFC700"/>
 
 </menu>

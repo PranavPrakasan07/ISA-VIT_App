@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
@@ -19,6 +20,8 @@ public class Home extends AppCompatActivity {
 
         chipNavigationBar = findViewById(R.id.bottom_nav_bar);
 
+        chipNavigationBar.setItemSelected(R.id.nav_new_add, true);
+
         Log.d("TAG : i", String.valueOf(chipNavigationBar.getSelectedItemId()));
         Log.d("TAG : i", String.valueOf(R.id.nav_new_add));
         Log.d("TAG : i", String.valueOf(R.id.nav_search));
@@ -30,23 +33,41 @@ public class Home extends AppCompatActivity {
             @Override
             public void onItemSelected(int i) {
 
+                Fragment selectedFragment = null;
+
                 if(chipNavigationBar.getSelectedItemId() == R.id.nav_new_add){
                     Toast.makeText(getApplicationContext(), "Add Selected", Toast.LENGTH_SHORT).show();
+                    Log.d("TAG : i", String.valueOf(i));
 
+                    selectedFragment = new Add_Fragment();
                 }
 
                 if(chipNavigationBar.getSelectedItemId() == R.id.nav_task){
                     Toast.makeText(getApplicationContext(), "Task Selected", Toast.LENGTH_SHORT).show();
+                    Log.d("TAG : i", String.valueOf(i));
+
+                    selectedFragment = new Search_Fragment();
                 }
 
                 if(chipNavigationBar.getSelectedItemId() == R.id.nav_profile){
                     Toast.makeText(getApplicationContext(), "Profile Selected", Toast.LENGTH_SHORT).show();
+                    Log.d("TAG : i", String.valueOf(i));
+
+                    selectedFragment = new Task_Fragment();
                 }
 
                 if(chipNavigationBar.getSelectedItemId() == R.id.nav_search){
                     Toast.makeText(getApplicationContext(), "Search Selected", Toast.LENGTH_SHORT).show();
+                    Log.d("TAG : i", String.valueOf(i));
+
+                    selectedFragment = new Profile_Fragment();
                 }
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
             }
         });
+
+
+
     }
 }

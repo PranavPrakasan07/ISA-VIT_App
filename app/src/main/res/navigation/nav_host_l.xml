@@ -10,19 +10,23 @@
         android:name="com.example.isa_vitapp.Add_Fragment"
         android:label="fragment_add_"
         tools:layout="@layout/fragment_add_" />
+
     <fragment
         android:id="@+id/search_Fragment"
         android:name="com.example.isa_vitapp.Search_Fragment"
         android:label="fragment_search_"
         tools:layout="@layout/fragment_search_" />
+
     <fragment
         android:id="@+id/profile_Fragment"
         android:name="com.example.isa_vitapp.Profile_Fragment"
         android:label="fragment_profile_"
         tools:layout="@layout/fragment_profile_" />
+
     <fragment
         android:id="@+id/task_Fragment"
         android:name="com.example.isa_vitapp.Task_Fragment"
         android:label="fragment_task_"
         tools:layout="@layout/fragment_task_" />
+
 </navigation>
