@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class NotMemberPage extends AppCompatActivity {
 
     Button github_isa, flagship_button, events_button, technitudes_button;
-    ImageView member_image;
+    ImageView member_image, photos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class NotMemberPage extends AppCompatActivity {
 
         github_isa = findViewById(R.id.github_link);
         member_image = findViewById(R.id.member_photo);
+        photos = findViewById(R.id.photos);
 
         flagship_button = findViewById(R.id.flagship_event_button);
         events_button = findViewById(R.id.events_button);
