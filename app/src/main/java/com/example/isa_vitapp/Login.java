@@ -10,15 +10,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class Login extends AppCompatActivity {
 
-    //private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
 
     Button login, click;
     TextView link;
     static boolean isBoard = false;
 
-    //FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     EditText username, password, registration_number;
 
@@ -30,7 +33,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         login = findViewById(R.id.login_button);
 
