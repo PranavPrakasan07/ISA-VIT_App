@@ -18,7 +18,7 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     Button login, click;
-    TextView link;
+    TextView link, login_header;
     static boolean isBoard = false;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
         login = findViewById(R.id.login_button);
 
         link = findViewById(R.id.not_member_link);
+        login_header = findViewById(R.id.login_header);
 
         username = findViewById(R.id.username_field);
         password = findViewById(R.id.password_field);
@@ -64,11 +65,10 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        login.setOnLongClickListener(new View.OnLongClickListener() {
+        login_header.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 startActivity(new Intent(getApplicationContext(), SignUp.class));
-
                 return false;
             }
         });

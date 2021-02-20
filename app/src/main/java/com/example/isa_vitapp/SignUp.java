@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +45,7 @@ public class SignUp extends AppCompatActivity {
 
     EditText username, password, registration_number;
 
-    SignInButton signInButton;
+    ImageButton signInButton;
 
     GoogleSignInClient mGoogleSignInClient;
 
@@ -138,6 +139,8 @@ public class SignUp extends AppCompatActivity {
             String email = account.getEmail();
 
             Uri photo = account.getPhotoUrl();
+
+            startActivity(new Intent(getApplicationContext(), Home.class));
 
             Toast.makeText(this, personName, Toast.LENGTH_SHORT).show();
             Toast.makeText(this, personGivenName, Toast.LENGTH_SHORT).show();
