@@ -145,7 +145,7 @@
                         android:layout_weight="1"
                         android:background="#00FFC700"
                         android:fontFamily="@font/montserrat_semibold"
-                        android:text="Add Meber"
+                        android:text="Add Member"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"
                         android:textSize="20sp" />
@@ -183,7 +183,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:background="#FFC700"
-
                     android:orientation="horizontal">
 
                     <Button

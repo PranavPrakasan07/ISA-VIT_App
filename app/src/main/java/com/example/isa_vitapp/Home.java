@@ -42,32 +42,30 @@ public class Home extends AppCompatActivity {
                     selectedFragment = new Add_Fragment();
                 }
 
+                if(chipNavigationBar.getSelectedItemId() == R.id.nav_search){
+                    Toast.makeText(getApplicationContext(), "Search Selected", Toast.LENGTH_SHORT).show();
+                    Log.d("TAG : i", String.valueOf(i));
+
+                    selectedFragment = new Search_Fragment();
+                }
+
                 if(chipNavigationBar.getSelectedItemId() == R.id.nav_task){
                     Toast.makeText(getApplicationContext(), "Task Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
-                    selectedFragment = new Search_Fragment();
+                    selectedFragment = new Task_Fragment();
                 }
 
                 if(chipNavigationBar.getSelectedItemId() == R.id.nav_profile){
                     Toast.makeText(getApplicationContext(), "Profile Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
-                    selectedFragment = new Task_Fragment();
-                }
-
-                if(chipNavigationBar.getSelectedItemId() == R.id.nav_search){
-                    Toast.makeText(getApplicationContext(), "Search Selected", Toast.LENGTH_SHORT).show();
-                    Log.d("TAG : i", String.valueOf(i));
-
                     selectedFragment = new Profile_Fragment();
                 }
 
+                assert selectedFragment != null;
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment, selectedFragment).commit();
             }
         });
-
-
-
     }
 }
