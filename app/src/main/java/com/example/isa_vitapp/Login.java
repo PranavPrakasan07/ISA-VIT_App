@@ -64,6 +64,15 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        login.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignUp.class));
+
+                return false;
+            }
+        });
+
 //        login.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
