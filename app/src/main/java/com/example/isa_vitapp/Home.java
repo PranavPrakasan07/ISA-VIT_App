@@ -2,6 +2,7 @@ package com.example.isa_vitapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +13,14 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 public class Home extends AppCompatActivity {
 
     ChipNavigationBar chipNavigationBar;
+    Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        logout = findViewById(R.id.logout_button);
         chipNavigationBar = findViewById(R.id.bottom_nav_bar);
 
         chipNavigationBar.setItemSelected(R.id.nav_new_add, true);

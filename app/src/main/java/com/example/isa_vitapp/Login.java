@@ -15,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    protected static FirebaseAuth mAuth;
 
     Button login, click;
     TextView link, login_header;

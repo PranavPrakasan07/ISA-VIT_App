@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ISAVITApp">
         <activity android:name=".SignUp"/>
-        <activity android:name=".Home_Nav" />
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home" />

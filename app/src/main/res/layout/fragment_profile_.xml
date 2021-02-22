@@ -11,23 +11,45 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal|center_vertical"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/logout_button"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/button_back_red"
-            android:fontFamily="@font/montserrat_regular"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="Logout"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp" />
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_logout_icon"
+                android:fontFamily="@font/montserrat_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/logout_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginStart="8dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="LOGOUT"
+                android:textAlignment="gravity"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
 
         <ImageView
             android:id="@+id/photo"
