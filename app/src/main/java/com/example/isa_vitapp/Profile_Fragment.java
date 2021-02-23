@@ -1,7 +1,9 @@
 package com.example.isa_vitapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 /**
@@ -27,7 +30,7 @@ public class Profile_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    Button logout;
+    LinearLayout logout;
 
     public Profile_Fragment() {
         // Required empty public constructor
@@ -55,15 +58,6 @@ public class Profile_Fragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        ((Home)getActivity()).logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("GG","Clicked");
-//                Login.mAuth.signOut();
-//            }
-//        });
-
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -71,9 +65,28 @@ public class Profile_Fragment extends Fragment {
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_, container, false);
+
+        logout = view.findViewById(R.id.logout_button_layout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("GG", "Logout Clicked");
+                Login.mAuth.signOut();
+
+                startActivity(new Intent(getContext(), Login.class));
+            }
+        });
+
+        return view;
     }
 }

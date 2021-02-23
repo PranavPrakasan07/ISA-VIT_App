@@ -13,14 +13,12 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 public class Home extends AppCompatActivity {
 
     ChipNavigationBar chipNavigationBar;
-    Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        logout = findViewById(R.id.logout_button);
         chipNavigationBar = findViewById(R.id.bottom_nav_bar);
 
         chipNavigationBar.setItemSelected(R.id.nav_new_add, true);
