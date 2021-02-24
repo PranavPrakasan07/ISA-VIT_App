@@ -48,12 +48,6 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password_field);
         registration_number = findViewById(R.id.registration_number_field);
 
-//        GradientDrawable custom_button = (GradientDrawable) login.getBackground();
-//        custom_button.setStroke(convertDpToPx(3), Color.parseColor("#8AFF96"));
-
-        //Animation animShake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-
-//        final GradientDrawable[] myGrad = new GradientDrawable[1];
 
         link.setOnClickListener(new View.OnClickListener() {
             @Override
