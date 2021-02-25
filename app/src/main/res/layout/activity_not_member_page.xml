@@ -92,7 +92,7 @@
             app:layout_constraintTop_toBottomOf="@+id/divider2">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="40dp"
@@ -102,8 +102,9 @@
                 android:rotationY="20" />
 
             <LinearLayout
-                android:layout_width="160dp"
-                android:layout_height="250dp"
+                android:id="@+id/board_page_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="#00B2FF"
                 android:orientation="vertical">
 
@@ -183,11 +184,11 @@
                         android:src="@drawable/ic_linkedin_icon" />
 
                 </LinearLayout>
-
             </LinearLayout>
 
+
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/front_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="40dp"
