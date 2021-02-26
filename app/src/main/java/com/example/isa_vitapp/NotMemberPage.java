@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NotMemberPage extends AppCompatActivity{
+public class NotMemberPage extends AppCompatActivity {
 
     Button github_isa, flagship_button, events_button, technitudes_button;
     ImageView member_image, photos;
@@ -21,6 +21,18 @@ public class NotMemberPage extends AppCompatActivity{
     Button back_page, front_page;
 
     LinearLayout main_page, main_layout;
+
+    boolean to_front = true;
+
+    private String left_color, center_color, right_color;
+    private int increment = 1;
+
+    GradientDrawable gd;
+
+    String[] color_array = {"#FF6363", "#00B2FF", "#FFC700"};
+
+//    int[] colors_b = new int[2];
+//    int[] colors_f = new int[2];
 
 //    private SimpleGestureFilter detector;
 //
@@ -48,32 +60,22 @@ public class NotMemberPage extends AppCompatActivity{
 //        detector = new SimpleGestureFilter(NotMemberPage.this, this);
 //        onSwipeTouchListener = new OnSwipeTouchListener(getApplicationContext(), main_layout);
 
+//        green : 73D69B
+//        blue : 00B2FF
+//        red : FF6363
+//        yellow : FFC700
+
         back_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                int[] colors = {Color.parseColor("#008000"),Color.parseColor("#ADFF2F")};
-
-                //create a new gradient color
-                GradientDrawable gd = new GradientDrawable(
-                        GradientDrawable.Orientation.LEFT_RIGHT, colors);
-
-                gd.setCornerRadius(0f);
-                //apply the button background to newly created drawable gradient
-                back_page.setBackground(gd);
-
-                back_page.setBackgroundResource(R.drawable.gradient_view_blue_left);
-                main_page.setBackgroundResource(R.drawable.gradient_view2);
-                front_page.setBackgroundResource(R.drawable.gradient_view2);
-                Toast.makeText(NotMemberPage.this, "Back!", Toast.LENGTH_SHORT).show();
+                setBackColor(!to_front);
             }
         });
 
         front_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                main_page.setBackgroundResource(R.drawable.gradient_view1);
-                Toast.makeText(NotMemberPage.this, "Front!", Toast.LENGTH_SHORT).show();
+                setBackColor(to_front);
             }
         });
 
@@ -115,4 +117,31 @@ public class NotMemberPage extends AppCompatActivity{
         });
     }
 
+    private void setBackColor(boolean to_front) {
+
+        int[] colors_b = {Color.parseColor(color_array[Math.abs((increment - 1) % 3)]), Color.parseColor("#121212")};
+
+        //create a new gradient color
+        gd = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, colors_b);
+
+        gd.setCornerRadius(0f);
+        //apply the button background to newly created drawable gradient
+        back_page.setBackground(gd);
+
+        main_page.setBackgroundColor(Color.parseColor(color_array[Math.abs((increment) % 3)]));
+
+        int[] colors_f = {Color.parseColor(color_array[Math.abs((increment + 1) % 3)]), Color.parseColor("#121212")};
+
+        //create a new gradient color
+        gd = new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, colors_f);
+
+        gd.setCornerRadius(0f);
+        front_page.setBackground(gd);
+
+        if (to_front) {
+            increment++;
+        } else {
+            increment--;
+        }
+    }
 }
