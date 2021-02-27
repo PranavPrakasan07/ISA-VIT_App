@@ -1,22 +1,48 @@
 package com.example.isa_vitapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
 
 public class NotMemberPage extends AppCompatActivity {
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     Button github_isa, flagship_button, events_button, technitudes_button;
     ImageView member_image, photos;
+
+    ArrayList<String> board_members_list = new ArrayList<>();
 
     Button back_page, front_page;
 
@@ -38,10 +64,40 @@ public class NotMemberPage extends AppCompatActivity {
 //
 //    public OnSwipeTouchListener onSwipeTouchListener;
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        DocumentReference docRef = db.collection("Board").document("Names");
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null) {
+//                        (document.getData());
+//                        Toast.makeText(NotMemberPage.this, , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NotMemberPage.this, (document.getString("Chair")), Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Log.d("LOGGER", "No such document");
+                    }
+                } else {
+                    Log.d("LOGGER", "get failed with ", task.getException());
+                }
+            }
+        });
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_not_member_page);
+
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
 
         github_isa = findViewById(R.id.github_link);
         member_image = findViewById(R.id.member_photo);
@@ -69,6 +125,14 @@ public class NotMemberPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setBackColor(!to_front);
+
+//                String url = "https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c";
+//                member_image.setImageBitmap(getBitmapFromURL(url));
+
+                Picasso
+                        .get()
+                        .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c")
+                        .into(member_image);
             }
         });
 
@@ -76,6 +140,10 @@ public class NotMemberPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setBackColor(to_front);
+                Picasso
+                        .get()
+                        .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fpranav.png?alt=media&token=e5ea2646-2626-4b42-8461-9b1f35507a13")
+                        .into(member_image);
             }
         });
 
@@ -143,5 +211,29 @@ public class NotMemberPage extends AppCompatActivity {
         } else {
             increment--;
         }
+    }
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            Log.e("src",src);
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            Log.e("Bitmap","returned");
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Exception", Objects.requireNonNull(e.getMessage()));
+            return null;
+        }
+    }
+    
+    public void getData(){
+
+//        db.collection("Board").document("Pranav Prakasan").
+
     }
 }
