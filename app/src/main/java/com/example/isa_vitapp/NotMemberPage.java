@@ -32,6 +32,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -52,6 +53,8 @@ public class NotMemberPage extends AppCompatActivity {
 
     private String left_color, center_color, right_color;
     private int increment = 1;
+    int counter = 0;
+
 
     GradientDrawable gd;
 
@@ -68,27 +71,6 @@ public class NotMemberPage extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        DocumentReference docRef = db.collection("Board").document("Names");
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document != null) {
-//                        (document.getData());
-//                        Toast.makeText(NotMemberPage.this, , Toast.LENGTH_SHORT).show();
-                        Toast.makeText(NotMemberPage.this, (document.getString("Chair")), Toast.LENGTH_SHORT).show();
-
-                    } else {
-                        Log.d("LOGGER", "No such document");
-                    }
-                } else {
-                    Log.d("LOGGER", "get failed with ", task.getException());
-                }
-            }
-        });
-
     }
 
     @Override
@@ -98,6 +80,38 @@ public class NotMemberPage extends AppCompatActivity {
 
 //        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 //        StrictMode.setThreadPolicy(policy);
+
+        Thread store_names_thread = new Thread() {
+            public void run() {
+                DocumentReference docRef = db.collection("Board").document();
+                docRef.get().
+
+                        addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document != null) {
+
+//                        Toast.makeText(NotMemberPage.this, Objects.requireNonNull(document.getData()).toString(), Toast.LENGTH_SHORT).show();
+                                        board_members_list.add(Objects.requireNonNull(document.getData()).toString());
+
+                                    } else {
+                                        Log.d("LOGGER", "No such document");
+                                    }
+                                } else {
+                                    Log.d("LOGGER", "get failed with ", task.getException());
+                                }
+                            }
+                        });
+            }
+        };
+
+        try {
+            store_names_thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         github_isa = findViewById(R.id.github_link);
         member_image = findViewById(R.id.member_photo);
@@ -121,18 +135,21 @@ public class NotMemberPage extends AppCompatActivity {
 //        red : FF6363
 //        yellow : FFC700
 
+
         back_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setBackColor(!to_front);
+                counter--;
+                getData(counter);
 
 //                String url = "https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c";
 //                member_image.setImageBitmap(getBitmapFromURL(url));
 
-                Picasso
-                        .get()
-                        .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c")
-                        .into(member_image);
+//                Picasso
+//                        .get()
+//                        .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c")
+//                        .into(member_image);
             }
         });
 
@@ -140,10 +157,13 @@ public class NotMemberPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setBackColor(to_front);
-                Picasso
-                        .get()
-                        .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fpranav.png?alt=media&token=e5ea2646-2626-4b42-8461-9b1f35507a13")
-                        .into(member_image);
+                counter++;
+                getData(counter);
+
+//                Picasso
+//                        .get()
+//                        .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fpranav.png?alt=media&token=e5ea2646-2626-4b42-8461-9b1f35507a13")
+//                        .into(member_image);
             }
         });
 
@@ -215,14 +235,14 @@ public class NotMemberPage extends AppCompatActivity {
 
     public static Bitmap getBitmapFromURL(String src) {
         try {
-            Log.e("src",src);
+            Log.e("src", src);
             URL url = new URL(src);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoInput(true);
             connection.connect();
             InputStream input = connection.getInputStream();
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            Log.e("Bitmap","returned");
+            Log.e("Bitmap", "returned");
             return myBitmap;
         } catch (IOException e) {
             e.printStackTrace();
@@ -230,10 +250,38 @@ public class NotMemberPage extends AppCompatActivity {
             return null;
         }
     }
-    
-    public void getData(){
 
-//        db.collection("Board").document("Pranav Prakasan").
+    public void getData(int counter) {
+
+        Thread get_data_thread = new Thread() {
+            public void run() {
+
+                Toast.makeText(NotMemberPage.this, board_members_list.get(counter % board_members_list.size()), Toast.LENGTH_SHORT).show();
+                DocumentReference docRef = db.collection("Board").document(board_members_list.get(counter % board_members_list.size()));
+                docRef.get().
+
+                        addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document != null) {
+
+                                        Toast.makeText(NotMemberPage.this, Objects.requireNonNull(document.getData()).toString(), Toast.LENGTH_SHORT).show();
+
+                                    } else {
+                                        Log.d("LOGGER", "No such document");
+                                    }
+                                } else {
+                                    Log.d("LOGGER", "get failed with ", task.getException());
+                                }
+                            }
+                        });
+
+            }
+
+        };
+
 
     }
 }
