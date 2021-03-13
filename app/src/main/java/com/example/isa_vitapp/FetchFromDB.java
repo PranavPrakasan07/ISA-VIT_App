@@ -32,8 +32,10 @@ public class FetchFromDB {
     private String position;
 
     Map<String, Object> position_name = new HashMap<>();
+    Map<String, Object> member_details = new HashMap<>();
 
-    public Map<String, Object> getBoardMemberNames(){
+
+    public Map<String, Object> getBoardMemberNames() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("Board").document("Names");
@@ -48,6 +50,7 @@ public class FetchFromDB {
                 if (task.isSuccessful()) {
                     // Document found in the offline cache
                     DocumentSnapshot document = task.getResult();
+                    assert document != null;
                     Log.d("TAG", "Cached document data: " + document.getData());
 
                     position_name = document.getData();
@@ -60,7 +63,35 @@ public class FetchFromDB {
         });
 
         return position_name;
+    }
 
+    public Map<String, Object> getBoardMemberDetails(String name) {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("Board").document(name);
+
+        // Source can be CACHE, SERVER, or DEFAULT.
+        Source source = Source.CACHE;
+
+        // Get the document, forcing the SDK to use the offline cache
+        docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    // Document found in the offline cache
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    Log.d("TAG", "Cached document data: " + document.getData());
+
+                    member_details = document.getData();
+
+                } else {
+                    Log.d("TAG", "Cached get failed: ", task.getException());
+                }
+            }
+        });
+
+        return member_details;
     }
 
     public void getData() {

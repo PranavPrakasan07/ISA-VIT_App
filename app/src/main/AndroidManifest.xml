@@ -16,14 +16,14 @@
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
-        <activity android:name=".SignUp"/>
+        <activity android:name=".activity.SignUp"/>
         <activity
-            android:name=".Home"
+            android:name=".activity.Home"
             android:label="@string/title_activity_home" />
         <activity android:name=".MyActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".NotMemberPage" />
-        <activity android:name=".Login">
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.NotMemberPage" />
+        <activity android:name=".activity.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

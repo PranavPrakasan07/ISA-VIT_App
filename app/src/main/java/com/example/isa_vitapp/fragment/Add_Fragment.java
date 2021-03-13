@@ -1,4 +1,4 @@
-package com.example.isa_vitapp;
+package com.example.isa_vitapp.fragment;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.isa_vitapp.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Task_Fragment#newInstance} factory method to
+ * Use the {@link Add_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Task_Fragment extends Fragment {
+public class Add_Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class Task_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Task_Fragment() {
+    public Add_Fragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class Task_Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Task_Fragment.
+     * @return A new instance of fragment Add_Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Task_Fragment newInstance(String param1, String param2) {
-        Task_Fragment fragment = new Task_Fragment();
+    public static Add_Fragment newInstance(String param1, String param2) {
+        Add_Fragment fragment = new Add_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -49,6 +51,7 @@ public class Task_Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -59,6 +62,6 @@ public class Task_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_task_, container, false);
+        return inflater.inflate(R.layout.fragment_add_, container, false);
     }
 }

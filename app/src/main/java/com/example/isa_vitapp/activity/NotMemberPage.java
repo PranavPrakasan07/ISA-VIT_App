@@ -1,4 +1,4 @@
-package com.example.isa_vitapp;
+package com.example.isa_vitapp.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,21 +15,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.example.isa_vitapp.FetchFromDB;
+import com.example.isa_vitapp.MyActivity;
+import com.example.isa_vitapp.R;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -76,7 +72,7 @@ public class NotMemberPage extends AppCompatActivity {
 
         FetchFromDB names = new FetchFromDB();
 
-        final Map<String, Object>[] position_name = new Map[]{new HashMap<>()};
+        final Map[] position_name = new Map[]{new HashMap<>()};
 
 //
 //        Thread store_names_thread = new Thread() {
@@ -143,11 +139,13 @@ public class NotMemberPage extends AppCompatActivity {
 
                 position_name[0] = names.getBoardMemberNames();
 
-                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), position_name[0].values().toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), position_name[0].values().toString(), Toast.LENGTH_SHORT).show();
 
 //                String url = "https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c";
 //                member_image.setImageBitmap(getBitmapFromURL(url));
+
+
 
                 Picasso
                         .get()
@@ -165,8 +163,14 @@ public class NotMemberPage extends AppCompatActivity {
 
                 position_name[0] = names.getBoardMemberNames();
 
-                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), position_name[0].values().toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), position_name[0].values().toString(), Toast.LENGTH_SHORT).show();
+
+                try {
+                    Toast.makeText(NotMemberPage.this, position_name[0].get("Chair").toString(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Picasso
                         .get()

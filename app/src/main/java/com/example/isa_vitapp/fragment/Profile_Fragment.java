@@ -1,20 +1,26 @@
-package com.example.isa_vitapp;
+package com.example.isa_vitapp.fragment;
 
-import android.graphics.drawable.ShapeDrawable;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
+import com.example.isa_vitapp.activity.Login;
+import com.example.isa_vitapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Add_Fragment#newInstance} factory method to
+ * Use the {@link Profile_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Add_Fragment extends Fragment {
+public class Profile_Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +31,9 @@ public class Add_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Add_Fragment() {
+    LinearLayout logout;
+
+    public Profile_Fragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +43,11 @@ public class Add_Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Add_Fragment.
+     * @return A new instance of fragment Profile_Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Add_Fragment newInstance(String param1, String param2) {
-        Add_Fragment fragment = new Add_Fragment();
+    public static Profile_Fragment newInstance(String param1, String param2) {
+        Profile_Fragment fragment = new Profile_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,9 +66,28 @@ public class Add_Fragment extends Fragment {
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_, container, false);
+
+        logout = view.findViewById(R.id.logout_button_layout);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("GG", "Logout Clicked");
+                Login.mAuth.signOut();
+
+                startActivity(new Intent(getContext(), Login.class));
+            }
+        });
+
+        return view;
     }
 }
