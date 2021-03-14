@@ -47,7 +47,6 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password_field);
         registration_number = findViewById(R.id.registration_number_field);
 
-
         link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

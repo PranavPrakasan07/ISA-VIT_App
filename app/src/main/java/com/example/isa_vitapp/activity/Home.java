@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.fragment.Add_Fragment;
 import com.example.isa_vitapp.fragment.Profile_Fragment;
@@ -14,9 +15,13 @@ import com.example.isa_vitapp.fragment.Search_Fragment;
 import com.example.isa_vitapp.fragment.Task_Fragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Home extends AppCompatActivity {
 
     ChipNavigationBar chipNavigationBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

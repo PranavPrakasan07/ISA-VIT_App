@@ -145,8 +145,6 @@ public class NotMemberPage extends AppCompatActivity {
 //                String url = "https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c";
 //                member_image.setImageBitmap(getBitmapFromURL(url));
 
-
-
                 Picasso
                         .get()
                         .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c")

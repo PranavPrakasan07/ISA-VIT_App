@@ -17,7 +17,6 @@ import java.util.Map;
 
 public class FetchFromDB {
 
-
     private String name;
     private String instagram_link;
     private String linkedin_link;
@@ -54,7 +53,6 @@ public class FetchFromDB {
                     Log.d("TAG", "Cached document data: " + document.getData());
 
                     position_name = document.getData();
-
 
                 } else {
                     Log.d("TAG", "Cached get failed: ", task.getException());
