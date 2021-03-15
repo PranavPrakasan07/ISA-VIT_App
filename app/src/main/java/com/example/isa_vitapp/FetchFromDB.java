@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class FetchFromDB {
 
-    private String name;
+    private String member_name;
     private String instagram_link;
     private String linkedin_link;
     private String github_link;
@@ -29,6 +29,8 @@ public class FetchFromDB {
 
     private String room_number;
     private String position;
+
+    private String photo_link;
 
     public static Map<String, Object> position_name = new HashMap<>();
     Map<String, Object> member_details = new HashMap<>();
@@ -62,7 +64,7 @@ public class FetchFromDB {
 
     }
 
-    public Map<String, Object> getBoardMemberDetails(String name) {
+    public void getBoardMemberDetails(String name) {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("Board").document(name);
@@ -82,12 +84,79 @@ public class FetchFromDB {
 
                     member_details = document.getData();
 
+                    try {
+                        member_name = member_details.get("Name").toString();
+                        position = member_details.get("Position").toString();
+                        instagram_link = member_details.get("Instagram Link").toString();
+                        linkedin_link = member_details.get("Linkedin Link").toString();
+                        github_link = member_details.get("Github Link").toString();
+                        mobile = member_details.get("Contact Number").toString();
+                        pemail = member_details.get("Personal email").toString();
+                        vemail = member_details.get("VIT Email").toString();
+                        reg_number = member_details.get("Registration Number").toString();
+                        room_number = member_details.get("Room Number").toString();
+                        photo_link = member_details.get("Photo Link").toString();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 } else {
                     Log.d("TAG", "Cached get failed: ", task.getException());
                 }
             }
         });
 
+    }
+
+    public String getMember_name() {
+        return member_name;
+    }
+
+    public String getInstagram_link() {
+        return instagram_link;
+    }
+
+    public String getLinkedin_link() {
+        return linkedin_link;
+    }
+
+    public String getGithub_link() {
+        return github_link;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public String getPemail() {
+        return pemail;
+    }
+
+    public String getVemail() {
+        return vemail;
+    }
+
+    public String getReg_number() {
+        return reg_number;
+    }
+
+    public String getRoom_number() {
+        return room_number;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getPhoto_link() {
+        return photo_link;
+    }
+
+    public static Map<String, Object> getPosition_name() {
+        return position_name;
+    }
+
+    public Map<String, Object> getMember_details() {
         return member_details;
     }
 

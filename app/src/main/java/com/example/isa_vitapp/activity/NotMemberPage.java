@@ -7,12 +7,14 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -34,6 +37,11 @@ public class NotMemberPage extends AppCompatActivity {
 
     Button github_isa, flagship_button, events_button, technitudes_button;
     ImageView member_image, photos;
+
+    private Handler mHandler;
+
+    ImageView board_instagram, board_linkedin, board_github;
+    TextView board_member_name, board_member_position;
 
     Button back_page, front_page;
 
@@ -69,6 +77,8 @@ public class NotMemberPage extends AppCompatActivity {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+        mHandler = new Handler();
 
 //
 //        FetchFromDB names = new FetchFromDB();
@@ -108,6 +118,13 @@ public class NotMemberPage extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 
+        board_linkedin = findViewById(R.id.linkedin_icon);
+        board_github = findViewById(R.id.github_icon);
+        board_instagram = findViewById(R.id.instagram_icon);
+
+        board_member_name = findViewById(R.id.member_name);
+        board_member_position = findViewById(R.id.position);
+
         github_isa = findViewById(R.id.github_link);
         member_image = findViewById(R.id.member_photo);
         photos = findViewById(R.id.photos);
@@ -130,6 +147,7 @@ public class NotMemberPage extends AppCompatActivity {
 //        red : FF6363
 //        yellow : FFC700
 
+        ArrayList<String> positions = new ArrayList<String>(FetchFromDB.position_name.keySet());
 
         back_page.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,10 +157,16 @@ public class NotMemberPage extends AppCompatActivity {
                 //getData(counter);
 
 //                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getApplicationContext(), position_name[0].values().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), positions.toString(), Toast.LENGTH_SHORT).show();
 
 //                String url = "https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c";
 //                member_image.setImageBitmap(getBitmapFromURL(url));
+
+                try {
+                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Picasso
                         .get()
@@ -158,20 +182,41 @@ public class NotMemberPage extends AppCompatActivity {
                 counter++;
                 //getData(counter);
 
-
 //                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
 //                Toast.makeText(getApplicationContext(), position_name[0].values().toString(), Toast.LENGTH_SHORT).show();
 
                 try {
-                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get("Chair").toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                Picasso
-                        .get()
-                        .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fpranav.png?alt=media&token=e5ea2646-2626-4b42-8461-9b1f35507a13")
-                        .into(member_image);
+//      New thread to perform background operation
+//
+//                FetchFromDB details = new FetchFromDB();
+//
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        details.getBoardMemberDetails(FetchFromDB.position_name.get(positions.get(counter % 12)).toString());
+//
+////                  Update the value background thread to UI thread
+//                        mHandler.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                board_member_name.setText(details.getMember_name());
+//                                board_member_position.setText(details.getPosition());
+//
+//                                Picasso
+//                                        .get()
+//                                        .load(details.getPhoto_link())
+//                                        .into(member_image);
+//                            }
+//                        });
+//
+//                    }
+//                }).start();
+
             }
         });
 
