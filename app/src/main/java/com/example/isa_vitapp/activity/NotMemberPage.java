@@ -70,9 +70,10 @@ public class NotMemberPage extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        FetchFromDB names = new FetchFromDB();
-
-        final Map[] position_name = new Map[]{new HashMap<>()};
+//
+//        FetchFromDB names = new FetchFromDB();
+//
+//        final Map[] position_name = new Map[]{new HashMap<>()};
 
 //
 //        Thread store_names_thread = new Thread() {
@@ -137,8 +138,6 @@ public class NotMemberPage extends AppCompatActivity {
                 counter--;
                 //getData(counter);
 
-                position_name[0] = names.getBoardMemberNames();
-
 //                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
 //                Toast.makeText(getApplicationContext(), position_name[0].values().toString(), Toast.LENGTH_SHORT).show();
 
@@ -159,13 +158,12 @@ public class NotMemberPage extends AppCompatActivity {
                 counter++;
                 //getData(counter);
 
-                position_name[0] = names.getBoardMemberNames();
 
 //                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
 //                Toast.makeText(getApplicationContext(), position_name[0].values().toString(), Toast.LENGTH_SHORT).show();
 
                 try {
-                    Toast.makeText(NotMemberPage.this, position_name[0].get("Chair").toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get("Chair").toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

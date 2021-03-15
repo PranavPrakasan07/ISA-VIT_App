@@ -2,17 +2,23 @@ package com.example.isa_vitapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
@@ -21,6 +27,9 @@ public class Login extends AppCompatActivity {
     Button login, click;
     TextView link, login_header;
     static boolean isBoard = false;
+
+    private Handler mHandler;
+    private ProgressBar mProgressBar;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -46,6 +55,10 @@ public class Login extends AppCompatActivity {
         username = findViewById(R.id.username_field);
         password = findViewById(R.id.password_field);
         registration_number = findViewById(R.id.registration_number_field);
+
+        mProgressBar = findViewById(R.id.progressBar_splash);
+
+        getBoardNames();
 
         link.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,5 +214,29 @@ public class Login extends AppCompatActivity {
 //
 //    private int convertDpToPx(int dp) {
 //        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
+
     }
+
+    private void getBoardNames() {
+//      New thread to perform background operation
+
+        FetchFromDB names = new FetchFromDB();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                names.getBoardMemberNames();
+
+//                  Update the value background thread to UI thread
+//                    mHandler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                        }
+//                    });
+
+            }
+        }).start();
+    }
+
 }

@@ -89,7 +89,7 @@ public class Profile_Fragment extends Fragment {
 
         FetchFromDB member_data = new FetchFromDB();
 
-        details[0] = member_data.getBoardMemberNames();
+        member_data.getBoardMemberNames();
 
         Toast.makeText(getContext(), Arrays.toString(details), Toast.LENGTH_SHORT).show();
 

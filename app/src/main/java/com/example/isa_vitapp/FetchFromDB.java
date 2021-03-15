@@ -30,11 +30,11 @@ public class FetchFromDB {
     private String room_number;
     private String position;
 
-    Map<String, Object> position_name = new HashMap<>();
+    public static Map<String, Object> position_name = new HashMap<>();
     Map<String, Object> member_details = new HashMap<>();
 
 
-    public Map<String, Object> getBoardMemberNames() {
+    public void getBoardMemberNames() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("Board").document("Names");
@@ -60,7 +60,6 @@ public class FetchFromDB {
             }
         });
 
-        return position_name;
     }
 
     public Map<String, Object> getBoardMemberDetails(String name) {
