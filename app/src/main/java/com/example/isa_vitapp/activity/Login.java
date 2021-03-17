@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,6 +36,8 @@ public class Login extends AppCompatActivity {
 
     EditText username, password, registration_number;
 
+    public FetchFromDB names = new FetchFromDB();
+
     int count = 0;
     int flag = 0;
 
@@ -44,6 +47,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+        Log.d("Thread", "Executing thread name func" + FetchFromDB.position_name.keySet().toString());
 
         Log.d("User Status", String.valueOf(FirebaseAuth.getInstance().getCurrentUser()));
 
@@ -58,7 +62,11 @@ public class Login extends AppCompatActivity {
 
         mProgressBar = findViewById(R.id.progressBar_splash);
 
-        getBoardNames();
+        try {
+            getBoardNames();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         link.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,26 +225,39 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void getBoardNames() {
+    private void getBoardNames() throws InterruptedException {
 //      New thread to perform background operation
 
-        FetchFromDB names = new FetchFromDB();
+        FetchFromDB.total_board_members = FetchFromDB.position_name.keySet().size();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+        Toast.makeText(this, String.valueOf(FetchFromDB.total_board_members), Toast.LENGTH_SHORT).show();
 
-                names.getBoardMemberNames();
+//
+//        Thread getDetailThread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                Log.d("Thread", "Executing thread detail func");
+//                Log.d("Thread", String.valueOf(names.getMember_details().keySet()));
+//
+//                int i = 0;
+//                for (String position : names.getMember_details().keySet()) {
+//                    FetchFromDB.members[i].getBoardMemberDetails((String) FetchFromDB.position_name.get(position));
+//                    i++;
+//                }
+//
+////                  Update the value background thread to UI thread
+////                    mHandler.post(new Runnable() {
+////                        @Override
+////                        public void run() {
+////                        }
+////                    });
+//
+//            }
+//        });
+//
+//        getDetailThread.start();
+//        getDetailThread.join();
 
-//                  Update the value background thread to UI thread
-//                    mHandler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                        }
-//                    });
-
-            }
-        }).start();
     }
-
 }

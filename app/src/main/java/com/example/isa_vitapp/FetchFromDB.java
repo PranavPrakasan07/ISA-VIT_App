@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Source;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,18 +32,21 @@ public class FetchFromDB {
     private String position;
 
     private String photo_link;
+    public static int total_board_members;
 
     public static Map<String, Object> position_name = new HashMap<>();
     Map<String, Object> member_details = new HashMap<>();
 
+    public static FetchFromDB[] members = new FetchFromDB[15];
 
     public void getBoardMemberNames() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("Board").document("Names");
+        Log.d("Thread", "Executing board member names");
 
         // Source can be CACHE, SERVER, or DEFAULT.
-        Source source = Source.CACHE;
+        Source source = Source.DEFAULT;
 
         // Get the document, forcing the SDK to use the offline cache
         docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -67,7 +71,7 @@ public class FetchFromDB {
     public void getBoardMemberDetails(String name) {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("Board").document(name);
+        DocumentReference docRef = db.collection("Board Data").document(name);
 
         // Source can be CACHE, SERVER, or DEFAULT.
         Source source = Source.CACHE;
@@ -85,6 +89,8 @@ public class FetchFromDB {
                     member_details = document.getData();
 
                     try {
+                        Log.d("Thread", "Executing board member details" + member_details.get("Name").toString());
+
                         member_name = member_details.get("Name").toString();
                         position = member_details.get("Position").toString();
                         instagram_link = member_details.get("Instagram Link").toString();

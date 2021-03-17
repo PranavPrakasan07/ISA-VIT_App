@@ -85,13 +85,15 @@ public class Profile_Fragment extends Fragment {
 
         logout = view.findViewById(R.id.logout_button_layout);
 
-        Map[] details = new Map[]{new HashMap<>()};
+//        Map[] details = new Map[]{new HashMap<>()};
+//
+//        FetchFromDB member_data = new FetchFromDB();
+//
+//        member_data.getBoardMemberNames();
 
-        FetchFromDB member_data = new FetchFromDB();
+//        Toast.makeText(getContext(), Arrays.toString(details), Toast.LENGTH_SHORT).show();
 
-        member_data.getBoardMemberNames();
 
-        Toast.makeText(getContext(), Arrays.toString(details), Toast.LENGTH_SHORT).show();
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

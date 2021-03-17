@@ -161,7 +161,15 @@ public class NotMemberPage extends AppCompatActivity {
 
 //                String url = "https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c";
 //                member_image.setImageBitmap(getBitmapFromURL(url));
-
+//
+//                board_member_name.setText(FetchFromDB.members[counter%12].getMember_name());
+//                board_member_position.setText(FetchFromDB.members[counter%12].getPosition());
+//
+//                Picasso
+//                        .get()
+//                        .load(FetchFromDB.members[counter%12].getPhoto_link())
+//                        .into(member_image);
+//
                 try {
                     Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
