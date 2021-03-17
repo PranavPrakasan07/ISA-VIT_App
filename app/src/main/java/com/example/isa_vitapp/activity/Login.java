@@ -232,32 +232,34 @@ public class Login extends AppCompatActivity {
 
         Toast.makeText(this, String.valueOf(FetchFromDB.total_board_members), Toast.LENGTH_SHORT).show();
 
-//
-//        Thread getDetailThread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                Log.d("Thread", "Executing thread detail func");
-//                Log.d("Thread", String.valueOf(names.getMember_details().keySet()));
-//
-//                int i = 0;
-//                for (String position : names.getMember_details().keySet()) {
-//                    FetchFromDB.members[i].getBoardMemberDetails((String) FetchFromDB.position_name.get(position));
-//                    i++;
-//                }
-//
-////                  Update the value background thread to UI thread
-////                    mHandler.post(new Runnable() {
-////                        @Override
-////                        public void run() {
-////                        }
-////                    });
-//
-//            }
-//        });
-//
-//        getDetailThread.start();
-//        getDetailThread.join();
+        FetchFromDB[] dtls = new FetchFromDB[15];
+
+        Thread getDetailThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Log.d("Thread", "Executing thread detail func");
+                Log.d("Thread", String.valueOf(FetchFromDB.position_name));
+
+                int i = 0;
+                for (String position : FetchFromDB.position_name.keySet()) {
+                    Log.d("Thread for loop", String.valueOf(position));
+                    //dtls[i].getBoardMemberDetails((String) FetchFromDB.position_name.get(position));
+                    i++;
+                }
+
+//                  Update the value background thread to UI thread
+//                    mHandler.post(new Runnable() {
+//                        @Override
+//                        public void run() {0
+//                        }
+//                    });
+
+            }
+        });
+
+        getDetailThread.start();
+        getDetailThread.join();
 
     }
 }

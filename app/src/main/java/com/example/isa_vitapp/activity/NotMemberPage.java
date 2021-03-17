@@ -170,16 +170,20 @@ public class NotMemberPage extends AppCompatActivity {
 //                        .load(FetchFromDB.members[counter%12].getPhoto_link())
 //                        .into(member_image);
 //
-                try {
-                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                Picasso
-                        .get()
-                        .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c")
-                        .into(member_image);
+//
+//                board_member_name.setText(FetchFromDB.members[counter%12].getMember_name());
+//                board_member_position.setText(FetchFromDB.members[counter%12].getPosition());
+//
+//                try {
+//                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Picasso
+//                        .get()
+//                        .load(FetchFromDB.members[counter%12].getMember_name())
+//                        .into(member_image);
             }
         });
 
@@ -188,6 +192,7 @@ public class NotMemberPage extends AppCompatActivity {
             public void onClick(View v) {
                 setBackColor(to_front);
                 counter++;
+
                 //getData(counter);
 
 //                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
