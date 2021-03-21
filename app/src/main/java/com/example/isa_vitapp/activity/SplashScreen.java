@@ -1,4 +1,4 @@
-package com.example.isa_vitapp;
+package com.example.isa_vitapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.isa_vitapp.FetchFromDB;
+import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.Login;
 
 public class SplashScreen extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        background = findViewById(R.id.background);
+        background = findViewById(R.id.background_layout);
 
         try {
             getBoardNames();
@@ -46,7 +48,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
 
                 names.getBoardMemberNames();
-                Log.d("Thread", "Executing thread name func");
+                Log.d("Thread", "Executing thread name func" + Thread.currentThread().getName());
 
             }
         });

@@ -25,6 +25,8 @@ public class Login extends AppCompatActivity {
 
     public static FirebaseAuth mAuth;
 
+    public FetchFromDB[] dtls = new FetchFromDB[15];
+
     Button login, click;
     TextView link, login_header;
     static boolean isBoard = false;
@@ -231,20 +233,19 @@ public class Login extends AppCompatActivity {
         FetchFromDB.total_board_members = FetchFromDB.position_name.keySet().size();
 
         Toast.makeText(this, String.valueOf(FetchFromDB.total_board_members), Toast.LENGTH_SHORT).show();
-
-        FetchFromDB[] dtls = new FetchFromDB[15];
+        Toast.makeText(this, String.valueOf(FetchFromDB.position_name.values()), Toast.LENGTH_SHORT).show();
 
         Thread getDetailThread = new Thread(new Runnable() {
             @Override
             public void run() {
 
-                Log.d("Thread", "Executing thread detail func");
-                Log.d("Thread", String.valueOf(FetchFromDB.position_name));
+                Log.d("Thread", "Executing thread detail func" + Thread.currentThread().getName());
+                Log.d("Thread", String.valueOf(FetchFromDB.position_name.values()));
 
                 int i = 0;
-                for (String position : FetchFromDB.position_name.keySet()) {
-                    Log.d("Thread for loop", String.valueOf(position));
-                    //dtls[i].getBoardMemberDetails((String) FetchFromDB.position_name.get(position));
+                for (Object mem : FetchFromDB.position_name.values()) {
+                    Log.d("Thread for loop", String.valueOf(mem));
+                    //dtls[i].getBoardMemberDetails((String) mem);
                     i++;
                 }
 

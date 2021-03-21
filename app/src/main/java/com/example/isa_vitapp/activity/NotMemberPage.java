@@ -171,18 +171,18 @@ public class NotMemberPage extends AppCompatActivity {
 //                        .into(member_image);
 //
 //
-//                board_member_name.setText(FetchFromDB.members[counter%12].getMember_name());
-//                board_member_position.setText(FetchFromDB.members[counter%12].getPosition());
-//
-//                try {
-//                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
+//                board_member_name.setText(FetchFromDB.members[counter%12].getMember_details().get("Name").toString());
+//                board_member_position.setText(FetchFromDB.members[counter%12].getMember_details().get("Position").toString());
+
+                try {
+                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 //                Picasso
 //                        .get()
-//                        .load(FetchFromDB.members[counter%12].getMember_name())
+//                        .load(FetchFromDB.members[counter%12].getMember_details().get("Photo Link").toString())
 //                        .into(member_image);
             }
         });

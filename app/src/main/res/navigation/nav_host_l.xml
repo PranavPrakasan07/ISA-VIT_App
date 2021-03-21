@@ -9,7 +9,14 @@
         android:id="@+id/add_Fragment"
         android:name="com.example.isa_vitapp.fragment.Add_Fragment"
         android:label="fragment_add_"
-        tools:layout="@layout/fragment_add_" />
+        tools:layout="@layout/fragment_add_" >
+        <action
+            android:id="@+id/action_add_Fragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_add_Fragment_to_removeFragment"
+            app:destination="@id/removeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/search_Fragment"
@@ -28,5 +35,15 @@
         android:name="com.example.isa_vitapp.fragment.Task_Fragment"
         android:label="fragment_task_"
         tools:layout="@layout/fragment_task_" />
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.isa_vitapp.AddTaskFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add_task" />
+    <fragment
+        android:id="@+id/removeFragment"
+        android:name="com.example.isa_vitapp.RemoveTaskFragment"
+        android:label="fragment_remove"
+        tools:layout="@layout/fragment_remove_task" />
 
 </navigation>

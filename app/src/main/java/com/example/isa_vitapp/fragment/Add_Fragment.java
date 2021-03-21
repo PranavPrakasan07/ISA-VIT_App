@@ -2,12 +2,18 @@ package com.example.isa_vitapp.fragment;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.isa_vitapp.AddTaskFragment;
 import com.example.isa_vitapp.R;
 
 /**
@@ -62,6 +68,31 @@ public class Add_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_add_, container, false);
+
+        CardView add_task_button = (CardView) view.findViewById(R.id.add_task_cardView);
+        Button remove_task_button = (Button) view.findViewById(R.id.del_task_button);
+
+        add_task_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Button Clicked", Toast.LENGTH_SHORT).show();
+                Fragment fragment = new AddTaskFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.add_Fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+        remove_task_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Button remove clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return inflater.inflate(R.layout.fragment_add_, container, false);
     }
 }
