@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +17,17 @@ import android.widget.Toast;
 import com.example.isa_vitapp.AddTaskFragment;
 import com.example.isa_vitapp.R;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Add_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class Add_Fragment extends Fragment {
+
+    CardView add_task_button;
+    Button remove_task_button;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,26 +76,26 @@ public class Add_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_, container, false);
 
-        CardView add_task_button = (CardView) view.findViewById(R.id.add_task_cardView);
-        Button remove_task_button = (Button) view.findViewById(R.id.del_task_button);
+        add_task_button = view.findViewById(R.id.add_task_cardView);
+        remove_task_button = view.findViewById(R.id.del_task_button);
 
         add_task_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Button Clicked", Toast.LENGTH_SHORT).show();
-                Fragment fragment = new AddTaskFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.add_Fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                Log.d("GG", "Add Task Clicked");
             }
         });
 
         remove_task_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Button remove clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Button remove clicked", Toast.LENGTH_SHORT).show();
+//                Fragment fragment = new AddTaskFragment();
+//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.add_Fragment, fragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
             }
         });
 

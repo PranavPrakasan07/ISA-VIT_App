@@ -9,14 +9,7 @@
         android:id="@+id/add_Fragment"
         android:name="com.example.isa_vitapp.fragment.Add_Fragment"
         android:label="fragment_add_"
-        tools:layout="@layout/fragment_add_" >
-        <action
-            android:id="@+id/action_add_Fragment_to_addFragment"
-            app:destination="@id/addFragment" />
-        <action
-            android:id="@+id/action_add_Fragment_to_removeFragment"
-            app:destination="@id/removeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add_" />
 
     <fragment
         android:id="@+id/search_Fragment"

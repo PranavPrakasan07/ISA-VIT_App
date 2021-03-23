@@ -2,25 +2,18 @@ package com.example.isa_vitapp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.example.isa_vitapp.FetchFromDB;
-import com.example.isa_vitapp.activity.Home;
-import com.example.isa_vitapp.activity.Login;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.example.isa_vitapp.LogoutSplash;
 import com.example.isa_vitapp.R;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import com.example.isa_vitapp.activity.Login;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -86,14 +79,13 @@ public class Profile_Fragment extends Fragment {
         logout = view.findViewById(R.id.logout_button_layout);
 
 
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("GG", "Logout Clicked");
                 Login.mAuth.signOut();
 
-                startActivity(new Intent(getContext(), Login.class));
+                startActivity(new Intent(getContext(), LogoutSplash.class));
             }
         });
 

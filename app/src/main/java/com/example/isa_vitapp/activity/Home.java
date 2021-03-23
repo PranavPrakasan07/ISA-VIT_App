@@ -1,9 +1,13 @@
 package com.example.isa_vitapp.activity;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -22,6 +26,19 @@ public class Home extends AppCompatActivity {
 
     ChipNavigationBar chipNavigationBar;
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Logout?")
+                .setMessage("Are you sure you want to logout?").setCancelable(true)
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Home.super.onBackPressed();
+                    }
+                }).create().show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,28 +62,28 @@ public class Home extends AppCompatActivity {
 
                 Fragment selectedFragment = null;
 
-                if(chipNavigationBar.getSelectedItemId() == R.id.nav_new_add){
+                if (chipNavigationBar.getSelectedItemId() == R.id.nav_new_add) {
                     Toast.makeText(getApplicationContext(), "Add Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new Add_Fragment();
                 }
 
-                if(chipNavigationBar.getSelectedItemId() == R.id.nav_search){
+                if (chipNavigationBar.getSelectedItemId() == R.id.nav_search) {
                     Toast.makeText(getApplicationContext(), "Search Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new Search_Fragment();
                 }
 
-                if(chipNavigationBar.getSelectedItemId() == R.id.nav_task){
+                if (chipNavigationBar.getSelectedItemId() == R.id.nav_task) {
                     Toast.makeText(getApplicationContext(), "Task Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new Task_Fragment();
                 }
 
-                if(chipNavigationBar.getSelectedItemId() == R.id.nav_profile){
+                if (chipNavigationBar.getSelectedItemId() == R.id.nav_profile) {
                     Toast.makeText(getApplicationContext(), "Profile Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
