@@ -99,6 +99,6 @@ public class Add_Fragment extends Fragment {
             }
         });
 
-        return inflater.inflate(R.layout.fragment_add_, container, false);
+        return view;
     }
 }

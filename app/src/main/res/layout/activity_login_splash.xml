@@ -31,6 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
+        app:progress_reached_color="#73D69B"
+        app:progress_text_color="#FFFFFF"
         android:layout_marginEnd="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

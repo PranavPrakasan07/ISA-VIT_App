@@ -70,4 +70,7 @@ dependencies {
 
     implementation 'com.daimajia.numberprogressbar:library:1.4@aar'
 
+    implementation 'com.agilie:circular-picker:1.0'
+
+
 }
