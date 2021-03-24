@@ -32,12 +32,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="#73D69B"
-
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/add_task_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="20dp"
@@ -80,12 +79,12 @@
                 android:id="@+id/del_task_layout"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#00B2FF"
+                android:background="#FF6363"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/del_task_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="20dp"
@@ -128,12 +127,12 @@
                 android:id="@+id/add_member_layout"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#FF6363"
+                android:background="#00B2FF"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/add_member_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="20dp"
@@ -182,7 +181,7 @@
 
                 <Button
                     android:id="@+id/del_member_button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="20dp"

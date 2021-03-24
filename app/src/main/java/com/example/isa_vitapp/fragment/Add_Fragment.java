@@ -1,5 +1,6 @@
 package com.example.isa_vitapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -14,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.isa_vitapp.AddTaskActivity;
 import com.example.isa_vitapp.AddTaskFragment;
 import com.example.isa_vitapp.R;
+import com.example.isa_vitapp.RemoveTaskActivity;
 
 import java.util.Objects;
 
@@ -27,7 +30,7 @@ import java.util.Objects;
 public class Add_Fragment extends Fragment {
 
     CardView add_task_button;
-    Button remove_task_button;
+    CardView remove_task_button;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,25 +80,22 @@ public class Add_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_, container, false);
 
         add_task_button = view.findViewById(R.id.add_task_cardView);
-        remove_task_button = view.findViewById(R.id.del_task_button);
+        remove_task_button = view.findViewById(R.id.del_task_cardView);
 
         add_task_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("GG", "Add Task Clicked");
+                startActivity(new Intent(getActivity(), AddTaskActivity.class));
             }
+
         });
 
         remove_task_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Button remove clicked", Toast.LENGTH_SHORT).show();
-//                Fragment fragment = new AddTaskFragment();
-//                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                fragmentTransaction.replace(R.id.add_Fragment, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
+                startActivity(new Intent(getActivity(), RemoveTaskActivity.class));
             }
         });
 
