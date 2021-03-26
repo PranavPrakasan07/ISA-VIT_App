@@ -125,11 +125,15 @@ public class AddTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new CalendarDialog(AddTaskActivity.this, new OnDaysSelectionListener() {
+
                     @Override
                     public void onDaysSelected(List<Day> selectedDays) {
+
                         Toast.makeText(AddTaskActivity.this, selectedDays.toString(), Toast.LENGTH_SHORT).show();
 
                         Toast.makeText(AddTaskActivity.this, "Day Number : " + selectedDays.get(selectedDays.size() - 1).getDayNumber(), Toast.LENGTH_SHORT).show();
+
+//                        view.setBackgroundColor(Integer.parseInt("#121212"));
 
                         int start_day_number = selectedDays.get(0).getDayNumber();
                         int end_day_number = selectedDays.get(selectedDays.size() - 1).getDayNumber();
