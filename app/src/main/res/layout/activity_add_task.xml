@@ -381,6 +381,9 @@
                 android:textAlignment="gravity"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
                 android:visibility="visible" />
 
         </LinearLayout>

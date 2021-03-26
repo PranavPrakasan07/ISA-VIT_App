@@ -129,32 +129,44 @@ public class AddTaskActivity extends AppCompatActivity {
                     @Override
                     public void onDaysSelected(List<Day> selectedDays) {
 
-                        Toast.makeText(AddTaskActivity.this, selectedDays.toString(), Toast.LENGTH_SHORT).show();
-
-                        Toast.makeText(AddTaskActivity.this, "Day Number : " + selectedDays.get(selectedDays.size() - 1).getDayNumber(), Toast.LENGTH_SHORT).show();
-
 //                        view.setBackgroundColor(Integer.parseInt("#121212"));
 
-                        int start_day_number = selectedDays.get(0).getDayNumber();
-                        int end_day_number = selectedDays.get(selectedDays.size() - 1).getDayNumber();
+                        int start_day_number = 0;
+                        int end_day_number = 0;
+                        int duration = 0;
 
-                        start_date.setText(String.valueOf(start_day_number));
-                        end_date.setText(String.valueOf(end_day_number));
-                        end_date.setBackgroundResource(R.drawable.button_back_red_fill);
+                        try {
+                            start_day_number = selectedDays.get(0).getDayNumber();
+                            end_day_number = selectedDays.get(selectedDays.size() - 1).getDayNumber();
 
-                        int duration = end_day_number - start_day_number;
+                            Toast.makeText(AddTaskActivity.this, selectedDays.toString(), Toast.LENGTH_SHORT).show();
 
-                        if (duration < 5) {
-                            dead_line_message.setText("Seems short! :( ");
-                            dead_line_message.setBackgroundResource(R.drawable.button_back_red_fill);
+                            Toast.makeText(AddTaskActivity.this, "Day Number : " + selectedDays.get(selectedDays.size() - 1).getDayNumber(), Toast.LENGTH_SHORT).show();
 
-                        } else if (duration > 10) {
-                            dead_line_message.setText("That's long! :( ");
-                            dead_line_message.setBackgroundResource(R.drawable.button_back_yellow_fill);
-                        } else {
-                            dead_line_message.setText("Seems perfect! :) ");
-                            dead_line_message.setBackgroundResource(R.drawable.button_back_green_fill);
-                            dead_line_message.setTextColor(Color.parseColor("#121212"));
+                            start_date.setText(String.valueOf(start_day_number));
+                            end_date.setText(String.valueOf(end_day_number));
+                            end_date.setBackgroundResource(R.drawable.button_back_red_fill);
+
+                            duration = end_day_number - start_day_number;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        if(!selectedDays.isEmpty()) {
+                            if (duration < 5) {
+                                dead_line_message.setText("Seems short! :( ");
+                                dead_line_message.setBackgroundResource(R.drawable.button_back_red_fill);
+
+                            } else if (duration > 10) {
+                                dead_line_message.setText("That's long! :( ");
+                                dead_line_message.setBackgroundResource(R.drawable.button_back_yellow_fill);
+                            } else {
+                                dead_line_message.setText("Seems perfect! :) ");
+                                dead_line_message.setBackgroundResource(R.drawable.button_back_green_fill);
+                                dead_line_message.setTextColor(Color.parseColor("#121212"));
+                            }
+                        }else{
+                            Toast.makeText(AddTaskActivity.this, "No dates selected!", Toast.LENGTH_SHORT).show();
                         }
 
                     }

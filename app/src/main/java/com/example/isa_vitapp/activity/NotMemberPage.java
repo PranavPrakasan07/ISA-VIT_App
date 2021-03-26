@@ -41,6 +41,9 @@ public class NotMemberPage extends AppCompatActivity {
     private Handler mHandler;
 
     ImageView board_instagram, board_linkedin, board_github;
+
+    ImageView isa_instagram, isa_linkedin, isa_github, isa_medium, isa_youtube;
+
     TextView board_member_name, board_member_position;
 
     Button back_page, front_page;
@@ -121,6 +124,12 @@ public class NotMemberPage extends AppCompatActivity {
         board_linkedin = findViewById(R.id.linkedin_icon);
         board_github = findViewById(R.id.github_icon);
         board_instagram = findViewById(R.id.instagram_icon);
+
+        isa_linkedin = findViewById(R.id.isa_linkedin_icon);
+        isa_github = findViewById(R.id.isa_github_icon);
+        isa_instagram = findViewById(R.id.isa_instagram_icon);
+        isa_medium = findViewById(R.id.isa_medium_icon);
+        isa_youtube = findViewById(R.id.isa_youtube_icon);
 
         board_member_name = findViewById(R.id.member_name);
         board_member_position = findViewById(R.id.position);
@@ -249,6 +258,55 @@ public class NotMemberPage extends AppCompatActivity {
             }
         });
 
+//----------------------------------------------------------------------------------------------------------
+
+        isa_instagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.instagram.com/isa_vit_/"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        isa_github.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://github.com/isa-vit"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        isa_linkedin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.linkedin.com/company/international-society-of-automation-isa-vit/mycompany/"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        isa_medium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://medium.com/@isavit_blog"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        isa_youtube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.youtube.com/channel/UCS-HWnmvs5cYEplDuxfO7PA"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+//----------------------------------------------------------------------------------------------------------
+
         flagship_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -316,5 +374,4 @@ public class NotMemberPage extends AppCompatActivity {
             return null;
         }
     }
-
 }

@@ -15,6 +15,20 @@
 
         <item name="colorBackgroundFloating">#121212</item>
         <item name="android:colorBackgroundFloating" tools:targetApi="23">#121212</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
 
+        <item name="materialCalendarFullscreenTheme">@style/CustomThemeOverlay_MaterialCalendar_Fullscreen</item>
+
+
+    </style>
+
+    <style name="CustomThemeOverlay_MaterialCalendar_Fullscreen"
+    parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar.Fullscreen">
+    <item name="materialCalendarStyle">@style/Custom_MaterialCalendar.Fullscreen</item>
+</style>
+
+    <style name="Custom_MaterialCalendar.Fullscreen"
+        parent="@style/Widget.MaterialComponents.MaterialCalendar.Fullscreen">
+        <item name="android:windowFullscreen">false</item>
     </style>
 </resources>
