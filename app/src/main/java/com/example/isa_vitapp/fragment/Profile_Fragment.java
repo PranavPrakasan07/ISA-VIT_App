@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import com.example.isa_vitapp.LogoutSplash;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.Login;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,6 +81,7 @@ public class Profile_Fragment extends Fragment {
 
         logout = view.findViewById(R.id.logout_button_layout);
 
+        Toast.makeText(getContext(), Objects.requireNonNull(Login.mAuth.getCurrentUser()).getDisplayName(), Toast.LENGTH_SHORT).show();
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

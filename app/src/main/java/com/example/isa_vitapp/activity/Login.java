@@ -149,6 +149,7 @@ public class Login extends AppCompatActivity {
                 } else if (password_text.length() < 6) {
                     Toast.makeText(getApplicationContext(), "Password is too short!", Toast.LENGTH_SHORT).show();
                 } else {
+                    verify_user(email_text, password_text);
                     createAccount(email_text, password_text);
                 }
 
@@ -162,8 +163,8 @@ public class Login extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        SignInButton signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
+//        SignInButton signInButton = findViewById(R.id.sign_in_button);
+//        signInButton.setSize(SignInButton.SIZE_STANDARD);
 
         findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -295,13 +296,6 @@ public class Login extends AppCompatActivity {
                     //dtls[i].getBoardMemberDetails((String) mem);
                     i++;
                 }
-
-//                  Update the value background thread to UI thread
-//                    mHandler.post(new Runnable() {
-//                        @Override
-//                        public void run() {0
-//                        }
-//                    });
 
             }
         });
