@@ -1,8 +1,6 @@
 package com.example.isa_vitapp.activity;
 
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -11,16 +9,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.fragment.Add_Fragment;
 import com.example.isa_vitapp.fragment.Profile_Fragment;
 import com.example.isa_vitapp.fragment.Search_Fragment;
 import com.example.isa_vitapp.fragment.Task_Fragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Home extends AppCompatActivity {
 

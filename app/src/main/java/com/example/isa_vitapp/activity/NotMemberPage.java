@@ -22,27 +22,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.MyActivity;
 import com.example.isa_vitapp.R;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class NotMemberPage extends AppCompatActivity {
 
     Button github_isa, flagship_button, events_button, technitudes_button;
-    ImageView member_image, photos;
 
-    private Handler mHandler;
-
-    ImageView board_instagram, board_linkedin, board_github;
-
-    ImageView isa_instagram, isa_linkedin, isa_github, isa_medium, isa_youtube;
+    ImageView board_instagram, board_linkedin, board_github, isa_instagram, isa_linkedin, isa_github, isa_medium, isa_youtube, member_image, photos;
 
     TextView board_member_name, board_member_position;
 
@@ -52,21 +44,11 @@ public class NotMemberPage extends AppCompatActivity {
 
     boolean to_front = true;
 
-    private String left_color, center_color, right_color;
-    private int increment = 1;
-    int counter = 0;
+    private int increment = 1, counter = 0;
 
     GradientDrawable gd;
 
     String[] color_array = {"#FF6363", "#00B2FF", "#FFC700"};
-
-//    int[] colors_b = new int[2];
-//    int[] colors_f = new int[2];
-
-//    private SimpleGestureFilter detector;
-//
-//    public OnSwipeTouchListener onSwipeTouchListener;
-
 
     @Override
     protected void onStart() {
@@ -81,45 +63,7 @@ public class NotMemberPage extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        mHandler = new Handler();
-
-//
-//        FetchFromDB names = new FetchFromDB();
-//
-//        final Map[] position_name = new Map[]{new HashMap<>()};
-
-//
-//        Thread store_names_thread = new Thread() {
-//            public void run() {
-//                DocumentReference docRef = db.collection("Board").document();
-//                docRef.get().
-//
-//                        addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                                if (task.isSuccessful()) {
-//                                    DocumentSnapshot document = task.getResult();
-//                                    if (document != null) {
-//
-////                        Toast.makeText(NotMemberPage.this, Objects.requireNonNull(document.getData()).toString(), Toast.LENGTH_SHORT).show();
-//                                        board_members_list.add(Objects.requireNonNull(document.getData()).toString());
-//
-//                                    } else {
-//                                        Log.d("LOGGER", "No such document");
-//                                    }
-//                                } else {
-//                                    Log.d("LOGGER", "get failed with ", task.getException());
-//                                }
-//                            }
-//                        });
-//            }
-//        };
-//
-//        try {
-//            store_names_thread.join();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        Handler mHandler = new Handler();
 
         board_linkedin = findViewById(R.id.linkedin_icon);
         board_github = findViewById(R.id.github_icon);
@@ -148,9 +92,6 @@ public class NotMemberPage extends AppCompatActivity {
         main_page = findViewById(R.id.board_page_layout);
         main_layout = findViewById(R.id.member_prof_layout);
 
-//        detector = new SimpleGestureFilter(NotMemberPage.this, this);
-//        onSwipeTouchListener = new OnSwipeTouchListener(getApplicationContext(), main_layout);
-
 //        green : 73D69B
 //        blue : 00B2FF
 //        red : FF6363
@@ -163,25 +104,8 @@ public class NotMemberPage extends AppCompatActivity {
             public void onClick(View v) {
                 setBackColor(!to_front);
                 counter--;
-                //getData(counter);
 
-//                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(getApplicationContext(), positions.toString(), Toast.LENGTH_SHORT).show();
-
-//                String url = "https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Board%20Members%2Fvatsal.png?alt=media&token=3c6d40e7-5ae5-42f3-ae00-e53ebc3d3c6c";
-//                member_image.setImageBitmap(getBitmapFromURL(url));
-//
-//                board_member_name.setText(FetchFromDB.members[counter%12].getMember_name());
-//                board_member_position.setText(FetchFromDB.members[counter%12].getPosition());
-//
-//                Picasso
-//                        .get()
-//                        .load(FetchFromDB.members[counter%12].getPhoto_link())
-//                        .into(member_image);
-//
-//
-//                board_member_name.setText(FetchFromDB.members[counter%12].getMember_details().get("Name").toString());
-//                board_member_position.setText(FetchFromDB.members[counter%12].getMember_details().get("Position").toString());
 
                 try {
                     Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
@@ -189,10 +113,6 @@ public class NotMemberPage extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-//                Picasso
-//                        .get()
-//                        .load(FetchFromDB.members[counter%12].getMember_details().get("Photo Link").toString())
-//                        .into(member_image);
             }
         });
 
@@ -202,43 +122,11 @@ public class NotMemberPage extends AppCompatActivity {
                 setBackColor(to_front);
                 counter++;
 
-                //getData(counter);
-
-//                Toast.makeText(getApplicationContext(), position_name[0].entrySet().toString(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getApplicationContext(), position_name[0].values().toString(), Toast.LENGTH_SHORT).show();
-
                 try {
                     Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-//      New thread to perform background operation
-//
-//                FetchFromDB details = new FetchFromDB();
-//
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        details.getBoardMemberDetails(FetchFromDB.position_name.get(positions.get(counter % 12)).toString());
-//
-////                  Update the value background thread to UI thread
-//                        mHandler.post(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                board_member_name.setText(details.getMember_name());
-//                                board_member_position.setText(details.getPosition());
-//
-//                                Picasso
-//                                        .get()
-//                                        .load(details.getPhoto_link())
-//                                        .into(member_image);
-//                            }
-//                        });
-//
-//                    }
-//                }).start();
-
             }
         });
 

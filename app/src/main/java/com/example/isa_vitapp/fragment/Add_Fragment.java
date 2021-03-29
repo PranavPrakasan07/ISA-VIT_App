@@ -5,8 +5,6 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,12 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.isa_vitapp.AddTaskActivity;
-import com.example.isa_vitapp.AddTaskFragment;
+import com.example.isa_vitapp.activity.AddTaskActivity;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.RemoveTaskActivity;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +25,7 @@ import java.util.Objects;
 public class Add_Fragment extends Fragment {
 
     CardView add_task_button;
+    Button add_task, remove_task;
     CardView remove_task_button;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -79,8 +75,9 @@ public class Add_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_, container, false);
 
-        add_task_button = view.findViewById(R.id.add_task_cardView);
-        remove_task_button = view.findViewById(R.id.del_task_cardView);
+        add_task = view.findViewById(R.id.add_task_button);
+
+        remove_task = view.findViewById(R.id.del_task_button);
 
         add_task_button.setOnClickListener(new View.OnClickListener() {
             @Override

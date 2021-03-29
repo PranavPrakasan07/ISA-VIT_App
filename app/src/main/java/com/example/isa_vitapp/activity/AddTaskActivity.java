@@ -1,4 +1,4 @@
-package com.example.isa_vitapp;
+package com.example.isa_vitapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,7 +23,7 @@ import com.applikeysolutions.cosmocalendar.model.Day;
 import com.applikeysolutions.cosmocalendar.selection.RangeSelectionManager;
 import com.applikeysolutions.cosmocalendar.utils.SelectionType;
 import com.applikeysolutions.cosmocalendar.view.CalendarView;
-import com.example.isa_vitapp.activity.Home;
+import com.example.isa_vitapp.R;
 
 import java.util.Calendar;
 import java.util.HashSet;
@@ -31,21 +31,20 @@ import java.util.List;
 
 public class AddTaskActivity extends AppCompatActivity {
 
-    Button create_in_splash, tutorial_button;
     LinearLayout splash, summary;
     ScrollView task_layout;
+
     CalendarView calendarView;
-    Button set_button, final_create_button, back_button;
+
+    Button set_button, final_create_button, back_button, create_in_splash;
+    TextView start_date, end_date, dead_line_message, duration, summary_title, summary_desc, task_desc, task_title, domain_chosen;
     ImageButton full_screen_button;
-    String startDate, endDate;
 
     RadioGroup tech_non_tech, tech, non_tech;
 
     LottieAnimationView anim_view;
 
-    TextView start_date, end_date, dead_line_message, duration, summary_title, summary_desc, task_desc, task_title, domain_chosen;
-
-    String domain = "";
+    String startDate, endDate, domain = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -302,6 +301,5 @@ public class AddTaskActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

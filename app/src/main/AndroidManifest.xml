@@ -14,7 +14,7 @@
         android:theme="@style/Theme.ISAVITApp"
         android:usesCleartextTraffic="true">
         <activity android:name=".RemoveTaskActivity" />
-        <activity android:name=".AddTaskActivity" />
+        <activity android:name=".activity.AddTaskActivity" />
         <activity android:name=".LoginSplash" />
         <activity android:name=".LogoutSplash" />
         <activity android:name=".activity.Login" />

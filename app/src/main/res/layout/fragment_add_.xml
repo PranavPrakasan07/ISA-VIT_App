@@ -37,7 +37,7 @@
                 <Button
                     android:id="@+id/add_task_button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
@@ -86,7 +86,7 @@
                 <Button
                     android:id="@+id/del_task_button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
@@ -135,7 +135,7 @@
                 <Button
                     android:id="@+id/add_member_button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
@@ -185,7 +185,7 @@
                 <Button
                     android:id="@+id/del_member_button"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"

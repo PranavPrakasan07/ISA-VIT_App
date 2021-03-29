@@ -1,16 +1,15 @@
 package com.example.isa_vitapp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.R;
-import com.example.isa_vitapp.activity.Login;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -39,22 +38,17 @@ public class SplashScreen extends AppCompatActivity {
         });
     }
 
-
     private void getBoardNames() throws InterruptedException {
 //      New thread to perform background operation
 
         Thread getNameThread = new Thread(new Runnable() {
             @Override
             public void run() {
-
                 names.getBoardMemberNames();
                 Log.d("Thread", "Executing thread name func" + Thread.currentThread().getName());
-
             }
         });
 
         getNameThread.start();
-
-
-}
+    }
 }

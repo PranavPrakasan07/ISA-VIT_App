@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +20,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -47,22 +45,15 @@ public class Login extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    Button login, click;
+    Button login;
     TextView link, login_header;
     static boolean isBoard = false;
 
-    private Handler mHandler;
-    private ProgressBar mProgressBar;
-
     EditText username, password, registration_number;
-
-    int count = 0;
-    int flag = 0;
 
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
@@ -109,7 +100,6 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password_field);
         registration_number = findViewById(R.id.registration_number_field);
 
-        mProgressBar = findViewById(R.id.progressBar_splash);
         mAuth = FirebaseAuth.getInstance();
 
         try {
@@ -117,7 +107,6 @@ public class Login extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
         ActionCodeSettings actionCodeSettings =
                 ActionCodeSettings.newBuilder()
@@ -153,6 +142,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -160,9 +150,6 @@ public class Login extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-//        SignInButton signInButton = findViewById(R.id.sign_in_button);
-//        signInButton.setSize(SignInButton.SIZE_STANDARD);
 
         findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,9 +177,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-
     private void createAccount(String email_text, String password_text) {
-
 
         Login.mAuth.createUserWithEmailAndPassword(email_text, password_text).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -294,12 +279,10 @@ public class Login extends AppCompatActivity {
                     //dtls[i].getBoardMemberDetails((String) mem);
                     i++;
                 }
-
             }
         });
 
         getDetailThread.start();
         getDetailThread.join();
-
     }
 }
