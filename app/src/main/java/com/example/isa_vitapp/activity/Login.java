@@ -41,9 +41,11 @@ public class Login extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1;
 
     public static FirebaseAuth mAuth;
-    GoogleSignInClient mGoogleSignInClient;
-
     public FetchFromDB[] dtls = new FetchFromDB[15];
+    public FetchFromDB names = new FetchFromDB();
+
+    GoogleSignInClient mGoogleSignInClient;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     Button login, click;
     TextView link, login_header;
@@ -52,11 +54,7 @@ public class Login extends AppCompatActivity {
     private Handler mHandler;
     private ProgressBar mProgressBar;
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     EditText username, password, registration_number;
-
-    public FetchFromDB names = new FetchFromDB();
 
     int count = 0;
     int flag = 0;

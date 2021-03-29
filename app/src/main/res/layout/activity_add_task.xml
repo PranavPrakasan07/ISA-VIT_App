@@ -17,7 +17,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,13 +43,15 @@
             android:fontFamily="@font/montserrat_semibold"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:textColor="#121212"
             android:text="Create Task"
             android:textSize="16sp" />
 
     </LinearLayout>
 
-
     <ScrollView
+        android:id="@+id/create_task_layout"
+        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,25 +60,49 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/create_task_layout"
+            android:id="@+id/task_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
-            android:orientation="vertical"
-            android:visibility="visible">
+            android:orientation="vertical">
+
+            <!--                <com.google.android.material.textfield.TextInputLayout-->
+            <!--                    android:id="@+id/username_filled"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginStart="32dp"-->
+            <!--                    android:layout_marginTop="16dp"-->
+            <!--                    android:layout_marginEnd="32dp"-->
+            <!--                    app:boxStrokeColor="#80FFFFFF"-->
+            <!--                    android:hint="Username"-->
+            <!--                    app:hintTextColor="#FFFFFF"-->
+            <!--                    android:textColorHint="#FFFFFF"-->
+            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                    app:layout_constraintStart_toStartOf="parent"-->
+            <!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+            <!--                    &lt;!&ndash;this is the actual edit text which takes the input&ndash;&gt;-->
+            <!--                    <com.google.android.material.textfield.TextInputEditText-->
+            <!--                        android:id="@+id/edit_text"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:textColor="#FFFFFF"-->
+            <!--                        android:textColorHint="#80FFFFFF"-->
+            <!--                        android:layout_height="wrap_content" />-->
+
+            <!--                </com.google.android.material.textfield.TextInputLayout>-->
 
             <TextView
                 android:id="@+id/heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Create Task"
                 android:textColor="#FFFFFF"
                 android:textSize="36sp"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -84,12 +110,13 @@
 
             <EditText
                 android:id="@+id/task_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
                 android:ems="10"
-
                 android:fontFamily="@font/montserrat_regular"
                 android:gravity="center_horizontal|center_vertical"
                 android:hint="Task Title"
@@ -103,9 +130,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
                 android:layout_marginBottom="8dp"
                 android:ems="20"
 
@@ -122,11 +149,11 @@
                 android:id="@+id/domain_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Domain"
-
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="32dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -170,7 +197,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:orientation="vertical"
                 android:visibility="gone">
 
@@ -218,7 +245,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:orientation="vertical"
                 android:visibility="gone">
 
@@ -261,10 +288,12 @@
 
             </RadioGroup>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -272,106 +301,56 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/montserrat_semibold"
                     android:text="Deadline"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/heading" />
+                    android:textSize="24sp" />
 
                 <ImageButton
                     android:id="@+id/full_screen_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:background="#00FFFFFF"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/ic_baseline_fullscreen_24" />
-            </LinearLayout>
+            </RelativeLayout>
 
             <com.applikeysolutions.cosmocalendar.view.CalendarView
                 android:id="@+id/cosmo_calendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="16dp"
+                android:layout_margin="32dp"
                 android:background="#313131"
                 android:padding="8dp"
                 app:calendarBackgroundColor="#212121">
 
             </com.applikeysolutions.cosmocalendar.view.CalendarView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="24dp"
-                android:orientation="horizontal">
+            <Button
+                android:id="@+id/selectButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/button_back_green_fill"
+                android:gravity="center_horizontal|center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Set Date"
+                android:textAlignment="gravity"
+                android:textColor="#121212"
+                android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/selectButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:layout_weight="0"
-                    android:background="@drawable/button_back_green_fill"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="8dp"
-                    android:text="Set"
-                    android:textAlignment="gravity"
-                    android:textColor="#121212"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/start_date_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="16dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:paddingStart="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="16dp"
-                    android:background="#121212"
-                    android:paddingBottom="8dp"
-                    android:textAlignment="gravity"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    android:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/end_date_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:background="#121212"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:paddingStart="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="8dp"
-                    android:textAlignment="gravity"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    android:visibility="visible" />
-
-
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/deadline_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_margin="32dp"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center_vertical|center_horizontal"
                 android:paddingStart="32dp"
@@ -381,11 +360,173 @@
                 android:textAlignment="gravity"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="16dp"
                 android:visibility="visible" />
 
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/summary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/summary_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center_horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Task Name"
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/summary_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center_horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Description"
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/domain_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center_horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Domain"
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/start_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Start Date : "
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/end_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:paddingBottom="8dp"
+            android:text="End Date : "
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/duration_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:text="Duration : "
+            android:textAlignment="gravity"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/final_create_button"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/button_back_green_fill"
+            android:textColor="#121212"
+            android:text="Create" />
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_back_red_fill"
+            android:textColor="#FFFFFF"
+            android:text="Back" />
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="confetti.json"
+        app:lottie_loop="false"
+        app:lottie_url="https://assets3.lottiefiles.com/packages/lf20_ppwu5qi1.json" />
 </androidx.constraintlayout.widget.ConstraintLayout>

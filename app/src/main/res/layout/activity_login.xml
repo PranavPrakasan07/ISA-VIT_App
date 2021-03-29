@@ -7,6 +7,32 @@
     android:background="#121212"
     tools:context=".activity.Login">
 
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/username_filled"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        app:boxStrokeColor="#80FFFFFF"-->
+<!--        android:hint="Username"-->
+<!--        app:hintTextColor="#FFFFFF"-->
+<!--        android:textColorHint="#FFFFFF"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        &lt;!&ndash;this is the actual edit text which takes the input&ndash;&gt;-->
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/edit_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:textColorHint="#80FFFFFF"-->
+<!--            android:layout_height="wrap_content" />-->
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+
     <EditText
         android:id="@+id/password_field"
         android:layout_width="300dp"
