@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -201,7 +202,6 @@ public class AddTaskActivity extends AppCompatActivity {
                                 dead_line_message.setBackgroundResource(R.drawable.button_back_yellow_fill);
                             } else {
                                 dead_line_message.setText("Seems perfect! :) ");
-//                                thumbsup_anim_view.setVisibility(View.VISIBLE);
                                 dead_line_message.setBackgroundResource(R.drawable.button_back_green_fill);
                                 dead_line_message.setTextColor(Color.parseColor("#121212"));
 
@@ -294,7 +294,15 @@ public class AddTaskActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     anim_view.setVisibility(View.VISIBLE);
-                    startActivity(new Intent(getApplicationContext(), Home.class));
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(new Intent(getApplicationContext(), Home.class));
+                        }
+                    }, 1500);
+
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                     Toast.makeText(AddTaskActivity.this, "Please set the dates!", Toast.LENGTH_SHORT).show();

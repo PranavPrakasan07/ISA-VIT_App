@@ -79,7 +79,7 @@ public class Add_Fragment extends Fragment {
 
         remove_task = view.findViewById(R.id.del_task_button);
 
-        add_task_button.setOnClickListener(new View.OnClickListener() {
+        add_task.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("GG", "Add Task Clicked");
@@ -88,7 +88,7 @@ public class Add_Fragment extends Fragment {
 
         });
 
-        remove_task_button.setOnClickListener(new View.OnClickListener() {
+        remove_task.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Button remove clicked", Toast.LENGTH_SHORT).show();

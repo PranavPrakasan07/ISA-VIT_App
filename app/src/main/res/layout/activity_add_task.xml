@@ -31,29 +31,29 @@
             app:lottie_autoPlay="true"
             app:lottie_fileName="add-animation.json"
             app:lottie_loop="true"
-            app:lottie_url="https://assets5.lottiefiles.com/packages/lf20_tf6wSv.json" />
+            app:lottie_url="https://assets5.lottiefiles.com/private_files/lf30_vWfFwt.json" />
 
         <Button
             android:id="@+id/create_task_button_splash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/button_back_green_fill"
             android:fontFamily="@font/montserrat_semibold"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:textColor="#121212"
             android:text="Create Task"
+            android:textColor="#121212"
             android:textSize="16sp" />
 
     </LinearLayout>
 
     <ScrollView
         android:id="@+id/create_task_layout"
-        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -458,12 +458,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/montserrat_medium"
             android:gravity="center_vertical|center_horizontal"
             android:paddingStart="16dp"
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:paddingBottom="8dp"
             android:text="End Date : "
             android:textAlignment="gravity"
@@ -490,25 +490,25 @@
 
         <Button
             android:id="@+id/final_create_button"
-            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:background="@drawable/button_back_green_fill"
+            android:text="Create"
             android:textColor="#121212"
-            android:text="Create" />
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/back_button"
-            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:background="@drawable/button_back_red_fill"
+            android:text="Back"
             android:textColor="#FFFFFF"
-            android:text="Back" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <com.airbnb.lottie.LottieAnimationView
