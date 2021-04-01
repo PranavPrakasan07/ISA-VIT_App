@@ -17,11 +17,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.MyActivity;
 import com.example.isa_vitapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Source;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,6 +56,8 @@ public class NotMemberPage extends AppCompatActivity {
 
     private int increment = 1, counter = 0;
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     GradientDrawable gd;
 
     String[] color_array = {"#FF6363", "#00B2FF", "#FFC700"};
@@ -53,6 +65,23 @@ public class NotMemberPage extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+//
+//        FetchFromDB[] board_object = new FetchFromDB[FetchFromDB.total_board_members];
+//        final int[] i = {0};
+//        for (Object name : FetchFromDB.position_name.values()) {
+//            DocumentReference docRef = db.collection("Board Data").document(name.toString());
+//            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                @Override
+//                public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                    board_object[i[0]] = documentSnapshot.toObject(FetchFromDB.class);
+//
+//                    Log.d("Inside member : ", board_object[i[0]].getMember_name());
+//                    board_member_name.setText(board_object[i[0]].getMember_name());
+//                    board_member_position.setText(board_object[i[0]].getPosition());
+//                    i[0]++;
+//                }
+//            });
+//        }
     }
 
     @Override
@@ -122,11 +151,16 @@ public class NotMemberPage extends AppCompatActivity {
                 setBackColor(to_front);
                 counter++;
 
+                String name = "";
+
                 try {
-                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
+                    name = FetchFromDB.position_name.get(positions.get(counter % 12)).toString();
+                    Toast.makeText(NotMemberPage.this, name, Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+
             }
         });
 
@@ -243,6 +277,27 @@ public class NotMemberPage extends AppCompatActivity {
         } else {
             increment--;
         }
+    }
+
+    public void getDetailsForCard(String name) {
+        DocumentReference docRef = db.collection("cities").document("SF");
+
+// Source can be CACHE, SERVER, or DEFAULT.
+        Source source = Source.CACHE;
+
+// Get the document, forcing the SDK to use the offline cache
+        docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    // Document found in the offline cache
+                    DocumentSnapshot document = task.getResult();
+                    Log.d("TAG", "Cached document data: " + document.getData());
+                } else {
+                    Log.d("TAG", "Cached get failed: ", task.getException());
+                }
+            }
+        });
     }
 
     public static Bitmap getBitmapFromURL(String src) {
