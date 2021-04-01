@@ -55,6 +55,7 @@ public class AddTaskActivity extends AppCompatActivity {
         Animation animation_fadein, animation_fadeout;
 
         anim_view = findViewById(R.id.animation_view);
+
         animation_fadein = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
         animation_fadeout = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
 
