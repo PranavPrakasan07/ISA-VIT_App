@@ -79,19 +79,19 @@ public class Profile_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile_, container, false);
 
-        logout = view.findViewById(R.id.logout_button_layout);
-
-        Toast.makeText(getContext(), Objects.requireNonNull(Login.mAuth.getCurrentUser()).getDisplayName(), Toast.LENGTH_SHORT).show();
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("GG", "Logout Clicked");
-                Login.mAuth.signOut();
-
-                startActivity(new Intent(getContext(), LogoutSplash.class));
-            }
-        });
+//        logout = view.findViewById(R.id.logout_button_layout);
+//
+//        Toast.makeText(getContext(), Objects.requireNonNull(Login.mAuth.getCurrentUser()).getDisplayName(), Toast.LENGTH_SHORT).show();
+//
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("GG", "Logout Clicked");
+//                Login.mAuth.signOut();
+//
+//                startActivity(new Intent(getContext(), LogoutSplash.class));
+//            }
+//        });
 
         return view;
     }
