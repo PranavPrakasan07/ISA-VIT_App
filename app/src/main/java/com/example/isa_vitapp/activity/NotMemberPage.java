@@ -103,11 +103,6 @@ public class NotMemberPage extends AppCompatActivity {
         main_page = findViewById(R.id.board_page_layout);
         main_layout = findViewById(R.id.member_prof_layout);
 
-//        green : 73D69B
-//        blue : 00B2FF
-//        red : FF6363
-//        yellow : FFC700
-
         ArrayList<String> positions = new ArrayList<String>(FetchFromDB.position_name.keySet());
 
         back_page.setOnClickListener(new View.OnClickListener() {

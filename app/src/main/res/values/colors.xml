@@ -11,7 +11,20 @@
     <color name="text_color">#FFFFFF</color>
     <color name="hint_color">#80FFFFFF</color>
     <color name="green">#8AFF96</color>
+    <color name="blue">#00B2FF</color>
+    <color name="yellow">#FFC700</color>
+    <color name="red">#FF6363</color>
+    <color name="green_shade">#73D69B</color>
 
+    <color name="blue_button_dark">#0164AB</color>
+    <color name="blue_button_light">#0C97E8</color>
+    <color name="shadow_light">#373737</color>
+    <color name="shadow_dark">#171717</color>
+    <color name="dark_button">#272727</color>
+    <color name="heading_color">#A5A4A4</color>
+    <color name="field_color">#747474</color>
+    <color name="button_text">#D5D5D5</color>
+    <color name="transparent">#00121212</color>
 
     <style name="edittext_field">
 
@@ -44,6 +57,40 @@
         <item name="android:paddingRight">16dp</item>
         <item name="android:textAllCaps">false</item>
 
+    </style>
+
+    <style name="heading">
+
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="fontFamily">@font/montserrat_semibold</item>
+
+    </style>
+
+    <style name="content">
+
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
+
+    </style>
+
+    <style name="divider_style">
+
+        <item name="android:dividerHeight">6dp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">6dp</item>
+        <item name="backgroundColor">@color/blue</item>
+
+    </style>
+
+    <style name="CustomShapeAppearance">
+        <item name="neumorph_cornerFamily">rounded</item>
+        <item name="neumorph_cornerSize">32dp</item>
+        <item name="neumorph_cornerSizeTopLeft">16dp</item>
+        <item name="neumorph_cornerSizeTopRight">16dp</item>
+        <item name="neumorph_cornerSizeBottomLeft">16dp</item>
+        <item name="neumorph_cornerSizeBottomRight">16dp</item>
     </style>
 
 </resources>

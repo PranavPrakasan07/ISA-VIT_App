@@ -3,11 +3,9 @@ package com.example.isa_vitapp.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.R;
@@ -31,12 +29,9 @@ public class SplashScreen extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        background.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Login.class));
-                finish();
-            }
+        background.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), Login.class));
+            finish();
         });
     }
 

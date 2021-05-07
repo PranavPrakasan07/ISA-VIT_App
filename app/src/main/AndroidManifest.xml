@@ -13,24 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ISAVITApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RemoveTaskActivity" />
-        <activity android:name=".activity.AddTaskActivity" />
-        <activity android:name=".LoginSplash" />
-        <activity android:name=".LogoutSplash" />
-        <activity android:name=".activity.Login" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name=".RemoveTaskActivity" />
+        <activity android:name=".activity.AddTaskActivity" />
+        <activity android:name=".LoginSplash" />
+        <activity android:name=".LogoutSplash" />
+        <activity android:name=".activity.Login" />
         <activity android:name=".activity.SignUp" />
-        <activity
-            android:name=".activity.Home"
-            android:label="@string/title_activity_home" />
+        <activity android:name=".activity.Home" />
         <activity android:name=".MyActivity" />
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.SplashScreen" />
         <activity android:name=".activity.NotMemberPage" />
-        <activity android:name=".activity.SplashScreen">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

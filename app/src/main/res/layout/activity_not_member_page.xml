@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
+    android:background="@color/background_color"
     tools:context=".activity.NotMemberPage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,39 +18,35 @@
 
         <TextView
             android:id="@+id/about_is_header"
+            style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="86dp"
-            android:fontFamily="@font/montserrat_semibold"
             android:text="About Us"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/divider"
-            android:layout_width="100dp"
-            android:layout_height="6dp"
-            android:layout_marginStart="50dp"
+            style="@style/divider_style"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="0dp"
-            android:background="#00B2FF"
+            android:background="@color/blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/about_is_header" />
 
 
         <TextView
             android:id="@+id/about_us_content"
+            style="@style/content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:fontFamily="@font/montserrat_regular"
+            android:layout_marginEnd="48dp"
             android:justificationMode="inter_word"
             android:text="@string/lorem_ipsum"
-            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,24 +54,21 @@
 
         <TextView
             android:id="@+id/board_header"
+            style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="75dp"
-            android:fontFamily="@font/montserrat_semibold"
             android:text="Board"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/about_us_content" />
 
         <View
             android:id="@+id/divider2"
-            android:layout_width="100dp"
-            android:layout_height="6dp"
-            android:layout_marginStart="50dp"
+            style="@style/divider_style"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="0dp"
-            android:background="#00B2FF"
+            android:background="@color/blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/board_header" />
 
@@ -105,7 +98,7 @@
                 android:id="@+id/board_page_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#00B2FF"
+                android:background="@color/blue"
                 android:orientation="vertical">
 
                 <ImageView
@@ -124,7 +117,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:text="Name"
                     android:textAlignment="gravity"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/text_color"
                     android:textSize="14sp" />
 
                 <TextView
@@ -136,7 +129,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:text="Board Position"
                     android:textAlignment="gravity"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/text_color"
                     android:textSize="12sp" />
 
                 <TextView
@@ -148,8 +141,8 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:text="Member Quote"
                     android:textAlignment="gravity"
-                    android:textColor="#FFFFFF"
-                    android:textSize="9sp" />
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -200,23 +193,20 @@
 
         <TextView
             android:id="@+id/projects_header"
+            style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="75dp"
-            android:fontFamily="@font/montserrat_semibold"
             android:text="Our Projects"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/member_prof_layout" />
 
         <View
             android:id="@+id/divider3"
-            android:layout_width="100dp"
-            android:layout_height="6dp"
-            android:layout_marginStart="50dp"
-            android:background="#00B2FF"
+            style="@style/divider_style"
+            android:layout_marginStart="48dp"
+            android:background="@color/blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/projects_header" />
 
@@ -235,24 +225,21 @@
 
         <TextView
             android:id="@+id/events_header"
+            style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="75dp"
-            android:fontFamily="@font/montserrat_semibold"
             android:text="Events"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/github_link" />
 
         <View
             android:id="@+id/divider4"
-            android:layout_width="100dp"
-            android:layout_height="6dp"
-            android:layout_marginStart="50dp"
+            style="@style/divider_style"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="0dp"
-            android:background="#00B2FF"
+            android:background="@color/blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/events_header" />
 
@@ -262,15 +249,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:background="#FFC700"
+            android:layout_marginEnd="48dp"
+            android:background="@color/yellow"
             android:fontFamily="@font/montserrat_medium"
             android:text="Flagship Event"
             android:textAlignment="gravity"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider4" />
@@ -280,15 +267,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:background="#FF6363"
+            android:layout_marginEnd="48dp"
+            android:background="@color/red"
             android:fontFamily="@font/montserrat_medium"
             android:text="Technitudes"
             android:textAlignment="gravity"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/flagship_event_button" />
@@ -298,39 +285,36 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
-            android:background="#10B2FF"
+            android:layout_marginEnd="48dp"
+            android:background="@color/blue"
             android:fontFamily="@font/montserrat_medium"
             android:text="Events"
             android:textAlignment="gravity"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/technitudes_button" />
 
         <TextView
             android:id="@+id/photo_gallery_header"
+            style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="75dp"
-            android:fontFamily="@font/montserrat_semibold"
             android:text="Photo Gallery"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/events_button" />
 
         <View
             android:id="@+id/divider5"
-            android:layout_width="100dp"
-            android:layout_height="6dp"
-            android:layout_marginStart="50dp"
+            style="@style/divider_style"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="0dp"
-            android:background="#00B2FF"
+            android:background="@color/blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/photo_gallery_header" />
 
@@ -338,9 +322,9 @@
             android:id="@+id/photo_gallery_scroller"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider5">
@@ -369,24 +353,21 @@
 
         <TextView
             android:id="@+id/reachus_header"
+            style="@style/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="75dp"
-            android:fontFamily="@font/montserrat_semibold"
             android:text="Reach Us"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/photo_gallery_scroller" />
 
         <View
             android:id="@+id/divider7"
-            android:layout_width="100dp"
-            android:layout_height="6dp"
-            android:layout_marginStart="50dp"
+            style="@style/divider_style"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="0dp"
-            android:background="#00B2FF"
+            android:background="@color/blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/reachus_header" />
 
@@ -396,16 +377,17 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/reachus_header"
-            android:orientation="horizontal">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reachus_header">
 
             <ImageView
                 android:id="@+id/isa_instagram_icon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_instagram_icon" />
@@ -414,7 +396,7 @@
                 android:id="@+id/isa_github_icon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_github_icon" />
@@ -423,7 +405,7 @@
                 android:id="@+id/isa_linkedin_icon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_linkedin_icon" />
@@ -432,7 +414,7 @@
                 android:id="@+id/isa_medium_icon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_github_icon" />
@@ -441,13 +423,11 @@
                 android:id="@+id/isa_youtube_icon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_youtube_icon" />
 
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
