@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.isa_vitapp.activity.AddTaskActivity;
@@ -24,9 +25,7 @@ import com.example.isa_vitapp.RemoveTaskActivity;
  */
 public class Add_Fragment extends Fragment {
 
-    CardView add_task_button;
-    Button add_task, remove_task;
-    CardView remove_task_button;
+    TextView add_task, remove_task;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

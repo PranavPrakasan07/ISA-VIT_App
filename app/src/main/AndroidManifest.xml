@@ -26,9 +26,9 @@
         <activity android:name=".activity.SignUp" />
         <activity android:name=".activity.Home" />
         <activity android:name=".MyActivity" />
-        <activity android:name=".activity.SplashScreen" />
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.NotMemberPage" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

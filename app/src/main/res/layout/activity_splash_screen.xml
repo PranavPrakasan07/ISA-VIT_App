@@ -5,11 +5,12 @@
     android:id="@+id/background_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
+    android:background="@drawable/background_gradient"
     android:orientation="vertical"
     tools:context=".activity.SplashScreen">
 
     <TextView
+        android:visibility="visible"
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
         android:textSize="16sp" />
 
     <TextView
+        android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -38,6 +40,7 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
+        android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

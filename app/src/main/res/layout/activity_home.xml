@@ -5,7 +5,7 @@
     android:id="@+id/rl_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
+    android:background="@drawable/background_gradient"
     tools:context=".activity.Home">
 
     <androidx.fragment.app.FragmentContainerView
@@ -13,20 +13,47 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/bottom_nav_bar"
+        android:layout_above="@id/n_nav_bar"
         android:layout_alignParentTop="true"
         android:layout_margin="0dp"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_host_l" />
 
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/n_nav_bar"
+        style="@style/Widget.Neumorph.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:padding="4dp"
+        app:neumorph_backgroundColor="@color/transparent"
+        app:neumorph_inset="10dp"
+        app:neumorph_insetBottom="12dp"
+        app:neumorph_insetEnd="12dp"
+        app:neumorph_insetStart="12dp"
+        app:neumorph_insetTop="12dp"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/shadow_dark"
+        app:neumorph_shadowColorLight="@color/shadow_light"
+        app:neumorph_shadowElevation="2dp"
+        app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+        app:neumorph_shapeType="flat"
+        android:layout_alignParentBottom="true"
+        app:neumorph_strokeColor="@color/blue_button_light"
+        app:neumorph_strokeWidth="0dp">
+
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
         android:layout_gravity="bottom"
+        android:padding="8dp"
+        android:background="@color/dark_button"
+        android:layout_margin="4dp"
         android:fadingEdge="horizontal"
-        android:background="#212121"
         app:cnb_menuResource="@menu/nav_menu" />
+
+    </soup.neumorphism.NeumorphCardView>
 
 </RelativeLayout>

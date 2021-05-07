@@ -45,11 +45,11 @@ public class Login extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    Button login;
+    TextView login;
     TextView link, login_header;
     static boolean isBoard = false;
 
-    EditText username, password, registration_number;
+    EditText email, password, registration_number;
 
     @Override
     public void onStart() {
@@ -91,14 +91,14 @@ public class Login extends AppCompatActivity {
 
         Log.d("User Status", String.valueOf(FirebaseAuth.getInstance().getCurrentUser()));
 
-        login = findViewById(R.id.login_button);
+        login = findViewById(R.id.login_tab);
 
-        link = findViewById(R.id.not_member_link);
-        login_header = findViewById(R.id.login_header);
+        link = findViewById(R.id.not_member);
+        login_header = findViewById(R.id.heading);
 
-        username = findViewById(R.id.username_field);
-        password = findViewById(R.id.password_field);
-        registration_number = findViewById(R.id.registration_number_field);
+        email = findViewById(R.id.email_tab);
+        password = findViewById(R.id.password_tab);
+        registration_number = findViewById(R.id.regn_tab);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -126,10 +126,12 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email_text = username.getText().toString();
+                String email_text = email.getText().toString();
                 String password_text = password.getText().toString();
 
                 Toast.makeText(Login.this, registration_number.getText().toString(), Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(getApplicationContext(), Home.class));
 
                 if (email_text.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fill in your email", Toast.LENGTH_SHORT).show();
@@ -152,15 +154,15 @@ public class Login extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (view.getId() == R.id.sign_in_button) {
-                    signIn();
-                }
-            }
-        });
+//
+//        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (view.getId() == R.id.sign_in_button) {
+//                    signIn();
+//                }
+//            }
+//        });
 
         link.setOnClickListener(new View.OnClickListener() {
             @Override

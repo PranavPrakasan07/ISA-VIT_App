@@ -3,212 +3,184 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#121212"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".fragment.Add_Fragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/add_task_cardView"
-            android:layout_width="300dp"
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_add_task_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
-            app:cardBackgroundColor="#121212"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/del_task_cardView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
 
-            <LinearLayout
-                android:id="@+id/add_task_layout"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/add_task_button"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#73D69B"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:padding="32dp"
+                android:background="#00FFC700"
+                android:drawableEnd="@drawable/ic_add_task"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:text="Add Task"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
 
-                <Button
-                    android:id="@+id/add_task_button"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:background="#00FFC700"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="Add Task"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textColor="#121212"
-                    android:textSize="20sp" />
+        </soup.neumorphism.NeumorphCardView>
 
-                <ImageView
-                    android:id="@+id/add_task_icon"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/add_task" />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/del_task_cardView"
-            android:layout_width="300dp"
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_del_task_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
-            app:cardBackgroundColor="#121212"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/add_member_cardView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_task_cardView">
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
 
-            <LinearLayout
-                android:id="@+id/del_task_layout"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/del_task_button"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#FF6363"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:padding="32dp"
+                android:background="#00FFC700"
+                android:drawableEnd="@drawable/ic_add_task"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:text="Delete Task"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
 
-                <Button
-                    android:id="@+id/del_task_button"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:background="#00FFC700"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="Remove Task"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textColor="#121212"
-                    android:textSize="20sp" />
+        </soup.neumorphism.NeumorphCardView>
 
-                <ImageView
-                    android:id="@+id/del_task_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/del_task" />
-            </LinearLayout>
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_add_member_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/add_member_cardView"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
-            app:cardBackgroundColor="#121212"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/del_member_cardview"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/del_task_cardView">
-
-            <LinearLayout
-                android:id="@+id/add_member_layout"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/add_member_button"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#00B2FF"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:padding="32dp"
+                android:background="#00FFC700"
+                android:drawableEnd="@drawable/ic_add_task"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:text="Add Member"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
 
-                <Button
-                    android:id="@+id/add_member_button"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:background="#00FFC700"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="Add Member"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textColor="#121212"
-                    android:textSize="20sp" />
+        </soup.neumorphism.NeumorphCardView>
 
-                <ImageView
-                    android:id="@+id/add_member_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/add_member" />
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_del_member_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
 
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/del_member_cardview"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="48dp"
-            app:cardBackgroundColor="#121212"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_member_cardView">
-
-            <LinearLayout
-                android:id="@+id/del_member_layout"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/del_member_button"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="#FFC700"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:padding="32dp"
+                android:drawableEnd="@drawable/ic_add_task"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:text="Delete Member"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
 
-                <Button
-                    android:id="@+id/del_member_button"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:background="#00FFC700"
-                    android:fontFamily="@font/montserrat_semibold"
-                    android:text="Remove Member"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textColor="#121212"
-                    android:textSize="20sp" />
+        </soup.neumorphism.NeumorphCardView>
 
-                <ImageView
-                    android:id="@+id/del_member_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/del_member" />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
 </ScrollView>
