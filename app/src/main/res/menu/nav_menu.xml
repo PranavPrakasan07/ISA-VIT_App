@@ -4,26 +4,26 @@
 
     <item
         android:id="@+id/nav_new_add"
-        android:icon="@drawable/ic_baseline_add_circle_24"
+        android:icon="@drawable/ic_add"
         android:title="Add"
-        app:cnb_iconColor="#73D69B"/>
+        app:cnb_iconColor="@color/blue_button_light"/>
 
     <item
         android:id="@+id/nav_search"
-        android:icon="@drawable/ic_baseline_search_24"
+        android:icon="@drawable/ic_search"
         android:title="Search"
-        app:cnb_iconColor="#00B2FF"/>
+        app:cnb_iconColor="@color/blue_button_light"/>
 
     <item
         android:id="@+id/nav_task"
-        android:icon="@drawable/ic_baseline_content_paste_24"
+        android:icon="@drawable/ic_activity"
         android:title="Task"
-        app:cnb_iconColor="#FF6363" />
+        app:cnb_iconColor="@color/blue_button_light" />
 
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:icon="@drawable/ic_profile"
         android:title="Profile"
-        app:cnb_iconColor="#FFC700"/>
+        app:cnb_iconColor="@color/blue_button_light"/>
 
 </menu>
