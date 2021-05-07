@@ -129,6 +129,8 @@ public class Login extends AppCompatActivity {
                 String email_text = username.getText().toString();
                 String password_text = password.getText().toString();
 
+                Toast.makeText(Login.this, registration_number.getText().toString(), Toast.LENGTH_SHORT).show();
+
                 if (email_text.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fill in your email", Toast.LENGTH_SHORT).show();
                 } else if (password_text.equals("")) {

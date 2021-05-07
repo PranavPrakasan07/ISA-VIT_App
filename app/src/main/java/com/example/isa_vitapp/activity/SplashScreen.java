@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,7 +14,7 @@ import com.example.isa_vitapp.R;
 
 public class SplashScreen extends AppCompatActivity {
 
-    ConstraintLayout background;
+    LinearLayout background;
 
     FetchFromDB names = new FetchFromDB();
 
