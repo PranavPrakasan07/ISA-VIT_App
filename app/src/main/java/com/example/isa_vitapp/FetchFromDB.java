@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class FetchFromDB {
 
@@ -24,12 +25,141 @@ public class FetchFromDB {
         this.linkedin_link = "linkedin_link";
         this.github_link = "github_link";
         this.mobile = "mobile";
-        this.pemail = "pemail";
-        this.vemail = "vemail";
+        this.personal_email = "pemail";
+        this.vit_email = "vemail";
         this.reg_number = "reg_number";
         this.room_number = "room_number";
         this.position = "position";
         this.photo_link = "photo_link";
+        this.timestamp = "timestamp";
+    }
+
+    public String getMember_name() {
+        return member_name;
+    }
+
+    public void setMember_name(String member_name) {
+        this.member_name = member_name;
+    }
+
+    public String getInstagram_link() {
+        return instagram_link;
+    }
+
+    public void setInstagram_link(String instagram_link) {
+        this.instagram_link = instagram_link;
+    }
+
+    public String getLinkedin_link() {
+        return linkedin_link;
+    }
+
+    public void setLinkedin_link(String linkedin_link) {
+        this.linkedin_link = linkedin_link;
+    }
+
+    public String getGithub_link() {
+        return github_link;
+    }
+
+    public void setGithub_link(String github_link) {
+        this.github_link = github_link;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getPersonal_email() {
+        return personal_email;
+    }
+
+    public void setPersonal_email(String personal_email) {
+        this.personal_email = personal_email;
+    }
+
+    public String getVit_email() {
+        return vit_email;
+    }
+
+    public void setVit_email(String vit_email) {
+        this.vit_email = vit_email;
+    }
+
+    public String getReg_number() {
+        return reg_number;
+    }
+
+    public void setReg_number(String reg_number) {
+        this.reg_number = reg_number;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getRoom_number() {
+        return room_number;
+    }
+
+    public void setRoom_number(String room_number) {
+        this.room_number = room_number;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getPhoto_link() {
+        return photo_link;
+    }
+
+    public void setPhoto_link(String photo_link) {
+        this.photo_link = photo_link;
+    }
+
+    public static int getTotal_board_members() {
+        return total_board_members;
+    }
+
+    public static void setTotal_board_members(int total_board_members) {
+        FetchFromDB.total_board_members = total_board_members;
+    }
+
+    public static Map<String, Object> getPosition_name() {
+        return position_name;
+    }
+
+    public static void setPosition_name(Map<String, Object> position_name) {
+        FetchFromDB.position_name = position_name;
+    }
+
+    public Map<String, Object> getMember_details() {
+        return member_details;
+    }
+
+    public void setMember_details(Map<String, Object> member_details) {
+        this.member_details = member_details;
+    }
+
+    public static FetchFromDB[] getMembers() {
+        return members;
+    }
+
+    public static void setMembers(FetchFromDB[] members) {
+        FetchFromDB.members = members;
     }
 
     private String member_name;
@@ -38,9 +168,12 @@ public class FetchFromDB {
     private String github_link;
 
     private String mobile;
-    private String pemail;
-    private String vemail;
+
+    private String personal_email;
+    private String vit_email;
     private String reg_number;
+
+    private String timestamp;
 
     private String room_number;
     private String position;
@@ -85,7 +218,7 @@ public class FetchFromDB {
     public void getBoardMemberDetails(String name) {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("Board Data").document(name);
+        DocumentReference docRef = db.collection("Board_Data").document(name);
 
         // Source can be CACHE, SERVER, or DEFAULT.
         Source source = Source.DEFAULT;
@@ -109,7 +242,7 @@ public class FetchFromDB {
         });
 
         try {
-            Log.d("Thread", "Executing board member details" + member_details.get("Name").toString());
+            Log.d("Thread", "Executing board member details" + Objects.requireNonNull(member_details.get("Name")).toString());
 
 //            this.member_name = member_details.get("Name").toString();
 //            this.position = member_details.get("Position").toString();
@@ -124,62 +257,9 @@ public class FetchFromDB {
 //            this.photo_link = member_details.get("Photo Link").toString();
 
         } catch (Exception e) {
-            Log.d("Thread", "Error Executing board member details" + member_details.get("Name").toString());
+            Log.d("Thread", "Error Executing board member details" + Objects.requireNonNull(member_details.get("Name")).toString());
             e.printStackTrace();
         }
-
-    }
-
-    public String getMember_name() {
-        return member_name;
-    }
-
-    public String getInstagram_link() {
-        return instagram_link;
-    }
-
-    public String getLinkedin_link() {
-        return linkedin_link;
-    }
-
-    public String getGithub_link() {
-        return github_link;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public String getPemail() {
-        return pemail;
-    }
-
-    public String getVemail() {
-        return vemail;
-    }
-
-    public String getReg_number() {
-        return reg_number;
-    }
-
-    public String getRoom_number() {
-        return room_number;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public String getPhoto_link() {
-        return photo_link;
-    }
-
-    public static Map<String, Object> getPosition_name() {
-        return position_name;
-    }
-
-    public Map<String, Object> getMember_details() {
-        return member_details;
     }
 
     public void getData() {
@@ -206,7 +286,5 @@ public class FetchFromDB {
                     }
                 });
     }
-
-
 }
 

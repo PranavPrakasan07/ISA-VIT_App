@@ -16,12 +16,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.MyActivity;
 import com.example.isa_vitapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -56,27 +59,11 @@ public class NotMemberPage extends AppCompatActivity {
     GradientDrawable gd;
 
     String[] color_array = {"#FF6363", "#00B2FF", "#FFC700"};
+    FetchFromDB[] board_object = new FetchFromDB[FetchFromDB.total_board_members];
 
     @Override
     protected void onStart() {
         super.onStart();
-//
-//        FetchFromDB[] board_object = new FetchFromDB[FetchFromDB.total_board_members];
-//        final int[] i = {0};
-//        for (Object name : FetchFromDB.position_name.values()) {
-//            DocumentReference docRef = db.collection("Board Data").document(name.toString());
-//            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                @Override
-//                public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                    board_object[i[0]] = documentSnapshot.toObject(FetchFromDB.class);
-//
-//                    Log.d("Inside member : ", board_object[i[0]].getMember_name());
-//                    board_member_name.setText(board_object[i[0]].getMember_name());
-//                    board_member_position.setText(board_object[i[0]].getPosition());
-//                    i[0]++;
-//                }
-//            });
-//        }
     }
 
     @Override
@@ -129,14 +116,28 @@ public class NotMemberPage extends AppCompatActivity {
                 setBackColor(!to_front);
                 counter--;
 
+                String name = "";
+
                 Toast.makeText(getApplicationContext(), positions.toString(), Toast.LENGTH_SHORT).show();
 
                 try {
-                    Toast.makeText(NotMemberPage.this, FetchFromDB.position_name.get(positions.get(counter % 12)).toString(), Toast.LENGTH_SHORT).show();
+                    name = Objects.requireNonNull(FetchFromDB.position_name.get(positions.get(counter % 12))).toString();
+                    Toast.makeText(NotMemberPage.this, Objects.requireNonNull(FetchFromDB.position_name.get(positions.get(counter % 12))).toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
+                DocumentReference docRef = db.collection("Board_Data").document(name);
+                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        board_object[counter] = documentSnapshot.toObject(FetchFromDB.class);
+
+                        Log.d("Inside member : ", board_object[counter].getMember_name());
+                        board_member_name.setText(board_object[counter].getMember_name());
+                        board_member_position.setText(board_object[counter].getPosition());
+                    }
+                });
             }
         });
 
@@ -149,13 +150,23 @@ public class NotMemberPage extends AppCompatActivity {
                 String name = "";
 
                 try {
-                    name = FetchFromDB.position_name.get(positions.get(counter % 12)).toString();
+                    name = Objects.requireNonNull(FetchFromDB.position_name.get(positions.get(counter % 12))).toString();
                     Toast.makeText(NotMemberPage.this, name, Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
+                DocumentReference docRef = db.collection("Board_Data").document(name);
+                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        board_object[counter] = documentSnapshot.toObject(FetchFromDB.class);
 
+                        Log.d("Inside member : ", board_object[counter].getMember_name());
+                        board_member_name.setText(board_object[counter].getMember_name());
+                        board_member_position.setText(board_object[counter].getPosition());
+                    }
+                });
             }
         });
 
@@ -287,6 +298,7 @@ public class NotMemberPage extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     // Document found in the offline cache
                     DocumentSnapshot document = task.getResult();
+                    assert document != null;
                     Log.d("TAG", "Cached document data: " + document.getData());
                 } else {
                     Log.d("TAG", "Cached get failed: ", task.getException());
