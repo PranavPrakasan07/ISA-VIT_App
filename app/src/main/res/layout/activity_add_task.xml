@@ -40,11 +40,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:background="@drawable/button_back_green_fill"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/poppins_semibold"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:text="Create Task"
-            android:textColor="#121212"
+            android:textColor="@color/dark_button"
             android:textSize="16sp" />
 
     </LinearLayout>
