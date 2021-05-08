@@ -6,15 +6,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.isa_vitapp.AboutActivity;
 import com.example.isa_vitapp.LogoutSplash;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.Login;
+import com.example.isa_vitapp.activity.NotMemberPage;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -34,7 +38,7 @@ public class Profile_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    LinearLayout logout;
+    ImageButton home, logout;
 
     public Profile_Fragment() {
         // Required empty public constructor
@@ -79,19 +83,33 @@ public class Profile_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile_, container, false);
 
-//        logout = view.findViewById(R.id.logout_button_layout);
+        logout = view.findViewById(R.id.logout);
+        home = view.findViewById(R.id.home_button);
 //
 //        Toast.makeText(getContext(), Objects.requireNonNull(Login.mAuth.getCurrentUser()).getDisplayName(), Toast.LENGTH_SHORT).show();
 //
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("GG", "Logout Clicked");
-//                Login.mAuth.signOut();
-//
-//                startActivity(new Intent(getContext(), LogoutSplash.class));
-//            }
-//        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("GG", "Logout Clicked");
+
+                if(Login.mAuth.getCurrentUser() != null) {
+                    Login.mAuth.signOut();
+                }
+
+                startActivity(new Intent(getContext(), LogoutSplash.class));
+
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("GG", "Logout Clicked");
+
+                startActivity(new Intent(getContext(), AboutActivity.class));
+            }
+        });
 
         return view;
     }

@@ -2,19 +2,14 @@ package com.example.isa_vitapp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.isa_vitapp.activity.AddTaskActivity;
+import androidx.fragment.app.Fragment;
+
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.RemoveTaskActivity;
 
@@ -78,23 +73,19 @@ public class Add_Fragment extends Fragment {
 
         remove_task = view.findViewById(R.id.del_task_button);
 
-        add_task.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("GG", "Add Task Clicked");
-                startActivity(new Intent(getActivity(), AddTaskActivity.class));
-            }
+        add_task.setOnClickListener(v -> {
 
+            Fragment domainList = new DomainListFragment();
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
         });
 
-        remove_task.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "Button remove clicked", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), RemoveTaskActivity.class));
-            }
+        remove_task.setOnClickListener(v -> {
+            Toast.makeText(getActivity(), "Button remove clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getActivity(), RemoveTaskActivity.class));
         });
 
         return view;
     }
+
+
 }

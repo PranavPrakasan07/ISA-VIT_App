@@ -1,4 +1,4 @@
-package com.example.isa_vitapp;
+package com.example.isa_vitapp.fragment;
 
 import android.os.Bundle;
 
@@ -7,14 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
+import com.example.isa_vitapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AddTaskFragment#newInstance} factory method to
+ * Use the {@link DomainListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddTaskFragment extends Fragment {
+public class DomainListFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +26,7 @@ public class AddTaskFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AddTaskFragment() {
+    public DomainListFragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +36,11 @@ public class AddTaskFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AddFragment.
+     * @return A new instance of fragment DomainListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AddTaskFragment newInstance(String param1, String param2) {
-        AddTaskFragment fragment = new AddTaskFragment();
+    public static DomainListFragment newInstance(String param1, String param2) {
+        DomainListFragment fragment = new DomainListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,7 +61,7 @@ public class AddTaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_add_task, container, false);
+        View view = inflater.inflate(R.layout.fragment_domain_list, container, false);
+        return view;
     }
 }

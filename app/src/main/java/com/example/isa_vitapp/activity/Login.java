@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.isa_vitapp.AboutActivity;
 import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.LoginSplash;
 import com.example.isa_vitapp.R;
@@ -167,7 +168,7 @@ public class Login extends AppCompatActivity {
         link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), NotMemberPage.class));
+                startActivity(new Intent(getApplicationContext(), AboutActivity.class));
             }
         });
 

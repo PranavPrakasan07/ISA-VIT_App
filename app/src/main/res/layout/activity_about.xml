@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    tools:context=".AboutActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_about"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/n_board_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:neumorph_backgroundColor="@color/transparent"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="pressed"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/n_about_card"
+                    style="@style/Widget.Neumorph.CardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="16dp"
+                    android:padding="8dp"
+                    app:neumorph_backgroundColor="@color/transparent"
+                    app:neumorph_inset="10dp"
+                    app:neumorph_insetBottom="12dp"
+                    app:neumorph_insetEnd="12dp"
+                    app:neumorph_insetStart="12dp"
+                    app:neumorph_insetTop="12dp"
+                    app:neumorph_lightSource="leftTop"
+                    app:neumorph_shadowColorDark="@color/shadow_dark"
+                    app:neumorph_shadowColorLight="@color/shadow_light"
+                    app:neumorph_shadowElevation="4dp"
+                    app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+                    app:neumorph_shapeType="flat"
+                    app:neumorph_strokeColor="@color/blue_button_light"
+                    app:neumorph_strokeWidth="5dp">
+
+                    <TextView
+                        android:id="@+id/login_tab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/divider_gradient"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:paddingStart="24dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="24dp"
+                        android:paddingBottom="8dp"
+                        android:text="About US"
+                        android:textAlignment="center"
+                        android:textColor="@color/button_text"
+                        android:textSize="18sp" />
+
+                </soup.neumorphism.NeumorphCardView>
+
+
+                <TextView
+                    android:id="@+id/about_us_content"
+                    style="@style/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="24dp"
+
+                    android:justificationMode="inter_word"
+                    android:text="@string/lorem_ipsum" />
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_board_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/scroller"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/n_about"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <TextView
+                android:id="@+id/board_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingStart="24dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="8dp"
+                android:text="Board"
+                android:textAlignment="center"
+                android:textColor="@color/blue_button_light"
+                android:textSize="18sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <HorizontalScrollView
+            android:id="@+id/scroller"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/n_projects_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/n_board_card">
+
+            <soup.neumorphism.NeumorphCardView
+                style="@style/Widget.Neumorph.CardView"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:padding="8dp"
+                app:neumorph_backgroundColor="@color/transparent"
+                app:neumorph_inset="10dp"
+                app:neumorph_insetBottom="12dp"
+                app:neumorph_insetEnd="12dp"
+                app:neumorph_insetStart="12dp"
+                app:neumorph_insetTop="12dp"
+                app:neumorph_lightSource="leftTop"
+                app:neumorph_shadowColorDark="@color/shadow_dark"
+                app:neumorph_shadowColorLight="@color/shadow_light"
+                app:neumorph_shadowElevation="4dp"
+                app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+                app:neumorph_shapeType="flat"
+                app:neumorph_strokeColor="@color/blue_button_light"
+                app:neumorph_strokeWidth="0dp">
+
+                <LinearLayout
+                    android:id="@+id/board_page_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/member_photo"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="15dp"
+                        android:src="@drawable/ic_github_icon" />
+
+                    <TextView
+                        android:id="@+id/member_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Name"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Board Position"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/text_color"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/member_quote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Member Quote"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/text_color"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/instagram_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_instagram_icon" />
+
+                        <ImageView
+                            android:id="@+id/github_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_github_icon" />
+
+                        <ImageView
+                            android:id="@+id/linkedin_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_linkedin_icon" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </soup.neumorphism.NeumorphCardView>
+
+        </HorizontalScrollView>
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_projects_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/github_link"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scroller"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <TextView
+                android:id="@+id/projects_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingStart="24dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="8dp"
+                android:text="Projects"
+                android:textAlignment="center"
+                android:textColor="@color/blue_button_light"
+                android:textSize="18sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <Button
+            android:id="@+id/github_link"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/ic_github_icon"
+            android:backgroundTint="@color/blue_button_light"
+            app:layout_constraintBottom_toTopOf="@+id/n_events_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/n_projects_card" />
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_events_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/n_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/github_link"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <TextView
+                android:id="@+id/events_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingStart="24dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="8dp"
+                android:text="Events"
+                android:textAlignment="center"
+                android:textColor="@color/blue_button_light"
+                android:textSize="18sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_card"
+
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/n_events_card"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="pressed"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/n_flagship_card"
+                    style="@style/Widget.Neumorph.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:padding="4dp"
+                    app:neumorph_backgroundColor="@color/dark_button"
+                    app:neumorph_inset="10dp"
+                    app:neumorph_insetBottom="12dp"
+                    app:neumorph_insetEnd="12dp"
+                    app:neumorph_insetStart="12dp"
+                    app:neumorph_insetTop="12dp"
+                    app:neumorph_lightSource="leftTop"
+                    app:neumorph_shadowColorDark="@color/shadow_dark"
+                    app:neumorph_shadowColorLight="@color/shadow_light"
+                    app:neumorph_shadowElevation="4dp"
+                    app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+                    app:neumorph_shapeType="flat"
+                    app:neumorph_strokeColor="@color/blue_button_light"
+                    app:neumorph_strokeWidth="0dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/flagship_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical|start"
+                        android:drawableEnd="@drawable/ic_add_task"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center_vertical"
+                        android:padding="32dp"
+                        android:text="Flagship"
+                        android:textAlignment="gravity"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue_button_light"
+                        android:textSize="16sp" />
+
+                </soup.neumorphism.NeumorphCardView>
+
+                <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/n_technitude_card"
+                    style="@style/Widget.Neumorph.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:padding="4dp"
+                    app:neumorph_backgroundColor="@color/dark_button"
+                    app:neumorph_inset="10dp"
+                    app:neumorph_insetBottom="12dp"
+                    app:neumorph_insetEnd="12dp"
+                    app:neumorph_insetStart="12dp"
+                    app:neumorph_insetTop="12dp"
+                    app:neumorph_lightSource="leftTop"
+                    app:neumorph_shadowColorDark="@color/shadow_dark"
+                    app:neumorph_shadowColorLight="@color/shadow_light"
+                    app:neumorph_shadowElevation="4dp"
+                    app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+                    app:neumorph_shapeType="flat"
+                    app:neumorph_strokeColor="@color/blue_button_light"
+                    app:neumorph_strokeWidth="0dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/technitude_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical|start"
+                        android:drawableEnd="@drawable/ic_add_task"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center_vertical"
+                        android:padding="32dp"
+                        android:text="Technitudes"
+                        android:textAlignment="gravity"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue_button_light"
+                        android:textSize="16sp" />
+
+                </soup.neumorphism.NeumorphCardView>
+
+                <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/n_prev_card"
+                    style="@style/Widget.Neumorph.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:padding="4dp"
+                    app:neumorph_backgroundColor="@color/dark_button"
+                    app:neumorph_inset="10dp"
+                    app:neumorph_insetBottom="12dp"
+                    app:neumorph_insetEnd="12dp"
+                    app:neumorph_insetStart="12dp"
+                    app:neumorph_insetTop="12dp"
+                    app:neumorph_lightSource="leftTop"
+                    app:neumorph_shadowColorDark="@color/shadow_dark"
+                    app:neumorph_shadowColorLight="@color/shadow_light"
+                    app:neumorph_shadowElevation="4dp"
+                    app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+                    app:neumorph_shapeType="flat"
+                    app:neumorph_strokeColor="@color/blue_button_light"
+                    app:neumorph_strokeWidth="0dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/prev_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical|start"
+                        android:drawableEnd="@drawable/ic_add_task"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center_vertical"
+                        android:padding="32dp"
+                        android:text="Previous Events"
+                        android:textAlignment="gravity"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue_button_light"
+                        android:textSize="16sp" />
+
+                </soup.neumorphism.NeumorphCardView>
+
+            </LinearLayout>
+        </soup.neumorphism.NeumorphCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

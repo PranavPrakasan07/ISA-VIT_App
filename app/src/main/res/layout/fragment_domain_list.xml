@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_gradient"
+    tools:context=".fragment.DomainListFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_gradient"
+        tools:context=".fragment.Add_Fragment">
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_app_dev_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/n_web_card"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/app_dev_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:background="#00FFC700"
+                android:drawableEnd="@drawable/ic_plus"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:padding="32dp"
+                android:text="App Dev"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_web_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/n_app_dev_card"
+            app:layout_constraintBottom_toTopOf="@id/n_aiml_card"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/web_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:background="#00FFC700"
+                android:drawableEnd="@drawable/ic_plus"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:padding="32dp"
+                android:text="Web Dev"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_aiml_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/n_web_card"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:layout_constraintBottom_toTopOf="@id/n_iot_card"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ai_ml_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:background="#00FFC700"
+                android:drawableEnd="@drawable/ic_plus"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:padding="32dp"
+                android:text="AI/ML"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_iot_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/n_design_card"
+            app:layout_constraintTop_toBottomOf="@+id/n_aiml_card"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/iot_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:drawableEnd="@drawable/ic_plus"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:padding="32dp"
+                android:text="IoT"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+<!--        kkkkkkkkkkkkkkkkkkkk-->
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_design_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:layout_constraintBottom_toTopOf="@id/n_ef_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/n_iot_card"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/design_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:background="#00FFC700"
+                android:drawableEnd="@drawable/ic_plus"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:padding="32dp"
+                android:text="Design"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_ef_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/n_content_card"
+            app:layout_constraintTop_toBottomOf="@+id/n_design_card"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ef_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:background="#00FFC700"
+                android:drawableEnd="@drawable/ic_plus"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:padding="32dp"
+                android:text="E&amp;F"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/n_content_card"
+            style="@style/Widget.Neumorph.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/n_ef_card"
+            app:neumorph_backgroundColor="@color/dark_button"
+            app:neumorph_inset="10dp"
+            app:neumorph_insetBottom="12dp"
+            app:neumorph_insetEnd="12dp"
+            app:neumorph_insetStart="12dp"
+            app:neumorph_insetTop="12dp"
+            app:neumorph_lightSource="leftTop"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="4dp"
+            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+            app:neumorph_shapeType="flat"
+            app:neumorph_strokeColor="@color/blue_button_light"
+            app:neumorph_strokeWidth="0dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/content_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:background="#00FFC700"
+                android:drawableEnd="@drawable/ic_plus"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:padding="32dp"
+                android:text="C&amp;O"
+                android:textAlignment="gravity"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_button_light"
+                android:textSize="20sp" />
+
+        </soup.neumorphism.NeumorphCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
