@@ -67,7 +67,7 @@
                     app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
                     app:neumorph_shapeType="flat"
                     app:neumorph_strokeColor="@color/blue_button_light"
-                    app:neumorph_strokeWidth="5dp">
+                    app:neumorph_strokeWidth="0dp">
 
                     <TextView
                         android:id="@+id/login_tab"
