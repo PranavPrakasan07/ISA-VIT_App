@@ -143,7 +143,7 @@ public class EventsActivity extends AppCompatActivity {
 
                                 try {
                                     Log.d("TAG", "Reached here" + details.toString());
-                                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, true));
                                     recyclerView.setAdapter(new EventsAdapter(poster_links, title_list, content_list, open_list, reg_list));
 
                                 } catch (Exception e) {
