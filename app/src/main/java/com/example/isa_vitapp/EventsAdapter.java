@@ -1,6 +1,8 @@
 package com.example.isa_vitapp;
 
-import android.app.Activity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -8,18 +10,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.isa_vitapp.activity.EventsActivity;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -96,10 +98,39 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
             @Override
             public void onClick(View v) {
                 Log.d("TAG", "No touch");
-                holder.poster.setVisibility(View.INVISIBLE);
-                holder.detail_card.setVisibility(View.VISIBLE);
 
-                if(open_list.get(position)){
+                //click poster
+//                flip_animation(holder, v, -1);
+
+                int flag = 1;
+
+                float scale = v.getContext().getResources().getDisplayMetrics().density;
+                float distance = holder.poster.getCameraDistance() * (scale + (scale / 3));
+                holder.poster.setCameraDistance(distance);
+// first quarter turn
+                holder.poster.animate().withLayer()
+                        .rotationY(90*flag)
+                        .setDuration(300)
+                        .withEndAction(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        // second quarter turn
+                                        v.setRotationY(-90*flag);
+                                        v.animate().withLayer()
+                                                .rotationY(0)
+                                                .setDuration(300)
+                                                .start();
+
+                                        holder.poster.setVisibility(View.INVISIBLE);
+                                        holder.detail_card.setVisibility(View.VISIBLE);
+
+                                    }
+                                }
+                        ).start();
+
+                if (open_list.get(position)) {
                     holder.register_button.setTextColor(Color.parseColor("#0C97E8"));
 
                     holder.register_button.setOnClickListener(new View.OnClickListener() {
@@ -112,9 +143,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
                         }
                     });
 
-
-                }
-                else{
+                } else {
                     holder.register_button.setShapeType(ShapeType.PRESSED);
                 }
             }
@@ -124,11 +153,95 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
             @Override
             public void onClick(View v) {
                 Log.d("TAG", "No touch");
-                holder.poster.setVisibility(View.VISIBLE);
-                holder.detail_card.setVisibility(View.INVISIBLE);
+//
+//                holder.detail_card.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        final ObjectAnimator oa1 = ObjectAnimator.ofFloat(holder.detail_card, "scaleX", 1f, 0f);
+//                        final ObjectAnimator oa2 = ObjectAnimator.ofFloat(holder.detail_card, "scaleX", 0f, 1f);
+//                        oa1.setInterpolator(new DecelerateInterpolator());
+//                        oa2.setInterpolator(new AccelerateDecelerateInterpolator());
+//                        oa1.addListener(new AnimatorListenerAdapter() {
+//                            @Override
+//                            public void onAnimationEnd(Animator animation) {
+//                                super.onAnimationEnd(animation);
+//                                holder.poster.setVisibility(View.VISIBLE);
+//                                oa2.start();
+//                            }
+//                        });
+//                        oa1.start();
+//
+//
+//
+//                    }
+//                });
 
+
+                int flag = -1;
+
+                float scale = v.getContext().getResources().getDisplayMetrics().density;
+                float distance = holder.detail_card.getCameraDistance() * (scale + (scale / 3));
+                holder.detail_card.setCameraDistance(distance);
+// first quarter turn
+                holder.detail_card.animate().withLayer()
+                        .rotationY(90*flag)
+                        .setDuration(300)
+                        .withEndAction(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        // second quarter turn
+                                        v.setRotationY(-90*flag);
+                                        v.animate().withLayer()
+                                                .rotationY(0)
+                                                .setDuration(300)
+                                                .start();
+
+                                        holder.poster.setVisibility(View.VISIBLE);
+                                        holder.detail_card.setVisibility(View.INVISIBLE);
+                                    }
+                                }
+                        ).start();
             }
         });
+
+    }
+
+    private void flip_animation(EventsViewHolder holder, View v, int flag) {
+
+        float scale = v.getContext().getResources().getDisplayMetrics().density;
+        float distance = holder.poster.getCameraDistance() * (scale + (scale / 3));
+        holder.poster.setCameraDistance(distance);
+// first quarter turn
+        holder.poster.animate().withLayer()
+                .rotationY(90*flag)
+                .setDuration(300)
+                .withEndAction(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+
+                                // second quarter turn
+                                v.setRotationY(-90*flag);
+                                v.animate().withLayer()
+                                        .rotationY(0)
+                                        .setDuration(300)
+                                        .start();
+
+                                if(flag == 1) {
+                                    holder.poster.setVisibility(View.VISIBLE);
+                                    holder.detail_card.setVisibility(View.VISIBLE);
+
+                                }else{
+                                    holder.poster.setVisibility(View.INVISIBLE);
+                                    holder.detail_card.setVisibility(View.VISIBLE);
+
+                                }
+
+                            }
+                        }
+                ).start();
 
     }
 

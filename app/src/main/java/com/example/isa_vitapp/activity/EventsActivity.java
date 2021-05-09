@@ -130,12 +130,8 @@ public class EventsActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                                 Log.d("TAG", document.getId() + " => " + document.getData());
-                                Toast.makeText(EventsActivity.this, document.getId(), Toast.LENGTH_SHORT).show();
 
                                 details = (document.getData());
-
-                                Toast.makeText(EventsActivity.this, details.keySet().toString(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(EventsActivity.this, details.values().toString(), Toast.LENGTH_SHORT).show();
 
                                 poster_links.add((String) details.get("poster"));
                                 title_list.add((String) details.get("title"));

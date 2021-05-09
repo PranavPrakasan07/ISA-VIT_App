@@ -221,18 +221,6 @@
                         android:textColor="@color/text_color"
                         android:textSize="12sp" />
 
-                    <TextView
-                        android:id="@+id/member_quote"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|center_horizontal"
-                        android:layout_marginTop="3dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Member Quote"
-                        android:textAlignment="gravity"
-                        android:textColor="@color/text_color"
-                        android:textSize="12sp" />
-
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="15dp"
@@ -447,14 +435,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical|start"
-                        android:drawableEnd="@drawable/ic_add_task"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center_vertical"
                         android:padding="32dp"
                         android:text="Flagship"
                         android:textAlignment="gravity"
                         android:textAllCaps="false"
-                        android:textColor="@color/blue_button_light"
+                        android:textColor="@color/heading_color"
                         android:textSize="16sp" />
 
                 </soup.neumorphism.NeumorphCardView>
@@ -486,56 +473,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical|start"
-                        android:drawableEnd="@drawable/ic_add_task"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center_vertical"
                         android:padding="32dp"
                         android:text="Technitudes"
                         android:textAlignment="gravity"
                         android:textAllCaps="false"
-                        android:textColor="@color/blue_button_light"
+                        android:textColor="@color/heading_color"
                         android:textSize="16sp" />
 
                 </soup.neumorphism.NeumorphCardView>
 
-                <soup.neumorphism.NeumorphCardView
-                    android:id="@+id/n_prev_card"
-                    style="@style/Widget.Neumorph.CardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:padding="4dp"
-                    app:neumorph_backgroundColor="@color/dark_button"
-                    app:neumorph_inset="10dp"
-                    app:neumorph_insetBottom="12dp"
-                    app:neumorph_insetEnd="12dp"
-                    app:neumorph_insetStart="12dp"
-                    app:neumorph_insetTop="12dp"
-                    app:neumorph_lightSource="leftTop"
-                    app:neumorph_shadowColorDark="@color/shadow_dark"
-                    app:neumorph_shadowColorLight="@color/shadow_light"
-                    app:neumorph_shadowElevation="4dp"
-                    app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
-                    app:neumorph_shapeType="flat"
-                    app:neumorph_strokeColor="@color/blue_button_light"
-                    app:neumorph_strokeWidth="0dp">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/prev_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_vertical|start"
-                        android:drawableEnd="@drawable/ic_add_task"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:gravity="center_vertical"
-                        android:padding="32dp"
-                        android:text="Previous Events"
-                        android:textAlignment="gravity"
-                        android:textAllCaps="false"
-                        android:textColor="@color/blue_button_light"
-                        android:textSize="16sp" />
-
-                </soup.neumorphism.NeumorphCardView>
 
             </LinearLayout>
         </soup.neumorphism.NeumorphCardView>

@@ -20,7 +20,6 @@ public class AboutActivity extends AppCompatActivity {
 
         flag_ship = findViewById(R.id.flagship_button);
         technitude = findViewById(R.id.technitude_button);
-        prev_event = findViewById(R.id.prev_button);
 
         flag_ship.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,11 +35,5 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-        prev_event.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), EventsActivity.class));
-            }
-        });
     }
 }
