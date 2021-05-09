@@ -7,20 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.isa_vitapp.AboutActivity;
+import com.example.isa_vitapp.activity.AboutActivity;
 import com.example.isa_vitapp.LogoutSplash;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.Login;
-import com.example.isa_vitapp.activity.NotMemberPage;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.

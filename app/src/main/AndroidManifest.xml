@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ISAVITApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".activity.EventsActivity"></activity>
+        <activity android:name=".activity.AboutActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"

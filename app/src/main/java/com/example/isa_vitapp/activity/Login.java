@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.isa_vitapp.AboutActivity;
 import com.example.isa_vitapp.FetchFromDB;
 import com.example.isa_vitapp.LoginSplash;
 import com.example.isa_vitapp.R;
