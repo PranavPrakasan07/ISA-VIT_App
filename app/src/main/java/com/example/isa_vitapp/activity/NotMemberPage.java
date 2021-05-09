@@ -85,11 +85,11 @@ public class NotMemberPage extends AppCompatActivity {
         isa_instagram = findViewById(R.id.isa_instagram_icon);
         isa_medium = findViewById(R.id.isa_medium_icon);
         isa_youtube = findViewById(R.id.isa_youtube_icon);
+        github_isa = findViewById(R.id.github_link);
 
         board_member_name = findViewById(R.id.member_name);
         board_member_position = findViewById(R.id.position);
 
-        github_isa = findViewById(R.id.github_link);
         member_image = findViewById(R.id.member_photo);
         photos = findViewById(R.id.photos);
 

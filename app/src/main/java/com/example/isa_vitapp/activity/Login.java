@@ -128,7 +128,7 @@ public class Login extends AppCompatActivity {
                 String email_text = email.getText().toString();
                 String password_text = password.getText().toString();
 
-                Toast.makeText(Login.this, registration_number.getText().toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Login.this, registration_number.getText().toString(), Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(getApplicationContext(), Home.class));
 
@@ -266,8 +266,8 @@ public class Login extends AppCompatActivity {
 
         FetchFromDB.total_board_members = FetchFromDB.position_name.keySet().size();
 
-        Toast.makeText(this, String.valueOf(FetchFromDB.total_board_members), Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, String.valueOf(FetchFromDB.position_name.values()), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, String.valueOf(FetchFromDB.total_board_members), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, String.valueOf(FetchFromDB.position_name.values()), Toast.LENGTH_SHORT).show();
 
         Thread getDetailThread = new Thread(new Runnable() {
             @Override

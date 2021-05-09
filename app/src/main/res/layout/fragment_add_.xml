@@ -54,52 +54,52 @@
 
         </soup.neumorphism.NeumorphCardView>
 
-        <soup.neumorphism.NeumorphCardView
-            android:id="@+id/n_del_task_card"
-            style="@style/Widget.Neumorph.CardView"
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/n_del_task_card"
+        style="@style/Widget.Neumorph.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/n_add_member_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/n_add_task_card"
+        app:neumorph_backgroundColor="@color/dark_button"
+        app:neumorph_inset="10dp"
+        app:neumorph_insetBottom="12dp"
+        app:neumorph_insetEnd="12dp"
+        app:neumorph_insetStart="12dp"
+        app:neumorph_insetTop="12dp"
+        app:neumorph_lightSource="leftTop"
+        app:neumorph_shadowColorDark="@color/shadow_dark"
+        app:neumorph_shadowColorLight="@color/shadow_light"
+        app:neumorph_shadowElevation="4dp"
+        app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+        app:neumorph_shapeType="flat"
+        app:neumorph_strokeColor="@color/blue_button_light"
+        app:neumorph_strokeWidth="0dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/del_task_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:padding="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/n_add_member_card"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/n_add_task_card"
-            app:neumorph_backgroundColor="@color/dark_button"
-            app:neumorph_inset="10dp"
-            app:neumorph_insetBottom="12dp"
-            app:neumorph_insetEnd="12dp"
-            app:neumorph_insetStart="12dp"
-            app:neumorph_insetTop="12dp"
-            app:neumorph_lightSource="leftTop"
-            app:neumorph_shadowColorDark="@color/shadow_dark"
-            app:neumorph_shadowColorLight="@color/shadow_light"
-            app:neumorph_shadowElevation="4dp"
-            app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
-            app:neumorph_shapeType="flat"
-            app:neumorph_strokeColor="@color/blue_button_light"
-            app:neumorph_strokeWidth="0dp">
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|start"
+            android:background="#00FFC700"
+            android:drawableEnd="@drawable/ic_remove_task"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center_vertical"
+            android:padding="32dp"
+            android:text="Delete Task"
+            android:textAlignment="gravity"
+            android:textAllCaps="false"
+            android:textColor="@color/blue_button_light"
+            android:textSize="20sp" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/del_task_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical|start"
-                android:background="#00FFC700"
-                android:drawableEnd="@drawable/ic_remove_task"
-                android:fontFamily="@font/poppins_semibold"
-                android:gravity="center_vertical"
-                android:padding="32dp"
-                android:text="Delete Task"
-                android:textAlignment="gravity"
-                android:textAllCaps="false"
-                android:textColor="@color/blue_button_light"
-                android:textSize="20sp" />
-
-        </soup.neumorphism.NeumorphCardView>
+    </soup.neumorphism.NeumorphCardView>
 
         <soup.neumorphism.NeumorphCardView
             android:id="@+id/n_add_member_card"
