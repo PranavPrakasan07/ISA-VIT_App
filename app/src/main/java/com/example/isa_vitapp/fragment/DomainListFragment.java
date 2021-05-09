@@ -10,12 +10,16 @@ import android.view.ViewGroup;
 
 import com.example.isa_vitapp.R;
 
+import soup.neumorphism.NeumorphCardView;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link DomainListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class DomainListFragment extends Fragment {
+
+    public static String domain_selected = "";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,6 +66,53 @@ public class DomainListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_domain_list, container, false);
+
+        domain_selected = "";
+
+        NeumorphCardView app_dev = view.findViewById(R.id.n_app_dev_card);
+        NeumorphCardView web_dev = view.findViewById(R.id.n_web_card);
+        NeumorphCardView iot = view.findViewById(R.id.n_iot_card);
+        NeumorphCardView aiml = view.findViewById(R.id.n_aiml_card);
+        NeumorphCardView design = view.findViewById(R.id.n_design_card);
+        NeumorphCardView cno = view.findViewById(R.id.n_content_card);
+        NeumorphCardView enf = view.findViewById(R.id.n_ef_card);
+
+        app_dev.setOnClickListener(v -> {
+            domain_selected = "App Dev";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
+        });
+
+        web_dev.setOnClickListener(v -> {
+            domain_selected = "Web Dev";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
+        });
+
+        aiml.setOnClickListener(v -> {
+            domain_selected = "AI/ML";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
+        });
+
+        iot.setOnClickListener(v -> {
+            domain_selected = "IoT";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
+        });
+
+        design.setOnClickListener(v -> {
+            domain_selected = "Design";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
+        });
+
+        enf.setOnClickListener(v -> {
+            domain_selected = "Events & Finance";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
+        });
+
+        cno.setOnClickListener(v -> {
+            domain_selected = "Content & Outreach";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
+        });
+
+
         return view;
     }
 }

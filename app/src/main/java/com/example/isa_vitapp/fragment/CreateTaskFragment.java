@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.example.isa_vitapp.R;
 
+import soup.neumorphism.NeumorphButton;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CreateTaskFragment#newInstance} factory method to
@@ -61,6 +63,12 @@ public class CreateTaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_task, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_task, container, false);
+
+        NeumorphButton domain = view.findViewById(R.id.domain_name);
+
+        domain.setText(DomainListFragment.domain_selected);
+
+        return view;
     }
 }
