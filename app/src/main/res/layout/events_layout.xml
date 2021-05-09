@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/event_layout"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="375dp"
     android:background="@color/dark_button">
 
     <soup.neumorphism.NeumorphCardView
@@ -24,12 +24,12 @@
         app:neumorph_shapeType="pressed">
 
         <soup.neumorphism.NeumorphCardView
+            android:visibility="invisible"
             android:id="@+id/details_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="24dp"
+            android:layout_margin="16dp"
             android:background="@color/dark_button"
-            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,12 +45,13 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/event_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
+                    android:textAlignment="center"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Title"
                     android:textColor="@color/heading_color"
@@ -77,7 +78,7 @@ Time: 11:00 am onwards"
                     app:layout_constraintBottom_toTopOf="@+id/neumorphButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/title" />
+                    app:layout_constraintTop_toBottomOf="@+id/event_name" />
 
                 <soup.neumorphism.NeumorphButton
                     android:id="@+id/neumorphButton"
@@ -88,6 +89,7 @@ Time: 11:00 am onwards"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:paddingStart="24dp"
+                    app:neumorph_shadowElevation="4dp"
                     android:paddingTop="16dp"
                     android:paddingEnd="24dp"
                     android:paddingBottom="16dp"
@@ -108,12 +110,16 @@ Time: 11:00 am onwards"
 
         <ImageView
             android:id="@+id/event_poster"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
+            android:layout_margin="16dp"
             android:scaleType="fitCenter"
             android:src="@drawable/andrew_mayne"
-            android:visibility="visible" />
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </soup.neumorphism.NeumorphCardView>
 
