@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -95,6 +100,10 @@ public class Login extends AppCompatActivity {
         link = findViewById(R.id.not_member);
         login_header = findViewById(R.id.heading);
 
+        TextView message = findViewById(R.id.message);
+
+        message.setVisibility(View.INVISIBLE);
+
         email = findViewById(R.id.email_tab);
         password = findViewById(R.id.password_tab);
         registration_number = findViewById(R.id.regn_tab);
@@ -127,18 +136,38 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 String email_text = email.getText().toString();
                 String password_text = password.getText().toString();
+                String registration_text = registration_number.getText().toString();
 
 //                Toast.makeText(Login.this, registration_number.getText().toString(), Toast.LENGTH_SHORT).show();
 
-                startActivity(new Intent(getApplicationContext(), Home.class));
+//                startActivity(new Intent(getApplicationContext(), Home.class));
 
                 if (email_text.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fill in your email", Toast.LENGTH_SHORT).show();
                 } else if (password_text.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fill in your password", Toast.LENGTH_SHORT).show();
-                } else if (password_text.length() < 6) {
+                }else if (registration_text.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Fill in your registration number", Toast.LENGTH_SHORT).show();
+                }
+                else if (password_text.length() < 6) {
                     Toast.makeText(getApplicationContext(), "Password is too short!", Toast.LENGTH_SHORT).show();
                 } else {
+
+                    message.setVisibility(View.VISIBLE);
+                    Animation fadeIn = new AlphaAnimation(0, 1);
+                    fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+                    fadeIn.setDuration(1000);
+
+//                Animation fadeOut = new AlphaAnimation(1, 0);
+//                fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
+//                fadeOut.setStartOffset(1000);
+//                fadeOut.setDuration(1000);
+
+                    AnimationSet animation = new AnimationSet(false); //change to false
+                    animation.addAnimation(fadeIn);
+//                animation.addAnimation(fadeOut);
+                    message.setAnimation(animation);
+
                     verify_user(email_text, password_text);
                     createAccount(email_text, password_text);
                 }
@@ -195,7 +224,7 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(Login.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), LoginSplash.class));
+//                            startActivity(new Intent(getApplicationContext(), LoginSplash.class));
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -216,9 +245,9 @@ public class Login extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
 
-                    startActivity(new Intent(getApplicationContext(), LoginSplash.class));
+//                    startActivity(new Intent(getApplicationContext(), LoginSplash.class));
                 } else {
-                    Toast.makeText(getApplicationContext(), "Error ! " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "Error ! " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -241,20 +270,20 @@ public class Login extends AppCompatActivity {
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            Toast.makeText(getApplicationContext(), "Clicked!", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "Clicked!", Toast.LENGTH_SHORT).show();
 
                             Handler handler = new Handler();
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    startActivity(new Intent(getApplicationContext(), LoginSplash.class));
+//                                    startActivity(new Intent(getApplicationContext(), LoginSplash.class));
                                 }
                             }, 4000);
 
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "Invalid Login", Toast.LENGTH_SHORT).show();
                             ;
                         }
                     }
