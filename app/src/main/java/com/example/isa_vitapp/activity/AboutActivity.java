@@ -196,6 +196,7 @@ public class AboutActivity extends AppCompatActivity {
                 // If the CardView is already expanded, set its visibility
                 //  to gone and change the expand less icon to expand more.
                 if (hiddenView.getVisibility() == View.VISIBLE) {
+                    created_by_card.setShapeType(ShapeType.FLAT);
 
                     // The transition of the hiddenView is carried out
                     //  by the TransitionManager class.
