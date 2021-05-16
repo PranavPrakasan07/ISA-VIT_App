@@ -112,16 +112,16 @@ public class CreateTaskFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-//                new AlertDialog.Builder(requireActivity())
-//                        .setTitle("Logout?")
-//                        .setMessage("Are you sure you want to go back?").setCancelable(true)
-//                        .setNegativeButton(android.R.string.no, null)
-//                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//
-//                            public void onClick(DialogInterface arg0, int arg1) {
-//                                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new DomainListFragment()).commit();
-//                            }
-//                        }).create().show();
+                new AlertDialog.Builder(requireActivity())
+                        .setTitle("Logout?")
+                        .setMessage("Are you sure you want to go back?").setCancelable(true)
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new DomainListFragment()).commit();
+                            }
+                        }).create().show();
 
             }
         });
