@@ -33,7 +33,7 @@ public class SignUp extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-    Button login, click;
+    TextView signup, click;
     TextView link;
     static boolean isBoard = false;
 
@@ -41,7 +41,7 @@ public class SignUp extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    EditText username, password, registration_number;
+    EditText username, password, retype_password, registration_number;
 
     ImageButton signInButton;
 
@@ -57,15 +57,16 @@ public class SignUp extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        login = findViewById(R.id.signup_button);
+        signup = findViewById(R.id.signup_tab);
 
-        link = findViewById(R.id.textView2);
+        link = findViewById(R.id.login_link);
 
-        username = findViewById(R.id.username_field);
-        password = findViewById(R.id.password_field);
-        registration_number = findViewById(R.id.registration_number_field);
+        username = findViewById(R.id.email_tab);
+        password = findViewById(R.id.password_tab);
+        retype_password = findViewById(R.id.retype_tab);
+        registration_number = findViewById(R.id.regn_tab);
 
-        signInButton = findViewById(R.id.signInButton);
+//        signInButton = findViewById(R.id.signInButton);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -74,13 +75,19 @@ public class SignUp extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
+//        signInButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                signIn();
+//            }
+//        });
+
+        link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn();
+                startActivity(new Intent(getApplicationContext(), Login.class));
             }
         });
-
 
     }
 

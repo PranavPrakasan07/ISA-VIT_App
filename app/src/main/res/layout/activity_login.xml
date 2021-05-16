@@ -249,11 +249,29 @@
     </soup.neumorphism.NeumorphCardView>
 
     <TextView
-        android:id="@+id/not_member"
+        android:id="@+id/isavit_member"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="ISA-VIT member?"
+        android:textColor="@color/heading_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/not_member"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/n_login_card" />
+
+
+    <TextView
+        android:id="@+id/not_member"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppins_medium"
@@ -263,7 +281,7 @@
         app:layout_constraintBottom_toTopOf="@+id/message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/n_login_card" />
+        app:layout_constraintTop_toBottomOf="@+id/isavit_member" />
 
     <TextView
         android:id="@+id/message"

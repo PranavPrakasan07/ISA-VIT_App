@@ -35,6 +35,7 @@ public class EventsActivity extends AppCompatActivity {
     ArrayList<String> content_list = new ArrayList<>();
     ArrayList<Boolean> open_list = new ArrayList<>();
     ArrayList<String> reg_list = new ArrayList<>();
+    ArrayList<String> youtube_list = new ArrayList<>();
 
     private DatabaseReference mDatabase;
 
@@ -138,13 +139,14 @@ public class EventsActivity extends AppCompatActivity {
                                 content_list.add((String) details.get("content"));
                                 open_list.add((Boolean) details.get("open"));
                                 reg_list.add((String) details.get("link"));
+                                youtube_list.add((String) details.get("youtube"));
 
                                 Log.d("TAG", "Links" + poster_links.toString());
 
                                 try {
                                     Log.d("TAG", "Reached here" + details.toString());
                                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, true));
-                                    recyclerView.setAdapter(new EventsAdapter(poster_links, title_list, content_list, open_list, reg_list));
+                                    recyclerView.setAdapter(new EventsAdapter(poster_links, title_list, content_list, open_list, reg_list, youtube_list));
 
                                 } catch (Exception e) {
                                     e.printStackTrace();

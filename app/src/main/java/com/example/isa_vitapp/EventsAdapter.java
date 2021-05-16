@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +32,7 @@ import soup.neumorphism.ShapeType;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsViewHolder> {
     public Map<String, Object> mDataset;
-    public ArrayList<String> link_list, title_list, content_list, reg_list;
+    public ArrayList<String> link_list, title_list, content_list, reg_list, youtube_list;
     public ArrayList<Boolean> open_list;
 
     // Provide a reference to the views for each data item
@@ -42,6 +43,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
         public ImageView poster;
         public NeumorphCardView detail_card;
         public TextView title, content;
+        public ImageButton youtube_button;
         public NeumorphButton register_button;
 
         public EventsViewHolder(View v) {
@@ -51,17 +53,19 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
             title = v.findViewById(R.id.event_name);
             content = v.findViewById(R.id.detail);
             register_button = v.findViewById(R.id.neumorphButton);
+            youtube_button = v.findViewById(R.id.youtube_button);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public EventsAdapter(ArrayList<String> myDataset, ArrayList<String> titles, ArrayList<String> contents, ArrayList<Boolean> open, ArrayList<String> reg) {
+    public EventsAdapter(ArrayList<String> myDataset, ArrayList<String> titles, ArrayList<String> contents, ArrayList<Boolean> open, ArrayList<String> reg, ArrayList<String> youtube) {
 //        mDataset.putAll(myDataset);
         link_list = myDataset;
         title_list = titles;
         content_list = contents;
         open_list = open;
         reg_list = reg;
+        youtube_list = youtube;
 
     }
 
@@ -129,6 +133,31 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
                                     }
                                 }
                         ).start();
+
+                holder.youtube_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!youtube_list.get(position).equals("-")) {
+
+                            holder.youtube_button.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    String url = youtube_list.get(position);
+                                    Intent i = new Intent(Intent.ACTION_VIEW);
+                                    i.setData(Uri.parse(url));
+                                    v.getContext().startActivity(i);
+                                }
+                            });
+
+                        } else {
+
+                            String url = "https://www.youtube.com/channel/UCS-HWnmvs5cYEplDuxfO7PA";
+                            Intent i = new Intent(Intent.ACTION_VIEW);
+                            i.setData(Uri.parse(url));
+                            v.getContext().startActivity(i);
+                        }
+                    }
+                });
 
                 if (open_list.get(position)) {
                     holder.register_button.setTextColor(Color.parseColor("#0C97E8"));

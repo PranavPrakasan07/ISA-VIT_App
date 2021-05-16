@@ -46,6 +46,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import soup.neumorphism.NeumorphCardView;
+import soup.neumorphism.ShapeType;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -156,6 +157,8 @@ public class AboutActivity extends AppCompatActivity {
         NeumorphCardView cardView = findViewById(R.id.base_cardview);
         RelativeLayout fixed_layout = findViewById(R.id.fixed_layout);
 
+        NeumorphCardView created_by_card = findViewById(R.id.fixed_card);
+
         ImageView developer = findViewById(R.id.photo_devl);
         ImageView ldesigner = findViewById(R.id.photo_ld);
         ImageView designer2 = findViewById(R.id.photo_d2);
@@ -187,6 +190,9 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                created_by_card.setShapeType(ShapeType.PRESSED);
+
+
                 // If the CardView is already expanded, set its visibility
                 //  to gone and change the expand less icon to expand more.
                 if (hiddenView.getVisibility() == View.VISIBLE) {
@@ -198,20 +204,6 @@ public class AboutActivity extends AppCompatActivity {
                     TransitionManager.beginDelayedTransition(cardView,
                             new AutoTransition());
 //                    arrow.setImageResource(R.drawable.ic_arrow_down);
-
-//                    Animation fadeIn = new AlphaAnimation(0, 1);
-//                    fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
-//                    fadeIn.setDuration(1000);
-
-//                    Animation fadeOut = new AlphaAnimation(1, 0);
-//                    fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
-//                    fadeOut.setStartOffset(1000);
-//                    fadeOut.setDuration(1000);
-////
-//                    AnimationSet animation = new AnimationSet(false); //change to false
-//////                    animation.addAnimation(fadeIn);
-//                    animation.addAnimation(fadeOut);
-//                    hiddenView.setAnimation(animation);
 
                     hiddenView.setVisibility(View.GONE);
 
@@ -258,60 +250,42 @@ public class AboutActivity extends AppCompatActivity {
         });
 
 
-        github_isa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://github.com/isa-vit"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
+        github_isa.setOnClickListener(v -> {
+            Uri uri = Uri.parse("https://github.com/isa-vit"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         });
 
 //----------------------------------------------------------------------------------------------------------
 
-        isa_instagram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://www.instagram.com/isa_vit_/"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
+        isa_instagram.setOnClickListener(v -> {
+            Uri uri = Uri.parse("https://www.instagram.com/isa_vit_/"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         });
 
-        isa_github.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://github.com/isa-vit"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
+        isa_github.setOnClickListener(v -> {
+            Uri uri = Uri.parse("https://github.com/isa-vit"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         });
 
-        isa_linkedin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://www.linkedin.com/company/international-society-of-automation-isa-vit/mycompany/"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
+        isa_linkedin.setOnClickListener(v -> {
+            Uri uri = Uri.parse("https://www.linkedin.com/company/international-society-of-automation-isa-vit/mycompany/"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         });
 
-        isa_medium.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://medium.com/isa-vit"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
+        isa_medium.setOnClickListener(v -> {
+            Uri uri = Uri.parse("https://medium.com/isa-vit"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         });
 
-        isa_youtube.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://www.youtube.com/channel/UCS-HWnmvs5cYEplDuxfO7PA"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
+        isa_youtube.setOnClickListener(v -> {
+            Uri uri = Uri.parse("https://www.youtube.com/channel/UCS-HWnmvs5cYEplDuxfO7PA"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         });
 
         RecyclerView recyclerView = findViewById(R.id.scroller);

@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     TextView login;
-    TextView link, login_header;
+    TextView link, login_header, signup_link;
     static boolean isBoard = false;
 
     EditText email, password, registration_number;
@@ -98,6 +98,8 @@ public class Login extends AppCompatActivity {
         login = findViewById(R.id.login_tab);
 
         link = findViewById(R.id.not_member);
+        signup_link = findViewById(R.id.isavit_member);
+
         login_header = findViewById(R.id.heading);
 
         TextView message = findViewById(R.id.message);
@@ -109,6 +111,13 @@ public class Login extends AppCompatActivity {
         registration_number = findViewById(R.id.regn_tab);
 
         mAuth = FirebaseAuth.getInstance();
+
+        login_header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Home.class));
+            }
+        });
 
         try {
             getBoardNames();
@@ -196,6 +205,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+            }
+        });
+
+        signup_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignUp.class));
             }
         });
 

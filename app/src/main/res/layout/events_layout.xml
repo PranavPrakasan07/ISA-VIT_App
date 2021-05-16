@@ -4,15 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/event_layout"
     android:layout_width="match_parent"
-    android:layout_height="375dp"
-    android:background="@color/dark_button">
+    android:layout_height="425dp"
+    android:background="@color/transparent">
 
     <soup.neumorphism.NeumorphCardView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
         android:background="@color/dark_button"
         android:padding="8dp"
+        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,12 +24,12 @@
         app:neumorph_shapeType="pressed">
 
         <soup.neumorphism.NeumorphCardView
-            android:visibility="invisible"
             android:id="@+id/details_card"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="16dp"
             android:background="@color/dark_button"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,11 +51,13 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
-                    android:textAlignment="center"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Title"
+                    android:textAlignment="center"
                     android:textColor="@color/heading_color"
                     android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/detail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -85,24 +87,39 @@ Time: 11:00 am onwards"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="16dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:paddingStart="24dp"
-                    app:neumorph_shadowElevation="4dp"
                     android:paddingTop="16dp"
                     android:paddingEnd="24dp"
                     android:paddingBottom="16dp"
                     android:text="Register"
                     android:textColor="@color/field_color"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/youtube_button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail"
                     app:neumorph_backgroundColor="@color/dark_button"
                     app:neumorph_lightSource="leftTop"
                     app:neumorph_shadowColorDark="@color/shadow_dark"
                     app:neumorph_shadowColorLight="@color/shadow_light"
+                    app:neumorph_shadowElevation="2dp"
                     app:neumorph_shapeType="flat" />
+
+                <ImageButton
+                    android:id="@+id/youtube_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/transparent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_youtube"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/neumorphButton" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
