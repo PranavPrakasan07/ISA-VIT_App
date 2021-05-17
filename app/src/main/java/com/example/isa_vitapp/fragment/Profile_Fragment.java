@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.isa_vitapp.activity.AboutActivity;
-import com.example.isa_vitapp.LogoutSplash;
+import com.example.isa_vitapp.activity.LogoutSplash;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.Login;
 

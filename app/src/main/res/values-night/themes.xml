@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.ISAVITApp" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#121212</item>
-        <item name="colorPrimaryVariant">#121212</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">#272727</item>
+        <item name="colorPrimaryVariant">#272727</item>
+        <item name="colorOnPrimary">#272727</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#FFC700</item>
         <item name="colorSecondaryVariant">#FFC700</item>

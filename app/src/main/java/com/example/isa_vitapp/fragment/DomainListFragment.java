@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.isa_vitapp.R;
 
 import soup.neumorphism.NeumorphCardView;
+import soup.neumorphism.ShapeType;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,36 +80,49 @@ public class DomainListFragment extends Fragment {
 
         app_dev.setOnClickListener(v -> {
             domain_selected = "App Dev";
+            app_dev.setShapeType(ShapeType.PRESSED);
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
         });
 
         web_dev.setOnClickListener(v -> {
             domain_selected = "Web Dev";
+            web_dev.setShapeType(ShapeType.PRESSED);
+
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
         });
 
         aiml.setOnClickListener(v -> {
             domain_selected = "AI/ML";
+            aiml.setShapeType(ShapeType.PRESSED);
+
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
         });
 
         iot.setOnClickListener(v -> {
             domain_selected = "IoT";
+            iot.setShapeType(ShapeType.PRESSED);
+
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
         });
 
         design.setOnClickListener(v -> {
             domain_selected = "Design";
+            design.setShapeType(ShapeType.PRESSED);
+
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
         });
 
         enf.setOnClickListener(v -> {
             domain_selected = "Events & Finance";
+            enf.setShapeType(ShapeType.PRESSED);
+
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
         });
 
         cno.setOnClickListener(v -> {
             domain_selected = "Content & Outreach";
+            cno.setShapeType(ShapeType.PRESSED);
+
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
         });
 

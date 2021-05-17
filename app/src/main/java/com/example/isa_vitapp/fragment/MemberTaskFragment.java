@@ -1,29 +1,21 @@
 package com.example.isa_vitapp.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.isa_vitapp.R;
-import com.example.isa_vitapp.RemoveTaskActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import soup.neumorphism.NeumorphCardView;
-import soup.neumorphism.ShapeType;
+import com.example.isa_vitapp.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Add_Fragment#newInstance} factory method to
+ * Use the {@link MemberTaskFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Add_Fragment extends Fragment {
-
-    NeumorphCardView add_task, remove_task;
+public class MemberTaskFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +26,7 @@ public class Add_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Add_Fragment() {
+    public MemberTaskFragment() {
         // Required empty public constructor
     }
 
@@ -44,11 +36,11 @@ public class Add_Fragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Add_Fragment.
+     * @return A new instance of fragment MemberTaskFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Add_Fragment newInstance(String param1, String param2) {
-        Add_Fragment fragment = new Add_Fragment();
+    public static MemberTaskFragment newInstance(String param1, String param2) {
+        MemberTaskFragment fragment = new MemberTaskFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,7 +51,6 @@ public class Add_Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -70,31 +61,6 @@ public class Add_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_add_, container, false);
-
-
-
-        add_task = view.findViewById(R.id.n_add_task_card);
-        remove_task = view.findViewById(R.id.n_del_task_card);
-
-        add_task.setOnClickListener(v -> {
-
-            add_task.setShapeType(ShapeType.PRESSED);
-
-            Fragment domainList = new DomainListFragment();
-            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
-        });
-
-        remove_task.setOnClickListener(v -> {
-
-            remove_task.setShapeType(ShapeType.PRESSED);
-
-            Toast.makeText(getActivity(), "Button remove clicked", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getActivity(), RemoveTaskActivity.class));
-        });
-
-        return view;
+        return inflater.inflate(R.layout.fragment_member_task, container, false);
     }
-
-
 }

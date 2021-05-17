@@ -122,8 +122,8 @@ public class CreateTaskFragment extends Fragment {
                                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new DomainListFragment()).commit();
                             }
                         }).create().show();
-
             }
+
         });
 
         title.setOnFocusChangeListener(new View.OnFocusChangeListener() {
