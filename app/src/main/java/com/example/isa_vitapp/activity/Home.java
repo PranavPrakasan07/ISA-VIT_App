@@ -14,7 +14,10 @@ import com.example.isa_vitapp.fragment.Add_Fragment;
 import com.example.isa_vitapp.fragment.Profile_Fragment;
 import com.example.isa_vitapp.fragment.Search_Fragment;
 import com.example.isa_vitapp.fragment.Task_Fragment;
+import com.google.firebase.auth.FirebaseAuth;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+
+import java.util.Objects;
 
 public class Home extends AppCompatActivity {
 
@@ -48,6 +51,8 @@ public class Home extends AppCompatActivity {
         Log.d("TAG : i", String.valueOf(R.id.nav_search));
         Log.d("TAG : i", String.valueOf(R.id.nav_task));
         Log.d("TAG : i", String.valueOf(R.id.projects_header));
+
+        Toast.makeText(this, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName(), Toast.LENGTH_SHORT).show();
 
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
 

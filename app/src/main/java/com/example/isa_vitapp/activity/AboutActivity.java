@@ -50,7 +50,7 @@ import soup.neumorphism.ShapeType;
 
 public class AboutActivity extends AppCompatActivity {
 
-    TextView flag_ship, technitude, prev_event;
+    NeumorphCardView flag_ship, technitude, prev_event;
     ImageView board_instagram, board_linkedin, board_github, isa_instagram, isa_linkedin, isa_github, isa_medium, isa_youtube, member_image, photos;
     Button github_isa;
 
@@ -143,8 +143,8 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        flag_ship = findViewById(R.id.flagship_button);
-        technitude = findViewById(R.id.technitude_button);
+        flag_ship = findViewById(R.id.n_flagship_card);
+        technitude = findViewById(R.id.n_technitude_card);
 
         isa_linkedin = findViewById(R.id.isa_linkedin_icon);
         isa_github = findViewById(R.id.isa_github_icon);
@@ -186,70 +186,64 @@ public class AboutActivity extends AppCompatActivity {
                 .into(designer4);
 
 
-        fixed_layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fixed_layout.setOnClickListener(view -> {
 
-                created_by_card.setShapeType(ShapeType.PRESSED);
+            created_by_card.setShapeType(ShapeType.PRESSED);
 
+            // If the CardView is already expanded, set its visibility
+            //  to gone and change the expand less icon to expand more.
+            if (hiddenView.getVisibility() == View.VISIBLE) {
+                created_by_card.setShapeType(ShapeType.FLAT);
 
-                // If the CardView is already expanded, set its visibility
-                //  to gone and change the expand less icon to expand more.
-                if (hiddenView.getVisibility() == View.VISIBLE) {
-                    created_by_card.setShapeType(ShapeType.FLAT);
-
-                    // The transition of the hiddenView is carried out
-                    //  by the TransitionManager class.
-                    // Here we use an object of the AutoTransition
-                    // Class to create a default transition.
-                    TransitionManager.beginDelayedTransition(cardView,
-                            new AutoTransition());
+                // The transition of the hiddenView is carried out
+                //  by the TransitionManager class.
+                // Here we use an object of the AutoTransition
+                // Class to create a default transition.
+                TransitionManager.beginDelayedTransition(cardView,
+                        new AutoTransition());
 //                    arrow.setImageResource(R.drawable.ic_arrow_down);
 
-                    hiddenView.setVisibility(View.GONE);
+                hiddenView.setVisibility(View.GONE);
 
-                }
+            }
 
-                // If the CardView is not expanded, set its visibility
-                // to visible and change the expand more icon to expand less.
-                else {
-                    TransitionManager.beginDelayedTransition(cardView,
-                            new AutoTransition());
-                    hiddenView.setVisibility(View.VISIBLE);
+            // If the CardView is not expanded, set its visibility
+            // to visible and change the expand more icon to expand less.
+            else {
+                TransitionManager.beginDelayedTransition(cardView,
+                        new AutoTransition());
+                hiddenView.setVisibility(View.VISIBLE);
 //                    arrow.setImageResource(R.drawable.ic_arrow_up);
 
-                    Animation fadeIn = new AlphaAnimation(0, 1);
-                    fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
-                    fadeIn.setDuration(1000);
+                Animation fadeIn = new AlphaAnimation(0, 1);
+                fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+                fadeIn.setDuration(1000);
 
 //                Animation fadeOut = new AlphaAnimation(1, 0);
 //                fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
 //                fadeOut.setStartOffset(1000);
 //                fadeOut.setDuration(1000);
 
-                    AnimationSet animation = new AnimationSet(false); //change to false
-                    animation.addAnimation(fadeIn);
+                AnimationSet animation = new AnimationSet(false); //change to false
+                animation.addAnimation(fadeIn);
 //                animation.addAnimation(fadeOut);
-                    hiddenView.setAnimation(animation);
-                }
+                hiddenView.setAnimation(animation);
             }
         });
 
+        flag_ship.setOnClickListener(v -> {
+            flag_ship.setShapeType(ShapeType.PRESSED);
+            startActivity(new Intent(getApplicationContext(), EventsActivity.class));
+            flag_ship.setShapeType(ShapeType.FLAT);
 
-        flag_ship.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), EventsActivity.class));
-            }
         });
 
-        technitude.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), EventsActivity.class));
-            }
-        });
+        technitude.setOnClickListener(v -> {
+            technitude.setShapeType(ShapeType.PRESSED);
+            startActivity(new Intent(getApplicationContext(), EventsActivity.class));
+            technitude.setShapeType(ShapeType.FLAT);
 
+        });
 
         github_isa.setOnClickListener(v -> {
             Uri uri = Uri.parse("https://github.com/isa-vit"); // missing 'http://' will cause crashed
@@ -328,7 +322,5 @@ public class AboutActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
     }
 }

@@ -54,11 +54,11 @@ public class Login extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser != null) {
-            startActivity(new Intent(getApplicationContext(), Home.class));
-        }
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//
+//        if (currentUser != null) {
+//            startActivity(new Intent(getApplicationContext(), Home.class));
+//        }
     }
 
     @Override
@@ -108,6 +108,21 @@ public class Login extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        try {
+            Bundle bundle = getIntent().getExtras();
+
+            String email_string = bundle.getString("email");
+            String password_string = bundle.getString("password");
+            String reg_string = bundle.getString("registration");
+
+            email.setText(email_string);
+            password.setText(password_string);
+            registration_number.setText(reg_string);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         login_header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,30 +166,31 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Fill in your email", Toast.LENGTH_SHORT).show();
                 } else if (password_text.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fill in your password", Toast.LENGTH_SHORT).show();
-                }else if (registration_text.equals("")) {
+                } else if (registration_text.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fill in your registration number", Toast.LENGTH_SHORT).show();
-                }
-                else if (password_text.length() < 6) {
+                } else if (password_text.length() < 6) {
                     Toast.makeText(getApplicationContext(), "Password is too short!", Toast.LENGTH_SHORT).show();
+                } else if (!email_text.contains("@vitstudent.ac.in")) {
+                    Toast.makeText(Login.this, "Enter VIT Email address", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    message.setVisibility(View.VISIBLE);
-                    Animation fadeIn = new AlphaAnimation(0, 1);
-                    fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
-                    fadeIn.setDuration(1000);
+//                    message.setVisibility(View.VISIBLE);
+//                    Animation fadeIn = new AlphaAnimation(0, 1);
+//                    fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+//                    fadeIn.setDuration(1000);
+//
+////                Animation fadeOut = new AlphaAnimation(1, 0);
+////                fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
+////                fadeOut.setStartOffset(1000);
+////                fadeOut.setDuration(1000);
+//
+//                    AnimationSet animation = new AnimationSet(false); //change to false
+//                    animation.addAnimation(fadeIn);
+////                animation.addAnimation(fadeOut);
+//                    message.setAnimation(animation);
 
-//                Animation fadeOut = new AlphaAnimation(1, 0);
-//                fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
-//                fadeOut.setStartOffset(1000);
-//                fadeOut.setDuration(1000);
-
-                    AnimationSet animation = new AnimationSet(false); //change to false
-                    animation.addAnimation(fadeIn);
-//                animation.addAnimation(fadeOut);
-                    message.setAnimation(animation);
-
-                    verify_user(email_text, password_text);
-                    createAccount(email_text, password_text);
+//                    verify_user(email_text, password_text);
+                    verify_user(email_text, password_text, registration_text);
                 }
 
             }
@@ -221,35 +237,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void createAccount(String email_text, String password_text) {
-
-        Login.mAuth.createUserWithEmailAndPassword(email_text, password_text).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-
-                    // send verification link
-
-                    FirebaseUser fuser = Login.mAuth.getCurrentUser();
-                    assert fuser != null;
-                    fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(Login.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-//                            startActivity(new Intent(getApplicationContext(), LoginSplash.class));
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("TAG", "onFailure: Email not sent " + e.getMessage());
-                        }
-                    });
-                }
-            }
-        });
-    }
-
-    private void verify_user(String email_text, String password_text) {
+    private void verify_user(String email_text, String password_text, String reg) {
 
         mAuth.signInWithEmailAndPassword(email_text, password_text).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -257,11 +245,19 @@ public class Login extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
 
-//                    startActivity(new Intent(getApplicationContext(), LoginSplash.class));
+                    startActivity(new Intent(getApplicationContext(), LoginSplash.class));
                 } else {
-//                    Toast.makeText(getApplicationContext(), "Error ! " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                    Intent intent = new Intent(getApplicationContext(), SignUp.class);
+                    Bundle bundle = new Bundle();
 
+                    bundle.putString("email", email_text);
+                    bundle.putString("password", password_text);
+                    bundle.putString("registration", reg);
+
+                    intent.putExtras(bundle);
+
+                    startActivity(intent);
+                }
             }
         });
     }
