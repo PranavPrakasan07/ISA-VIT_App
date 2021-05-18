@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +49,7 @@ public class SignUp extends AppCompatActivity {
     String email_text, password_text, retype_password_text, registration_text;
 
     ImageButton signInButton;
-
+    ProgressBar progressBar;
     GoogleSignInClient mGoogleSignInClient;
 
     int count = 0;
@@ -69,6 +70,8 @@ public class SignUp extends AppCompatActivity {
         password = findViewById(R.id.password_tab);
         retype_password = findViewById(R.id.retype_tab);
         registration_number = findViewById(R.id.regn_tab);
+
+        progressBar = findViewById(R.id.progressBar);
 
 //        signInButton = findViewById(R.id.signInButton);
 
@@ -127,6 +130,7 @@ public class SignUp extends AppCompatActivity {
                 }else if(!email_text.contains("@vitstudent.ac.in")) {
                     Toast.makeText(SignUp.this, "Enter VIT Email address", Toast.LENGTH_SHORT).show();
                 }else{
+                    progressBar.setVisibility(View.VISIBLE);
                     createAccount(email_text, password_text);
                 }
             }
@@ -229,12 +233,14 @@ public class SignUp extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(SignUp.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                             startActivity(new Intent(getApplicationContext(), LoginSplash.class));
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Log.d("TAG", "onFailure: Email not sent " + e.getMessage());
+                            progressBar.setVisibility(View.GONE);
                         }
                     });
                 }

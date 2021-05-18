@@ -35,6 +35,8 @@ public class Task_Fragment extends Fragment {
         // Required empty public constructor
     }
 
+
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -82,6 +84,8 @@ public class Task_Fragment extends Fragment {
                 app.setShapeType(ShapeType.PRESSED);
                 domain_selected = "App Dev";
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+                app.setShapeType(ShapeType.FLAT);
+
             }
         });
 
@@ -91,6 +95,8 @@ public class Task_Fragment extends Fragment {
                 web.setShapeType(ShapeType.PRESSED);
                 domain_selected = "Web Dev";
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+                web.setShapeType(ShapeType.FLAT);
+
             }
         });
 
@@ -100,6 +106,7 @@ public class Task_Fragment extends Fragment {
                 aiml.setShapeType(ShapeType.PRESSED);
                 domain_selected = "AI/ML";
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+                aiml.setShapeType(ShapeType.FLAT);
 
             }
         });
@@ -110,6 +117,7 @@ public class Task_Fragment extends Fragment {
                 iot.setShapeType(ShapeType.PRESSED);
                 domain_selected = "IoT";
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+                iot.setShapeType(ShapeType.FLAT);
 
             }
         });
@@ -120,6 +128,7 @@ public class Task_Fragment extends Fragment {
                 design.setShapeType(ShapeType.PRESSED);
                 domain_selected = "Design";
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+                design.setShapeType(ShapeType.FLAT);
 
             }
         });
@@ -130,6 +139,7 @@ public class Task_Fragment extends Fragment {
                 cno.setShapeType(ShapeType.PRESSED);
                 domain_selected = "C&O";
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+                cno.setShapeType(ShapeType.FLAT);
 
             }
         });
@@ -140,6 +150,7 @@ public class Task_Fragment extends Fragment {
                 enf.setShapeType(ShapeType.PRESSED);
                 domain_selected = "E&F";
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+                enf.setShapeType(ShapeType.FLAT);
 
             }
         });

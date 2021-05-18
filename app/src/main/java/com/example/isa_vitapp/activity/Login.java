@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class Login extends AppCompatActivity {
     static boolean isBoard = false;
 
     EditText email, password, registration_number;
+    ProgressBar progressBar;
 
     @Override
     public void onStart() {
@@ -99,6 +101,7 @@ public class Login extends AppCompatActivity {
         login_header = findViewById(R.id.heading);
 
         TextView message = findViewById(R.id.message);
+        progressBar = findViewById(R.id.progressBar);
 
         message.setVisibility(View.INVISIBLE);
 
@@ -174,6 +177,8 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter VIT Email address", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    progressBar.setVisibility(View.VISIBLE);
+
 //                    message.setVisibility(View.VISIBLE);
 //                    Animation fadeIn = new AlphaAnimation(0, 1);
 //                    fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
@@ -244,6 +249,7 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
 
                     startActivity(new Intent(getApplicationContext(), LoginSplash.class));
                 } else {
@@ -255,6 +261,7 @@ public class Login extends AppCompatActivity {
                     bundle.putString("registration", reg);
 
                     intent.putExtras(bundle);
+                    progressBar.setVisibility(View.GONE);
 
                     startActivity(intent);
                 }

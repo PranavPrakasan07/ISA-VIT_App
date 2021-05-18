@@ -11,10 +11,12 @@ import android.widget.ImageButton;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.AboutActivity;
 import com.example.isa_vitapp.activity.LogoutSplash;
-import com.example.isa_vitapp.R;
-import com.example.isa_vitapp.activity.Login;
+import com.google.firebase.auth.FirebaseAuth;
+
+import soup.neumorphism.NeumorphCardView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,30 +81,25 @@ public class Profile_Fragment extends Fragment {
 
         logout = view.findViewById(R.id.logout);
         home = view.findViewById(R.id.home_button);
-//
-//        Toast.makeText(getContext(), Objects.requireNonNull(Login.mAuth.getCurrentUser()).getDisplayName(), Toast.LENGTH_SHORT).show();
-//
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("GG", "Logout Clicked");
 
-                if(Login.mAuth.getCurrentUser() != null) {
-                    Login.mAuth.signOut();
-                }
+        NeumorphCardView position = view.findViewById(R.id.n_position_card);
 
-                startActivity(new Intent(getContext(), LogoutSplash.class));
 
+        logout.setOnClickListener(v -> {
+            Log.d("GG", "Logout Clicked");
+
+            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+            if(firebaseAuth.getCurrentUser() != null) {
+                firebaseAuth.signOut();
             }
+
+            startActivity(new Intent(getContext(), LogoutSplash.class));
         });
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("GG", "Logout Clicked");
-
-                startActivity(new Intent(getContext(), AboutActivity.class));
-            }
+        home.setOnClickListener(v -> {
+            Log.d("GG", "Home Clicked");
+            startActivity(new Intent(getContext(), AboutActivity.class));
         });
 
         return view;

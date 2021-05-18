@@ -307,4 +307,21 @@
         app:barrierDirection="left"
         app:constraint_referenced_ids="details" />
 
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_button_light"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="32dp"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/blue_button_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
