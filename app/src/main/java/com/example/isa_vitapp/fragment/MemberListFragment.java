@@ -1,7 +1,9 @@
 package com.example.isa_vitapp.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.isa_vitapp.R;
+import com.example.isa_vitapp.activity.Home;
+
+import java.util.Objects;
 
 import soup.neumorphism.NeumorphButton;
 

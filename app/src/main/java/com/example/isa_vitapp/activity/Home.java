@@ -52,7 +52,7 @@ public class Home extends AppCompatActivity {
         Log.d("TAG : i", String.valueOf(R.id.nav_task));
         Log.d("TAG : i", String.valueOf(R.id.projects_header));
 
-        Toast.makeText(this, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(), Toast.LENGTH_SHORT).show();
 
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
 

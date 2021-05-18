@@ -336,13 +336,14 @@
 
     <ImageButton
         android:id="@+id/logout"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_margin="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@color/transparent"
         android:scaleType="fitCenter"
+        android:padding="8dp"
         android:src="@drawable/ic_baseline_logout_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -350,14 +351,15 @@
 
     <ImageButton
         android:id="@+id/home_button"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_info"
+        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

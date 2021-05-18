@@ -31,7 +31,7 @@ public class SplashScreen extends AppCompatActivity {
         }
 
         background.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(), Login.class));
+            startActivity(new Intent(getApplicationContext(), SignUp.class));
             finish();
         });
     }

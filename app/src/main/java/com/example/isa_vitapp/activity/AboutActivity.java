@@ -288,7 +288,7 @@ public class AboutActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("Events").document("Technitudes");
 
-        db.collection("Board_Data")
+        db.collection("Board_Member_Data")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

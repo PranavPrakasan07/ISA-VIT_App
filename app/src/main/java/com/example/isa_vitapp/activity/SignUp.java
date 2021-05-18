@@ -56,6 +56,16 @@ public class SignUp extends AppCompatActivity {
     int flag = 0;
 
     @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null) {
+            startActivity(new Intent(getApplicationContext(), Home.class));
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
@@ -72,6 +82,8 @@ public class SignUp extends AppCompatActivity {
         registration_number = findViewById(R.id.regn_tab);
 
         progressBar = findViewById(R.id.progressBar);
+
+        TextView not_member = findViewById(R.id.not_member);
 
 //        signInButton = findViewById(R.id.signInButton);
 
@@ -131,7 +143,7 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "Enter VIT Email address", Toast.LENGTH_SHORT).show();
                 }else{
                     progressBar.setVisibility(View.VISIBLE);
-                    createAccount(email_text, password_text);
+                    createAccount(email_text, password_text, registration_text);
                 }
             }
         });
@@ -150,6 +162,14 @@ public class SignUp extends AppCompatActivity {
 
                 startActivity(intent);            }
         });
+
+        not_member.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+                startActivity(intent);            }
+        });
+
 
     }
 
@@ -218,16 +238,16 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
-    private void createAccount(String email_text, String password_text) {
+    private void createAccount(String email_text, String password_text, String registration_text) {
 
-        Login.mAuth.createUserWithEmailAndPassword(email_text, password_text).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email_text, password_text).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
 
                     // send verification link
 
-                    FirebaseUser fuser = Login.mAuth.getCurrentUser();
+                    FirebaseUser fuser = mAuth.getCurrentUser();
                     assert fuser != null;
                     fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -243,6 +263,20 @@ public class SignUp extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                         }
                     });
+                }else{
+                    Toast.makeText(SignUp.this, "Failed!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("email", email_text);
+                    bundle.putString("password", password_text);
+                    bundle.putString("registration", registration_text);
+
+                    intent.putExtras(bundle);
+
+                    startActivity(intent);
+                    progressBar.setVisibility(View.GONE);
+
                 }
             }
         });

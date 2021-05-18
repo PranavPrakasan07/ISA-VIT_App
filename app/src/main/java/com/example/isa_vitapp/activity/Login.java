@@ -253,17 +253,20 @@ public class Login extends AppCompatActivity {
 
                     startActivity(new Intent(getApplicationContext(), LoginSplash.class));
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), SignUp.class);
-                    Bundle bundle = new Bundle();
 
-                    bundle.putString("email", email_text);
-                    bundle.putString("password", password_text);
-                    bundle.putString("registration", reg);
+                    Toast.makeText(Login.this, "Failed login!", Toast.LENGTH_SHORT).show();
 
-                    intent.putExtras(bundle);
-                    progressBar.setVisibility(View.GONE);
-
-                    startActivity(intent);
+//                    Intent intent = new Intent(getApplicationContext(), SignUp.class);
+//                    Bundle bundle = new Bundle();
+//
+//                    bundle.putString("email", email_text);
+//                    bundle.putString("password", password_text);
+//                    bundle.putString("registration", reg);
+//
+//                    intent.putExtras(bundle);
+//                    progressBar.setVisibility(View.GONE);
+//
+//                    startActivity(intent);
                 }
             }
         });
