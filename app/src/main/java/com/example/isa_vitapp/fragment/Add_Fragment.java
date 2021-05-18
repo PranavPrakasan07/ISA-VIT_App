@@ -85,13 +85,13 @@ public class Add_Fragment extends Fragment {
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
         });
 
-        remove_task.setOnClickListener(v -> {
-
-            remove_task.setShapeType(ShapeType.PRESSED);
-
-            Toast.makeText(getActivity(), "Button remove clicked", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getActivity(), RemoveTaskActivity.class));
-        });
+//        remove_task.setOnClickListener(v -> {
+//
+//            remove_task.setShapeType(ShapeType.PRESSED);
+//
+//            Toast.makeText(getActivity(), "Button remove clicked", Toast.LENGTH_SHORT).show();
+//            startActivity(new Intent(getActivity(), RemoveTaskActivity.class));
+//        });
 
         return view;
     }

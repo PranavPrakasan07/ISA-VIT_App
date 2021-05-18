@@ -3,6 +3,7 @@ package com.example.isa_vitapp.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -16,6 +17,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.isa_vitapp.BoardListAdapter;
+import com.example.isa_vitapp.HomeCoreActivity;
+import com.example.isa_vitapp.MemberData;
 import com.example.isa_vitapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -31,7 +35,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class SignUp extends AppCompatActivity {
 
@@ -143,7 +156,7 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "Enter VIT Email address", Toast.LENGTH_SHORT).show();
                 }else{
                     progressBar.setVisibility(View.VISIBLE);
-                    createAccount(email_text, password_text, registration_text);
+                    check_if_member(email_text, password_text, registration_text);
                 }
             }
         });
@@ -238,7 +251,64 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
-    private void createAccount(String email_text, String password_text, String registration_text) {
+    private void check_if_member(String email_text, String password_text, String registration_text){
+
+        final boolean[] found = {false};
+
+        DocumentReference docRef = db.collection("Board_Member_Data").document(email_text);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        found[0] = true;
+                        createAccount(email_text, password_text, registration_text, true);
+                    } else {
+
+                        if(!found[0]){
+                            Toast.makeText(SignUp.this, "Not a member!", Toast.LENGTH_SHORT).show();
+                        }
+                        progressBar.setVisibility(View.GONE);
+
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                    progressBar.setVisibility(View.GONE);
+
+                }
+            }
+        });
+
+        DocumentReference docRefCore = db.collection("Core_Member_Data").document(email_text);
+        docRefCore.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        found[0] = true;
+                        createAccount(email_text, password_text, registration_text, false);
+                    } else {
+
+                        if(!found[0]){
+                            Toast.makeText(SignUp.this, "Not a member!", Toast.LENGTH_SHORT).show();
+                        }
+                        progressBar.setVisibility(View.GONE);
+
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                    progressBar.setVisibility(View.GONE);
+
+                }
+            }
+        });
+    }
+
+    private void createAccount(String email_text, String password_text, String registration_text, boolean isBoard) {
 
         mAuth.createUserWithEmailAndPassword(email_text, password_text).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -254,7 +324,13 @@ public class SignUp extends AppCompatActivity {
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(SignUp.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
-                            startActivity(new Intent(getApplicationContext(), LoginSplash.class));
+
+                            if(isBoard){
+                                startActivity(new Intent(getApplicationContext(), Home.class));
+                            }else{
+                                startActivity(new Intent(getApplicationContext(), HomeCoreActivity.class));
+                            }
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

@@ -9,13 +9,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.isa_vitapp.MemberData;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.fragment.Add_Fragment;
 import com.example.isa_vitapp.fragment.Profile_Fragment;
 import com.example.isa_vitapp.fragment.Search_Fragment;
 import com.example.isa_vitapp.fragment.Task_Fragment;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
@@ -53,6 +59,27 @@ public class Home extends AppCompatActivity {
         Log.d("TAG : i", String.valueOf(R.id.projects_header));
 
         Toast.makeText(this, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(), Toast.LENGTH_SHORT).show();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        String email = Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
+
+        DocumentReference docRef = db.collection("Board_Member_Data").document(email);
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                MemberData data = documentSnapshot.toObject(MemberData.class);
+
+                assert data != null;
+
+                MemberData.member_name = data.getName();
+                MemberData.member_reg = data.getReg_number();
+                MemberData.member_domain1 = data.getDomain1();
+                MemberData.member_domain2 = data.getDomain2();
+
+                Toast.makeText(Home.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
 

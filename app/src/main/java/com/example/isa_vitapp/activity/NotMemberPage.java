@@ -21,7 +21,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.isa_vitapp.FetchFromDB;
-import com.example.isa_vitapp.MyActivity;
 import com.example.isa_vitapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -233,21 +232,21 @@ public class NotMemberPage extends AppCompatActivity {
         flagship_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MyActivity.class));
+//                startActivity(new Intent(getApplicationContext(), MyActivity.class));
             }
         });
 
         events_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MyActivity.class));
+//                startActivity(new Intent(getApplicationContext(), MyActivity.class));
             }
         });
 
         technitudes_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MyActivity.class));
+//                startActivity(new Intent(getApplicationContext(), MyActivity.class));
             }
         });
     }

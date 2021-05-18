@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.isa_vitapp.MemberData;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.Home;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -184,42 +185,41 @@ public class CreateTaskFragment extends Fragment {
 
                 add_button.setShapeType(ShapeType.PRESSED);
 
-                if (!(task_title.equals("") || task_desc.equals("") || task_deadline.equals(""))) {
-                    add_button.setTextColor(Color.parseColor("#0C97E8"));
+                task_title = title.getText().toString();
+                task_desc = desc.getText().toString();
+                task_deadline = deadline.getText().toString();
+
+                if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
+                    add_button.setTextColor(Color.parseColor(GREY));
                 } else {
-                    add_button.setTextColor(Color.parseColor("#747474"));
+                    add_button.setTextColor(Color.parseColor(BLUE));
+
+                    Map<String, Object> docData = new HashMap<>();
+                    docData.put("title", task_title);
+                    docData.put("description", task_desc);
+                    docData.put("deadline", task_deadline);
+                    docData.put("setby", MemberData.member_name);
+                    docData.put("passed", false);
+
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                    db.collection("Task_" + DomainListFragment.domain_selected).document(formattedDate)
+                            .set(docData)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d("TAG", "DocumentSnapshot successfully written!");
+                                    add_button.setShapeType(ShapeType.FLAT);
+                                    add_button.setText("Update");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w("TAG", "Error writing document", e);
+                                }
+                            });
                 }
-
-                Map<String, Object> docData = new HashMap<>();
-                docData.put("title", task_title);
-                docData.put("description", task_desc);
-                docData.put("deadline", task_deadline);
-                docData.put("passed", false);
-
-                try {
-                    docData.put("member", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-                db.collection(DomainListFragment.domain_selected).document(formattedDate)
-                        .set(docData)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d("TAG", "DocumentSnapshot successfully written!");
-                                add_button.setShapeType(ShapeType.FLAT);
-                                add_button.setText("Update");
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w("TAG", "Error writing document", e);
-                            }
-                        });
             }
         });
 

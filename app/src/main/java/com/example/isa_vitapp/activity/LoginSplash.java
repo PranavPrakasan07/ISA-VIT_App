@@ -20,19 +20,9 @@ public class LoginSplash extends AppCompatActivity {
 
         progress_bar = findViewById(R.id.number_progress_bar);
 
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-
-                int i = 0;
-                while (i < 10000) {
-                    progress_bar.setProgress(i / 100);
-                    i++;
-                }
-                startActivity(new Intent(getApplicationContext(), Home.class));
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            startActivity(new Intent(getApplicationContext(), Home.class));
+            finish();
         }, 1500);   //1.5 seconds
     }
 }

@@ -218,9 +218,13 @@ public class Profile_Fragment extends Fragment {
                 domain2.setText(data.getDomain2());
                 dob.setText(data.getDob());
 
-                Picasso.get()
-                        .load(data.getPhoto_link())
-                        .into(photo);
+                try {
+                    Picasso.get()
+                            .load(data.getPhoto_link())
+                            .into(photo);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -229,7 +233,7 @@ public class Profile_Fragment extends Fragment {
 
             FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-            if(firebaseAuth.getCurrentUser() != null) {
+            if (firebaseAuth.getCurrentUser() != null) {
                 firebaseAuth.signOut();
             }
 

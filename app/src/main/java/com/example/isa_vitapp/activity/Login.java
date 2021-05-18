@@ -18,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.isa_vitapp.FetchFromDB;
+import com.example.isa_vitapp.HomeCoreActivity;
+import com.example.isa_vitapp.MemberData;
 import com.example.isa_vitapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -34,6 +36,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Login extends AppCompatActivity {
@@ -195,7 +199,7 @@ public class Login extends AppCompatActivity {
 //                    message.setAnimation(animation);
 
 //                    verify_user(email_text, password_text);
-                    verify_user(email_text, password_text, registration_text);
+                    check_if_member(email_text, password_text, registration_text);
                 }
 
             }
@@ -242,7 +246,52 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void verify_user(String email_text, String password_text, String reg) {
+    private void check_if_member(String email_text, String password_text, String registration_text){
+
+        DocumentReference docRef = db.collection("Board_Member_Data").document(email_text);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        verify_user(email_text, password_text, registration_text, true);
+                    } else {
+//                        Toast.makeText(Login.this, "Not a member!", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                    progressBar.setVisibility(View.GONE);
+
+                }
+            }
+        });
+
+        DocumentReference docRefCore = db.collection("Core_Member_Data").document(email_text);
+        docRefCore.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        verify_user(email_text, password_text, registration_text, false);
+                    } else {
+//                        Toast.makeText(Login.this, "Not a member!", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+
+    private void verify_user(String email_text, String password_text, String reg, boolean isBoard) {
 
         mAuth.signInWithEmailAndPassword(email_text, password_text).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -251,10 +300,16 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
 
-                    startActivity(new Intent(getApplicationContext(), LoginSplash.class));
+                    if(isBoard){
+                        startActivity(new Intent(getApplicationContext(), Home.class));
+                    }else{
+                        startActivity(new Intent(getApplicationContext(), HomeCoreActivity.class));
+                    }
+
                 } else {
 
                     Toast.makeText(Login.this, "Failed login!", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
 
 //                    Intent intent = new Intent(getApplicationContext(), SignUp.class);
 //                    Bundle bundle = new Bundle();

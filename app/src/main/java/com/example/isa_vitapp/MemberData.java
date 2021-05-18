@@ -2,6 +2,11 @@ package com.example.isa_vitapp;
 
 public class MemberData {
 
+    public static String member_name;
+    public static String member_domain1;
+    public static String member_domain2;
+    public static String member_reg;
+
     String contact_number;
     String dob;
     String domain1;
@@ -36,7 +41,10 @@ public class MemberData {
         this.timestamp = "timestamp";
         this.vit_email = "vit_email";
 
-
+        member_domain1 = "domain1";
+        member_domain2 = "domain2";
+        member_name = "name";
+        member_reg = "reg_number";
     }
 
     public MemberData(String contact, String dob, String domain1, String domain2, String github_link, String instagram_link, String linkedin_link, String name, String personal_email, String photo_link, String position, String reg_number, String room_number, String timestamp, String vit_email) {
@@ -55,6 +63,11 @@ public class MemberData {
         this.room_number = room_number;
         this.timestamp = timestamp;
         this.vit_email = vit_email;
+
+        member_domain1 = domain1;
+        member_domain2 = domain2;
+        member_name = name;
+        member_reg = reg_number;
     }
 
     public String getDob() {
