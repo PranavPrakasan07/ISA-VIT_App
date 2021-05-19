@@ -3,23 +3,18 @@ package com.example.isa_vitapp.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.isa_vitapp.BoardListAdapter;
-import com.example.isa_vitapp.HomeCoreActivity;
-import com.example.isa_vitapp.MemberData;
 import com.example.isa_vitapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -27,8 +22,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -38,13 +31,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 public class SignUp extends AppCompatActivity {
 
@@ -315,30 +301,40 @@ public class SignUp extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
 
+                    progressBar.setVisibility(View.GONE);
+
+                    if(isBoard){
+                        startActivity(new Intent(getApplicationContext(), Home.class));
+                    }else{
+                        startActivity(new Intent(getApplicationContext(), HomeCoreActivity.class));
+                    }
+
                     // send verification link
+//
+//                    FirebaseUser fuser = mAuth.getCurrentUser();
+//                    assert fuser != null;
+//                    fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            Toast.makeText(SignUp.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
+//                            progressBar.setVisibility(View.GONE);
+//
+//                            if(isBoard){
+//                                startActivity(new Intent(getApplicationContext(), Home.class));
+//                            }else{
+//                                startActivity(new Intent(getApplicationContext(), HomeCoreActivity.class));
+//                            }
+//
+//                        }
+//                    }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Log.d("TAG", "onFailure: Email not sent " + e.getMessage());
+//                            progressBar.setVisibility(View.GONE);
+//                        }
+//                    });
 
-                    FirebaseUser fuser = mAuth.getCurrentUser();
-                    assert fuser != null;
-                    fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(SignUp.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
 
-                            if(isBoard){
-                                startActivity(new Intent(getApplicationContext(), Home.class));
-                            }else{
-                                startActivity(new Intent(getApplicationContext(), HomeCoreActivity.class));
-                            }
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("TAG", "onFailure: Email not sent " + e.getMessage());
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    });
                 }else{
                     Toast.makeText(SignUp.this, "Failed!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), Login.class);

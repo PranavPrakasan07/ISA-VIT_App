@@ -1,4 +1,4 @@
-package com.example.isa_vitapp;
+package com.example.isa_vitapp.classes;
 
 public class MemberData {
 

@@ -5,10 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,9 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.isa_vitapp.FetchFromDB;
-import com.example.isa_vitapp.HomeCoreActivity;
-import com.example.isa_vitapp.MemberData;
+import com.example.isa_vitapp.classes.FetchFromDB;
 import com.example.isa_vitapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -27,8 +21,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthCredential;
@@ -44,8 +36,6 @@ public class Login extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1;
 
     public static FirebaseAuth mAuth;
-    public FetchFromDB[] dtls = new FetchFromDB[15];
-    public FetchFromDB names = new FetchFromDB();
 
     GoogleSignInClient mGoogleSignInClient;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -136,12 +126,6 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Home.class));
             }
         });
-
-        try {
-            getBoardNames();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         ActionCodeSettings actionCodeSettings =
                 ActionCodeSettings.newBuilder()
@@ -246,7 +230,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void check_if_member(String email_text, String password_text, String registration_text){
+    private void check_if_member(String email_text, String password_text, String registration_text) {
 
         DocumentReference docRef = db.collection("Board_Member_Data").document(email_text);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -300,9 +284,9 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Logged in Successfully", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
 
-                    if(isBoard){
+                    if (isBoard) {
                         startActivity(new Intent(getApplicationContext(), Home.class));
-                    }else{
+                    } else {
                         startActivity(new Intent(getApplicationContext(), HomeCoreActivity.class));
                     }
 
@@ -361,33 +345,5 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    private void getBoardNames() throws InterruptedException {
-//      New thread to perform background operation
-
-        FetchFromDB.total_board_members = FetchFromDB.position_name.keySet().size();
-
-//        Toast.makeText(this, String.valueOf(FetchFromDB.total_board_members), Toast.LENGTH_SHORT).show();
-//        Toast.makeText(this, String.valueOf(FetchFromDB.position_name.values()), Toast.LENGTH_SHORT).show();
-
-        Thread getDetailThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                Log.d("Thread", "Executing thread detail func" + Thread.currentThread().getName());
-                Log.d("Thread", String.valueOf(FetchFromDB.position_name.values()));
-
-                int i = 0;
-                for (Object mem : FetchFromDB.position_name.values()) {
-                    Log.d("Thread for loop", String.valueOf(mem));
-                    //dtls[i].getBoardMemberDetails((String) mem);
-                    i++;
-                }
-            }
-        });
-
-        getDetailThread.start();
-        getDetailThread.join();
     }
 }

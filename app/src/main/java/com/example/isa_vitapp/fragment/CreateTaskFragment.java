@@ -16,12 +16,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.isa_vitapp.MemberData;
+import com.example.isa_vitapp.classes.MemberData;
 import com.example.isa_vitapp.R;
-import com.example.isa_vitapp.activity.Home;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
@@ -30,7 +28,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 
 import soup.neumorphism.NeumorphButton;
 import soup.neumorphism.ShapeType;

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ISAVITApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HomeCoreActivity"></activity>
+        <activity android:name=".activity.HomeCoreActivity"></activity>
         <activity android:name=".activity.EventsActivity" />
         <activity android:name=".activity.AboutActivity" />
 
@@ -21,7 +21,6 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".RemoveTaskActivity" />
         <activity android:name=".activity.LoginSplash" />
         <activity android:name=".activity.LogoutSplash" />
         <activity android:name=".activity.Login" />

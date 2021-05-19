@@ -35,11 +35,11 @@
         android:id="@+id/input_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:orientation="vertical"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/n_login_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
                 android:paddingEnd="32dp"
                 android:paddingBottom="16dp"
                 android:textAlignment="viewStart"
-                android:textColor="@color/field_color"
+                android:textColor="@color/heading_color"
                 android:textColorHint="@color/field_color"
                 android:textSize="18sp" />
         </soup.neumorphism.NeumorphCardView>
@@ -126,7 +126,7 @@
                 android:paddingEnd="32dp"
                 android:paddingBottom="16dp"
                 android:textAlignment="viewStart"
-                android:textColor="@color/field_color"
+                android:textColor="@color/heading_color"
                 android:textColorHint="@color/field_color"
                 android:textSize="18sp" />
         </soup.neumorphism.NeumorphCardView>
@@ -165,13 +165,13 @@
                 android:hint="Registration Number"
                 android:inputType="text"
                 android:maxLength="9"
-                android:textAllCaps="true"
                 android:paddingStart="32dp"
                 android:paddingTop="16dp"
                 android:paddingEnd="32dp"
                 android:paddingBottom="16dp"
                 android:textAlignment="viewStart"
-                android:textColor="@color/field_color"
+                android:textAllCaps="true"
+                android:textColor="@color/heading_color"
                 android:textColorHint="@color/field_color"
                 android:textSize="18sp" />
 
@@ -201,6 +201,7 @@
         <!--        app:layout_constraintStart_toStartOf="parent"-->
         <!--        app:layout_constraintTop_toBottomOf="@+id/n_regn_card" />-->
     </LinearLayout>
+
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/n_login_card"
         style="@style/Widget.Neumorph.CardView"
@@ -208,7 +209,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:padding="8dp"
@@ -283,20 +284,21 @@
 
     <TextView
         android:id="@+id/message"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
         android:fontFamily="@font/poppins_medium"
-        app:layout_constraintTop_toBottomOf="@id/not_member"
         android:text="Seems like you aren't a member :)"
         android:textColor="@color/blue_button_light"
         android:textSize="14sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/not_member" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"
