@@ -78,20 +78,17 @@ public class HomeCoreActivity extends AppCompatActivity {
 
                         assert data != null;
 
-                        try {
-                            MemberData.member_name = data.getName();
-                            MemberData.member_reg = data.getReg_number();
-                            MemberData.member_domain1 = data.getDomain1();
-                            MemberData.member_domain2 = data.getDomain2();
+                        MemberData.member_name = data.getName();
+                        MemberData.member_reg = data.getReg_number();
+                        MemberData.member_domain1 = data.getDomain1();
+                        MemberData.member_domain2 = data.getDomain2();
 
-                            try {
-                                Toast.makeText(HomeCoreActivity.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                        try {
+                            Toast.makeText(HomeCoreActivity.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+
                     } else {
 //                        Toast.makeText(Login.this, "Not a member!", Toast.LENGTH_SHORT).show();
                     }

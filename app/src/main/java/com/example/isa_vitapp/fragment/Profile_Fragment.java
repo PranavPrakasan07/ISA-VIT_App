@@ -239,7 +239,6 @@ public class Profile_Fragment extends Fragment {
             }
         });
 
-
         DocumentReference docRefCore = db.collection("Core_Member_Data").document(email);
         docRefCore.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -251,6 +250,8 @@ public class Profile_Fragment extends Fragment {
                         MemberData data = document.toObject(MemberData.class);
 
                         assert data != null;
+
+                        position.setVisibility(View.GONE);
 
                         name.setText(data.getName());
                         board_position.setText(data.getPosition());

@@ -104,7 +104,7 @@
 
     <style name="CustomButtonAppearance1">
         <item name="neumorph_cornerFamily">rounded</item>
-        <item name="neumorph_cornerSize">32dp</item>
+        <item name="neumorph_cornerSize">12dp</item>
         <item name="neumorph_cornerSizeTopLeft">8dp</item>
         <item name="neumorph_cornerSizeTopRight">8dp</item>
         <item name="neumorph_cornerSizeBottomLeft">8dp</item>
