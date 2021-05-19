@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -15,7 +16,9 @@ import com.example.isa_vitapp.fragment.Add_Fragment;
 import com.example.isa_vitapp.fragment.Profile_Fragment;
 import com.example.isa_vitapp.fragment.Search_Fragment;
 import com.example.isa_vitapp.fragment.Task_Fragment;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -63,22 +66,41 @@ public class Home extends AppCompatActivity {
 
         String email = Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
 
-        DocumentReference docRef = db.collection("Board_Member_Data").document(email);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        DocumentReference docRefCore = db.collection("Core_Member_Data").document(email);
+        docRefCore.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                MemberData data = documentSnapshot.toObject(MemberData.class);
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        MemberData data = document.toObject(MemberData.class);
 
-                assert data != null;
+                        assert data != null;
 
-                MemberData.member_name = data.getName();
-                MemberData.member_reg = data.getReg_number();
-                MemberData.member_domain1 = data.getDomain1();
-                MemberData.member_domain2 = data.getDomain2();
+                        try {
+                            MemberData.member_name = data.getName();
+                            MemberData.member_reg = data.getReg_number();
+                            MemberData.member_domain1 = data.getDomain1();
+                            MemberData.member_domain2 = data.getDomain2();
 
-                Toast.makeText(Home.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();
+                            try {
+                                Toast.makeText(Home.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+//                        Toast.makeText(Login.this, "Not a member!", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                }
             }
         });
+
 
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
 

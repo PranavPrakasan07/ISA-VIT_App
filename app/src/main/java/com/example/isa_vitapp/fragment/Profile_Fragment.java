@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +19,9 @@ import com.example.isa_vitapp.classes.MemberData;
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.AboutActivity;
 import com.example.isa_vitapp.activity.LogoutSplash;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -195,30 +198,84 @@ public class Profile_Fragment extends Fragment {
         String email = Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
 
         DocumentReference docRef = db.collection("Board_Member_Data").document(email);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                MemberData data = documentSnapshot.toObject(MemberData.class);
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        MemberData data = document.toObject(MemberData.class);
 
-                assert data != null;
+                        assert data != null;
 
-                name.setText(data.getName());
-                board_position.setText(data.getPosition());
-                vit_email.setText(data.getVit_email());
-                personal_email.setText(data.getPersonal_email());
-                reg_number.setText(data.getReg_number());
-                room_number.setText(data.getRoom_number());
-                mobile.setText(data.getContact_number());
-                domain1.setText(data.getDomain1());
-                domain2.setText(data.getDomain2());
-                dob.setText(data.getDob());
+                        name.setText(data.getName());
+                        board_position.setText(data.getPosition());
+                        vit_email.setText(data.getVit_email());
+                        personal_email.setText(data.getPersonal_email());
+                        reg_number.setText(data.getReg_number());
+                        room_number.setText(data.getRoom_number());
+                        mobile.setText(data.getContact_number());
+                        domain1.setText(data.getDomain1());
+                        domain2.setText(data.getDomain2());
+                        dob.setText(data.getDob());
 
-                try {
-                    Picasso.get()
-                            .load(data.getPhoto_link())
-                            .into(photo);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                        try {
+                            Picasso.get()
+                                    .load(data.getPhoto_link())
+                                    .into(photo);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
+
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+
+                }
+            }
+        });
+
+
+        DocumentReference docRefCore = db.collection("Core_Member_Data").document(email);
+        docRefCore.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    assert document != null;
+                    if (document.exists()) {
+                        MemberData data = document.toObject(MemberData.class);
+
+                        assert data != null;
+
+                        name.setText(data.getName());
+                        board_position.setText(data.getPosition());
+                        vit_email.setText(data.getVit_email());
+                        personal_email.setText(data.getPersonal_email());
+                        reg_number.setText(data.getReg_number());
+                        room_number.setText(data.getRoom_number());
+                        mobile.setText(data.getContact_number());
+                        domain1.setText(data.getDomain1());
+                        domain2.setText(data.getDomain2());
+                        dob.setText(data.getDob());
+
+                        try {
+                            Picasso.get()
+                                    .load(data.getPhoto_link())
+                                    .into(photo);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
                 }
             }
         });
