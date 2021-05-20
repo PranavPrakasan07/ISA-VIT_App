@@ -254,7 +254,7 @@ public class SignUp extends AppCompatActivity {
                     } else {
 
                         if(!found[0]){
-                            Toast.makeText(SignUp.this, "Not a member!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this, "Not a board member!", Toast.LENGTH_SHORT).show();
                         }
                         progressBar.setVisibility(View.GONE);
 
@@ -280,7 +280,7 @@ public class SignUp extends AppCompatActivity {
                     } else {
 
                         if(!found[0]){
-                            Toast.makeText(SignUp.this, "Not a member!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this, "Not a core member!", Toast.LENGTH_SHORT).show();
                         }
                         progressBar.setVisibility(View.GONE);
 

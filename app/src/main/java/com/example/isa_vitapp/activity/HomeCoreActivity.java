@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.isa_vitapp.classes.TaskData;
 import com.example.isa_vitapp.fragment.TaskCoreFragment;
 import com.example.isa_vitapp.fragment.ActivityCoreFragment;
 import com.example.isa_vitapp.R;
@@ -23,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Source;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.Objects;
@@ -30,6 +32,8 @@ import java.util.Objects;
 public class HomeCoreActivity extends AppCompatActivity {
 
     ChipNavigationBar chipNavigationBar;
+
+    public static String domain1, domain2;
 
     @Override
     public void onBackPressed() {
@@ -67,7 +71,10 @@ public class HomeCoreActivity extends AppCompatActivity {
         String email = Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
 
         DocumentReference docRefCore = db.collection("Core_Member_Data").document(email);
-        docRefCore.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+        Source source = Source.DEFAULT;
+
+        docRefCore.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -82,6 +89,9 @@ public class HomeCoreActivity extends AppCompatActivity {
                         MemberData.member_reg = data.getReg_number();
                         MemberData.member_domain1 = data.getDomain1();
                         MemberData.member_domain2 = data.getDomain2();
+
+                        domain1 = data.getDomain1();
+                        domain2 = data.getDomain2();
 
                         try {
                             Toast.makeText(HomeCoreActivity.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();

@@ -229,7 +229,7 @@ public class Profile_Fragment extends Fragment {
                         }
 
                     } else {
-                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
 
                     }
                 } else {
