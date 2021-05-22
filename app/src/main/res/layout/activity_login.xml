@@ -320,21 +320,21 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="605dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="divider9"/>
+        app:constraint_referenced_ids="divider9" />
 
     <ProgressBar
-        android:visibility="gone"
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue_button_light"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="32dp"
-        android:indeterminateTintMode="src_atop"
+        android:backgroundTint="@color/blue_button_light"
         android:indeterminate="true"
         android:indeterminateTint="@color/blue_button_light"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

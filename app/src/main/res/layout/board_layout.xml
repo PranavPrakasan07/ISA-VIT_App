@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:background="@color/transparent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/transparent">
 
     <soup.neumorphism.NeumorphCardView
         style="@style/Widget.Neumorph.CardView"
@@ -79,18 +79,18 @@
                     android:id="@+id/instagram_icon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_margin="12dp"
                     android:backgroundTint="@color/field_color"
-                    android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_instagram_icon" />
 
                 <ImageView
                     android:id="@+id/linkedin_icon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_margin="12dp"
                     android:backgroundTint="@color/field_color"
-                    android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_linkedin_icon" />
 
             </LinearLayout>

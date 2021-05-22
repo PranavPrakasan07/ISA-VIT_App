@@ -1,11 +1,5 @@
 package com.example.isa_vitapp.activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,15 +16,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.example.isa_vitapp.adapters.BoardListAdapter;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.isa_vitapp.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.firestore.DocumentReference;
+import com.example.isa_vitapp.adapters.BoardListAdapter;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -46,8 +41,8 @@ import soup.neumorphism.ShapeType;
 
 public class AboutActivity extends AppCompatActivity {
 
-    NeumorphCardView flag_ship, technitude, prev_event;
-    ImageView board_instagram, board_linkedin, board_github, isa_instagram, isa_linkedin, isa_github, isa_medium, isa_youtube, member_image, photos;
+    NeumorphCardView flag_ship, technitude;
+    ImageView isa_instagram, isa_linkedin, isa_github, isa_medium, isa_youtube;
     Button github_isa;
 
     ArrayList<String> name_list = new ArrayList<>();
@@ -55,9 +50,6 @@ public class AboutActivity extends AppCompatActivity {
     ArrayList<String> instagram_list = new ArrayList<>();
     ArrayList<String> linkedin_list = new ArrayList<>();
     ArrayList<String> photo_list = new ArrayList<>();
-
-
-    private DatabaseReference mDatabase;
 
     Map<String, Object> details = new Map<String, Object>() {
         @Override
@@ -195,9 +187,7 @@ public class AboutActivity extends AppCompatActivity {
                 //  by the TransitionManager class.
                 // Here we use an object of the AutoTransition
                 // Class to create a default transition.
-                TransitionManager.beginDelayedTransition(cardView,
-                        new AutoTransition());
-//                    arrow.setImageResource(R.drawable.ic_arrow_down);
+                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
 
                 hiddenView.setVisibility(View.GONE);
 
@@ -209,20 +199,13 @@ public class AboutActivity extends AppCompatActivity {
                 TransitionManager.beginDelayedTransition(cardView,
                         new AutoTransition());
                 hiddenView.setVisibility(View.VISIBLE);
-//                    arrow.setImageResource(R.drawable.ic_arrow_up);
 
                 Animation fadeIn = new AlphaAnimation(0, 1);
                 fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
                 fadeIn.setDuration(1000);
 
-//                Animation fadeOut = new AlphaAnimation(1, 0);
-//                fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
-//                fadeOut.setStartOffset(1000);
-//                fadeOut.setDuration(1000);
-
                 AnimationSet animation = new AnimationSet(false); //change to false
                 animation.addAnimation(fadeIn);
-//                animation.addAnimation(fadeOut);
                 hiddenView.setAnimation(animation);
             }
         });
@@ -282,40 +265,36 @@ public class AboutActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.scroller);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("Events").document("Technitudes");
 
         db.collection("Board_Member_Data")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                Log.d("TAG", document.getId() + " => " + document.getData());
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                            Log.d("TAG", document.getId() + " => " + document.getData());
 
-                                details = (document.getData());
+                            details = (document.getData());
 
-                                name_list.add((String) details.get("name"));
-                                position_list.add((String) details.get("position"));
-                                instagram_list.add((String) details.get("instagram_link"));
-                                linkedin_list.add((String) details.get("linkedin_link"));
-                                photo_list.add((String) details.get("photo_link"));
+                            name_list.add((String) details.get("name"));
+                            position_list.add((String) details.get("position"));
+                            instagram_list.add((String) details.get("instagram_link"));
+                            linkedin_list.add((String) details.get("linkedin_link"));
+                            photo_list.add((String) details.get("photo_link"));
 
-                                Log.d("TAG", "Links" + name_list.toString());
+                            Log.d("TAG", "Links" + name_list.toString());
 
-                                try {
-                                    Log.d("TAG", "Reached here" + details.toString());
-                                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-                                    recyclerView.setAdapter(new BoardListAdapter(name_list, position_list, instagram_list, linkedin_list, photo_list));
+                            try {
+                                Log.d("TAG", "Reached here" + details.toString());
+                                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+                                recyclerView.setAdapter(new BoardListAdapter(name_list, position_list, instagram_list, linkedin_list, photo_list));
 
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-
-                        } else {
-                            Log.d("TAG", "Error getting documents: ", task.getException());
                         }
+
+                    } else {
+                        Log.d("TAG", "Error getting documents: ", task.getException());
                     }
                 });
     }

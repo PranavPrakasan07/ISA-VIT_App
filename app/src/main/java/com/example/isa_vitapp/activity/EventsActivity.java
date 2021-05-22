@@ -9,15 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.isa_vitapp.adapters.EventsAdapter;
 import com.example.isa_vitapp.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.firestore.DocumentReference;
+import com.example.isa_vitapp.adapters.EventsAdapter;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -35,8 +30,6 @@ public class EventsActivity extends AppCompatActivity {
     ArrayList<Boolean> open_list = new ArrayList<>();
     ArrayList<String> reg_list = new ArrayList<>();
     ArrayList<String> youtube_list = new ArrayList<>();
-
-    private DatabaseReference mDatabase;
 
     Map<String, Object> details = new Map<String, Object>() {
         @Override
@@ -120,40 +113,36 @@ public class EventsActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.events_recycler_view);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("Events").document("Technitudes");
 
         db.collection("Events")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                Log.d("TAG", document.getId() + " => " + document.getData());
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                            Log.d("TAG", document.getId() + " => " + document.getData());
 
-                                details = (document.getData());
+                            details = (document.getData());
 
-                                poster_links.add((String) details.get("poster"));
-                                title_list.add((String) details.get("title"));
-                                content_list.add((String) details.get("content"));
-                                open_list.add((Boolean) details.get("open"));
-                                reg_list.add((String) details.get("link"));
-                                youtube_list.add((String) details.get("youtube"));
+                            poster_links.add((String) details.get("poster"));
+                            title_list.add((String) details.get("title"));
+                            content_list.add((String) details.get("content"));
+                            open_list.add((Boolean) details.get("open"));
+                            reg_list.add((String) details.get("link"));
+                            youtube_list.add((String) details.get("youtube"));
 
-                                Log.d("TAG", "Links" + poster_links.toString());
+                            Log.d("TAG", "Links" + poster_links.toString());
 
-                                try {
-                                    Log.d("TAG", "Reached here" + details.toString());
-                                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-                                    recyclerView.setAdapter(new EventsAdapter(poster_links, title_list, content_list, open_list, reg_list, youtube_list));
+                            try {
+                                Log.d("TAG", "Reached here" + details.toString());
+                                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+                                recyclerView.setAdapter(new EventsAdapter(poster_links, title_list, content_list, open_list, reg_list, youtube_list));
 
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                        } else {
-                            Log.d("TAG", "Error getting documents: ", task.getException());
                         }
+                    } else {
+                        Log.d("TAG", "Error getting documents: ", task.getException());
                     }
                 });
     }

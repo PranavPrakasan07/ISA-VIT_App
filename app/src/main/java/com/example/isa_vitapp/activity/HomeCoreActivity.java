@@ -54,7 +54,6 @@ public class HomeCoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_core);
 
-
         chipNavigationBar = findViewById(R.id.bottom_nav_bar);
 
         chipNavigationBar.setItemSelected(R.id.nav_activity, true);

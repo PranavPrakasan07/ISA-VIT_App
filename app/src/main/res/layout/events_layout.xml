@@ -10,9 +10,9 @@
     <soup.neumorphism.NeumorphCardView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="8dp"
         android:background="@color/dark_button"
         android:padding="8dp"
-        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,10 +71,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Speaker: Andrew Mayne\n
-Position: Creative Applications at Open AI\n
-Date: 6th May 2021\n
-Time: 11:00 am onwards"
+                    android:text="content"
                     android:textColor="@color/heading_color"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/neumorphButton"

@@ -7,9 +7,8 @@
     android:background="@drawable/background_gradient"
     tools:context=".activity.MainActivity">
 
-
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/signup_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -28,7 +27,7 @@
         android:background="@drawable/divider_gradient"
         app:layout_constraintEnd_toStartOf="@id/barrier2"
         app:layout_constraintStart_toStartOf="@id/barrier3"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_header" />
 
     <LinearLayout
         android:id="@+id/details"
@@ -207,30 +206,6 @@
 
     </LinearLayout>
 
-
-    <!--    <soup.neumorphism.NeumorphButton-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="32dp"-->
-    <!--        android:layout_marginTop="32dp"-->
-    <!--        android:layout_marginEnd="32dp"-->
-    <!--        android:paddingStart="32dp"-->
-    <!--        android:paddingTop="16dp"-->
-    <!--        android:paddingEnd="32dp"-->
-    <!--        android:paddingBottom="16dp"-->
-    <!--        android:text="Sign Up"-->
-    <!--        app:neumorph_shapeType="flat"-->
-    <!--        app:neumorph_lightSource="leftTop"-->
-    <!--        android:textSize="24sp"-->
-    <!--        android:textColor="@color/button_text"-->
-    <!--        app:neumorph_backgroundColor="@color/blue_button_light"-->
-    <!--        app:neumorph_shadowColorDark="@color/shadow_dark"-->
-    <!--        app:neumorph_shadowColorLight="@color/shadow_light"-->
-    <!--        android:background="@drawable/divider_gradient"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/n_regn_card" />-->
-
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/n_signup_card"
         style="@style/Widget.Neumorph.CardView"
@@ -280,7 +255,6 @@
 
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/login_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -292,18 +266,18 @@
         android:text="Already have an account?"
         android:textColor="@color/heading_color"
         android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/n_signup_card" />
-
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="right"
-        app:constraint_referenced_ids="textView4" />
+        app:constraint_referenced_ids="signup_header" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier3"
@@ -313,18 +287,18 @@
         app:constraint_referenced_ids="details" />
 
     <ProgressBar
-        android:visibility="gone"
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue_button_light"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="32dp"
-        android:indeterminateTintMode="src_atop"
+        android:backgroundTint="@color/blue_button_light"
         android:indeterminate="true"
         android:indeterminateTint="@color/blue_button_light"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

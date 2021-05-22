@@ -37,7 +37,7 @@
         <item name="fontFamily">@font/montserrat</item>
         <item name="hintTextColor">@color/hint_color</item>
         <item name="android:textColorHint">@color/hint_color</item>
-        <item name="background">@drawable/button_back_white</item>
+        <item name="background">@color/dark_button</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
 
@@ -52,7 +52,7 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/text_color</item>
         <item name="fontFamily">@font/montserrat</item>
-        <item name="background">@drawable/button_back_green</item>
+        <item name="background">@color/dark_button</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
         <item name="android:textAllCaps">false</item>

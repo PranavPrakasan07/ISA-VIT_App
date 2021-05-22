@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background_gradient"
     tools:context=".fragment.DomainListFragment">
 
@@ -22,10 +22,10 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:padding="4dp"
+            app:layout_constraintBottom_toTopOf="@id/n_web_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/n_web_card"
             app:neumorph_backgroundColor="@color/dark_button"
             app:neumorph_inset="10dp"
             app:neumorph_insetBottom="12dp"
@@ -68,10 +68,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:padding="4dp"
+            app:layout_constraintBottom_toTopOf="@id/n_aiml_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/n_app_dev_card"
-            app:layout_constraintBottom_toTopOf="@id/n_aiml_card"
             app:neumorph_backgroundColor="@color/dark_button"
             app:neumorph_inset="10dp"
             app:neumorph_insetBottom="12dp"
@@ -114,11 +114,11 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:padding="4dp"
+            app:layout_constraintBottom_toTopOf="@id/n_iot_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/n_web_card"
             app:neumorph_backgroundColor="@color/dark_button"
-            app:layout_constraintBottom_toTopOf="@id/n_iot_card"
             app:neumorph_inset="10dp"
             app:neumorph_insetBottom="12dp"
             app:neumorph_insetEnd="12dp"
@@ -160,9 +160,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:padding="4dp"
+            app:layout_constraintBottom_toTopOf="@id/n_design_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/n_design_card"
             app:layout_constraintTop_toBottomOf="@+id/n_aiml_card"
             app:neumorph_backgroundColor="@color/dark_button"
             app:neumorph_inset="10dp"
@@ -195,8 +195,6 @@
                 android:textSize="20sp" />
 
         </soup.neumorphism.NeumorphCardView>
-
-<!--        kkkkkkkkkkkkkkkkkkkk-->
 
         <soup.neumorphism.NeumorphCardView
             android:id="@+id/n_design_card"
@@ -253,9 +251,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:padding="4dp"
+            app:layout_constraintBottom_toTopOf="@id/n_content_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/n_content_card"
             app:layout_constraintTop_toBottomOf="@+id/n_design_card"
             app:neumorph_backgroundColor="@color/dark_button"
             app:neumorph_inset="10dp"
@@ -335,8 +333,6 @@
 
         </soup.neumorphism.NeumorphCardView>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </ScrollView>

@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:padding="4dp"
         app:neumorph_backgroundColor="@color/transparent"
         app:neumorph_inset="10dp"
@@ -39,21 +40,20 @@
         app:neumorph_shadowElevation="2dp"
         app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
         app:neumorph_shapeType="flat"
-        android:layout_alignParentBottom="true"
         app:neumorph_strokeColor="@color/blue_button_light"
         app:neumorph_strokeWidth="0dp">
 
-    <com.ismaeldivita.chipnavigation.ChipNavigationBar
-        android:id="@+id/bottom_nav_bar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:padding="8dp"
-        app:cnb_iconSize="20dp"
-        android:background="@color/dark_button"
-        android:layout_margin="4dp"
-        android:fadingEdge="horizontal"
-        app:cnb_menuResource="@menu/nav_menu" />
+        <com.ismaeldivita.chipnavigation.ChipNavigationBar
+            android:id="@+id/bottom_nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_margin="4dp"
+            android:background="@color/dark_button"
+            android:fadingEdge="horizontal"
+            android:padding="8dp"
+            app:cnb_iconSize="20dp"
+            app:cnb_menuResource="@menu/nav_menu" />
 
     </soup.neumorphism.NeumorphCardView>
 

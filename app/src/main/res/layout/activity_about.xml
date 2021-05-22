@@ -93,12 +93,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:fontFamily="@font/poppins"
                     android:layout_marginEnd="24dp"
-                    android:textAlignment="center"
                     android:layout_marginBottom="24dp"
+                    android:fontFamily="@font/poppins"
                     android:justificationMode="none"
                     android:text="@string/lorem_ipsum"
+                    android:textAlignment="center"
                     android:textColor="@color/heading_color" />
             </LinearLayout>
         </soup.neumorphism.NeumorphCardView>
@@ -551,11 +551,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
                             android:background="#00FFFFFF"
                             android:fontFamily="@font/poppins_semibold"
                             android:padding="24dp"
                             android:text="Created By"
-                            android:layout_gravity="center"
                             android:textAlignment="center"
                             android:textColor="@color/blue_button_light"
                             android:textSize="16sp" />
@@ -584,8 +584,8 @@
                         android:id="@+id/developer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
                         android:layout_margin="8dp"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <ImageView
@@ -616,8 +616,8 @@
                         android:id="@+id/l_designer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
                         android:layout_margin="8dp"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <ImageView
@@ -680,8 +680,8 @@
                         android:id="@+id/designer3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
                         android:layout_margin="8dp"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <ImageView
@@ -712,8 +712,8 @@
                         android:id="@+id/designer4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
                         android:layout_margin="8dp"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
                         <ImageView

@@ -2,13 +2,30 @@ package com.example.isa_vitapp.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.isa_vitapp.R;
+import com.example.isa_vitapp.classes.MemberData;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +42,8 @@ public class Search_Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ArrayList<String> search_content = new ArrayList<>();
 
     public Search_Fragment() {
         // Required empty public constructor
@@ -61,6 +80,69 @@ public class Search_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_, container, false);
+        View view = inflater.inflate(R.layout.fragment_search_, container, false);
+
+        EditText searchbar = view.findViewById(R.id.search_bar);
+        ImageButton searchbutton = view.findViewById(R.id.search_button);
+
+        searchbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = searchbar.getText().toString();
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                db.collection("Board_Member_Data")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                        Log.d("TAG", document.getId() + " => " + document.getData());
+
+                                        MemberData memberData = document.toObject(MemberData.class);
+
+                                        Log.d("TAGDATA", memberData.getVit_email());
+                                        Log.d("TAGDATA", memberData.getName());
+
+                                        if(memberData.getName().contains(name) | memberData.getName().equals(name)){
+                                            Log.d("TAGDATA", memberData.getName());
+                                            Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
+                                        }
+
+                                    }
+                                } else {
+                                    Log.d("TAG", "Error getting documents: ", task.getException());
+                                }
+                            }
+                        });
+
+//                db.collection("Core_Member_Data")
+//                        .get()
+//                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                if (task.isSuccessful()) {
+//                                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+//                                        Log.d("TAG", document.getId() + " => " + document.getData());
+//
+//                                        MemberData memberData = document.toObject(MemberData.class);
+//
+//                                        Log.d("TAGDATA", memberData.getVit_email());
+//                                        Log.d("TAGDATA", memberData.getName());
+//
+//                                    }
+//                                } else {
+//                                    Log.d("TAG", "Error getting documents: ", task.getException());
+//                                }
+//                            }
+//                        });
+
+            }
+        });
+
+        return view;
+
     }
 }

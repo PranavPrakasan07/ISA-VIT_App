@@ -8,8 +8,6 @@
     android:background="@drawable/background_gradient"
     tools:context=".fragment.Profile_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ImageView
         android:id="@+id/photo"
         android:layout_width="150dp"
@@ -341,8 +339,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@color/transparent"
-        android:scaleType="fitCenter"
         android:padding="8dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_baseline_logout_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -356,9 +354,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="@color/transparent"
+        android:padding="8dp"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_info"
-        android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

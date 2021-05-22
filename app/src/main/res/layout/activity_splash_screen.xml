@@ -10,7 +10,6 @@
     tools:context=".activity.SplashScreen">
 
     <TextView
-        android:visibility="visible"
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,10 +22,10 @@
         android:text="Welcome!"
         android:textAlignment="center"
         android:textColor="@color/text_color"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="visible" />
 
     <TextView
-        android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -36,15 +35,16 @@
         android:text="ISA-VIT!"
         android:textAlignment="center"
         android:textColor="@color/text_color"
-        android:textSize="32sp" />
+        android:textSize="32sp"
+        android:visibility="visible" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
-        android:visibility="visible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:scaleType="fitCenter"
+        android:visibility="visible"
         app:lottie_autoPlay="true"
         app:lottie_fileName="front_animation.json"
         app:lottie_loop="true"
