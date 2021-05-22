@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.isa_vitapp.R;
+import com.example.isa_vitapp.adapters.BoardListAdapter;
 import com.example.isa_vitapp.classes.MemberData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -85,6 +88,8 @@ public class Search_Fragment extends Fragment {
         EditText searchbar = view.findViewById(R.id.search_bar);
         ImageButton searchbutton = view.findViewById(R.id.search_button);
 
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+
         searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +111,47 @@ public class Search_Fragment extends Fragment {
                                         Log.d("TAGDATA", memberData.getVit_email());
                                         Log.d("TAGDATA", memberData.getName());
 
-                                        if(memberData.getName().contains(name) | memberData.getName().equals(name)){
+                                        if (memberData.getName().toLowerCase().contains(name.toLowerCase()) ||
+                                                memberData.getName().toLowerCase().equals(name.toLowerCase())) {
+                                            Log.d("TAGDATA", memberData.getName());
+                                            Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
+
+                                            search_content.add(memberData.getName());
+
+//                                            try {
+//                                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+//                                                recyclerView.setAdapter(new BoardListAdapter(name_list, position_list, instagram_list, linkedin_list, photo_list));
+//
+//                                            } catch (Exception e) {
+//                                                e.printStackTrace();
+//                                            }
+
+                                        }
+
+                                    }
+                                } else {
+                                    Log.d("TAG", "Error getting documents: ", task.getException());
+                                }
+                            }
+                        });
+
+
+                db.collection("Core_Member_Data")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                        Log.d("TAG", document.getId() + " => " + document.getData());
+
+                                        MemberData memberData = document.toObject(MemberData.class);
+
+                                        Log.d("TAGDATA", memberData.getVit_email());
+                                        Log.d("TAGDATA", memberData.getName());
+
+                                        if (memberData.getName().toLowerCase().contains(name.toLowerCase()) ||
+                                                memberData.getName().toLowerCase().equals(name.toLowerCase())) {
                                             Log.d("TAGDATA", memberData.getName());
                                             Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
                                         }
@@ -118,26 +163,6 @@ public class Search_Fragment extends Fragment {
                             }
                         });
 
-//                db.collection("Core_Member_Data")
-//                        .get()
-//                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                                if (task.isSuccessful()) {
-//                                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-//                                        Log.d("TAG", document.getId() + " => " + document.getData());
-//
-//                                        MemberData memberData = document.toObject(MemberData.class);
-//
-//                                        Log.d("TAGDATA", memberData.getVit_email());
-//                                        Log.d("TAGDATA", memberData.getName());
-//
-//                                    }
-//                                } else {
-//                                    Log.d("TAG", "Error getting documents: ", task.getException());
-//                                }
-//                            }
-//                        });
 
             }
         });

@@ -15,11 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.Home;
 import com.example.isa_vitapp.adapters.BoardListAdapter;
+import com.example.isa_vitapp.adapters.DomainMembersAdapter;
 import com.example.isa_vitapp.adapters.EventsAdapter;
+import com.example.isa_vitapp.classes.MemberData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +56,82 @@ public class MemberListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ArrayList<String> name_list = new ArrayList<>();
+
+    Map<String, Object> details = new Map<String, Object>() {
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
+
+        @Override
+        public boolean containsKey(@Nullable @org.jetbrains.annotations.Nullable Object key) {
+            return false;
+        }
+
+        @Override
+        public boolean containsValue(@Nullable @org.jetbrains.annotations.Nullable Object value) {
+            return false;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public Object get(@Nullable @org.jetbrains.annotations.Nullable Object key) {
+            return null;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public Object put(String key, Object value) {
+            return null;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public Object remove(@Nullable @org.jetbrains.annotations.Nullable Object key) {
+            return null;
+        }
+
+        @Override
+        public void putAll(@NonNull @NotNull Map<? extends String, ?> m) {
+
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @NonNull
+        @NotNull
+        @Override
+        public Set<String> keySet() {
+            return null;
+        }
+
+        @NonNull
+        @NotNull
+        @Override
+        public Collection<Object> values() {
+            return null;
+        }
+
+        @NonNull
+        @NotNull
+        @Override
+        public Set<Entry<String, Object>> entrySet() {
+            return null;
+        }
+    };
 
     public MemberListFragment() {
         // Required empty public constructor
@@ -104,6 +183,37 @@ public class MemberListFragment extends Fragment {
         domain.setText(Task_Fragment.domain_selected);
 
         RecyclerView recyclerView = view.findViewById(R.id.member_list_recycler_view);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        String domain_name = Task_Fragment.domain_selected;
+
+        db.collection("Member_" + domain_name)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                            Log.d("TAG", document.getId() + " => " + document.getData());
+
+                            details = (document.getData());
+
+                            name_list.add((String) details.get("name"));
+
+                            try {
+                                Log.d("TAG", "Reached here" + details.toString());
+                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                                recyclerView.setAdapter(new DomainMembersAdapter(name_list));
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    } else {
+                        Log.d("TAG", "Error getting documents: ", task.getException());
+                    }
+                });
+
 
         return view;
     }

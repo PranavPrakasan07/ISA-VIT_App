@@ -28,6 +28,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:background="@drawable/search_field"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +42,7 @@
                 android:backgroundTint="@color/transparent"
                 android:textColor="@color/blue_button_light"
                 android:textSize="16sp"
+                android:fontFamily="@font/poppins"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/search_button"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -51,6 +53,7 @@
                 android:layout_height="50dp"
                 android:background="#00FFFFFF"
                 android:padding="8dp"
+                android:tint="@color/blue_button_light"
                 android:src="@drawable/ic_baseline_search_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
