@@ -1,45 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<soup.neumorphism.NeumorphCardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/details_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="8dp"
-    android:background="@color/dark_button"
-    app:neumorph_backgroundColor="@color/dark_button"
-    app:neumorph_lightSource="leftTop"
-    app:neumorph_shadowColorDark="@color/shadow_dark"
-    app:neumorph_shadowColorLight="@color/shadow_light"
-    app:neumorph_shapeType="flat">
+    android:id="@+id/view"
+    android:background="@color/transparent"
+    android:padding="12dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="12dp">
+    <TextView
+        android:id="@+id/member_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/imageButton2"
+        android:text="TextView"
+        android:textColor="@color/field_color"
+        android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/member_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@id/imageButton2"
-            android:text="TextView"
-            android:textColor="@color/field_color"
-            android:textSize="16sp" />
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@color/transparent"
+        app:srcCompat="@drawable/ic_baseline_history_24" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:background="@color/transparent"
-            app:srcCompat="@drawable/ic_baseline_history_24" />
+</RelativeLayout>
 
-    </RelativeLayout>
-
-</soup.neumorphism.NeumorphCardView>

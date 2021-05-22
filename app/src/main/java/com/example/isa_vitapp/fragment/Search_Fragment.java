@@ -11,12 +11,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.adapters.BoardListAdapter;
+import com.example.isa_vitapp.adapters.SearchAdapter;
+import com.example.isa_vitapp.adapters.SearchHistoryAdapter;
 import com.example.isa_vitapp.classes.MemberData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,7 +34,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Objects;
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,7 +55,13 @@ public class Search_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    ArrayList<String> search_content = new ArrayList<>();
+    String[] history = new String[]{"l", "k", "", "", ""};
+    ArrayList<String> history_list = new ArrayList<>(5);
+    static int counter = 0;
+
+    final int[] i = {0};
+
+    ArrayBlockingQueue<String> search_content = new ArrayBlockingQueue<>(5);
 
     public Search_Fragment() {
         // Required empty public constructor
@@ -88,7 +103,24 @@ public class Search_Fragment extends Fragment {
         EditText searchbar = view.findViewById(R.id.search_bar);
         ImageButton searchbutton = view.findViewById(R.id.search_button);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = view.findViewById(R.id.list_view);
+        TextView textView = view.findViewById(R.id.member_name);
+
+//        SearchAdapter customAdapter = new SearchAdapter(getActivity(), history);
+//        listView.setAdapter(customAdapter);
+
+//        final ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+//                android.R.layout.simple_list_item_1, android.R.id.text1, history);
+//        listView.setAdapter(adapter);
+
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                                            @Override
+//                                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//                                                // TODO Auto-generated method stub
+//                                                String value = adapter.getItem(position);
+//                                                Toast.makeText(getActivity(), value, Toast.LENGTH_SHORT).show();
+//                                            }
+//                                        });
 
         searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,12 +129,15 @@ public class Search_Fragment extends Fragment {
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+
                 db.collection("Board_Member_Data")
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
+
+
                                     for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                                         Log.d("TAG", document.getId() + " => " + document.getData());
 
@@ -116,15 +151,22 @@ public class Search_Fragment extends Fragment {
                                             Log.d("TAGDATA", memberData.getName());
                                             Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
 
-                                            search_content.add(memberData.getName());
 
-//                                            try {
-//                                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-//                                                recyclerView.setAdapter(new BoardListAdapter(name_list, position_list, instagram_list, linkedin_list, photo_list));
-//
-//                                            } catch (Exception e) {
-//                                                e.printStackTrace();
-//                                            }
+                                            if (history_list.size() > 4) {
+                                                history_list.set(counter % 5, memberData.getName());
+                                            } else {
+                                                history_list.add(memberData.getName());
+                                            }
+
+                                            counter++;
+
+                                            try {
+                                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                                                recyclerView.setAdapter(new SearchHistoryAdapter(history_list));
+
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
 
                                         }
 

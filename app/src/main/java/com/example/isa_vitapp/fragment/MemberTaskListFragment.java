@@ -3,12 +3,20 @@ package com.example.isa_vitapp.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.isa_vitapp.R;
+import com.example.isa_vitapp.adapters.DomainMembersAdapter;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +69,40 @@ public class MemberTaskListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_member_task_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_member_task_list, container, false);
+
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//
+//        db.collection("Task_" + domain_name)
+//                .get()
+//                .addOnCompleteListener(task -> {
+//                    if (task.isSuccessful()) {
+//                        for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+//                            Log.d("TAG", document.getId() + " => " + document.getData());
+//
+//                            details = (document.getData());
+//
+//                            name_list.add((String) details.get("name"));
+//
+//                            try {
+//                                Log.d("TAG", "Reached here" + details.toString());
+//                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+//                                recyclerView.setAdapter(new DomainMembersAdapter(name_list));
+//
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//
+//                    } else {
+//                        Log.d("TAG", "Error getting documents: ", task.getException());
+//                    }
+//                });
+
+
+
+        return view;
     }
 }
