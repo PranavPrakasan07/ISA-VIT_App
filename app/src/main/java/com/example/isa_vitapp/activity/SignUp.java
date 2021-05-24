@@ -52,8 +52,6 @@ public class SignUp extends AppCompatActivity {
 
         TextView not_member = findViewById(R.id.not_member);
 
-        findViewById(R.id.signup_header).setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Login.class)));
-
         try {
             Bundle bundle = getIntent().getExtras();
 
@@ -93,18 +91,18 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        link.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), Login.class);
-            Bundle bundle = new Bundle();
-
-            bundle.putString("email", email_text);
-            bundle.putString("password", password_text);
-            bundle.putString("registration", registration_text);
-
-            intent.putExtras(bundle);
-
-            startActivity(intent);
-        });
+//        link.setOnClickListener(v -> {
+//            Intent intent = new Intent(getApplicationContext(), Login.class);
+//            Bundle bundle = new Bundle();
+//
+//            bundle.putString("email", email_text);
+//            bundle.putString("password", password_text);
+//            bundle.putString("registration", registration_text);
+//
+//            intent.putExtras(bundle);
+//
+//            startActivity(intent);
+//        });
 
         not_member.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
@@ -127,15 +125,17 @@ public class SignUp extends AppCompatActivity {
                 } else {
 
                     if (!found[0]) {
+                        Log.d("TAG", "Not a board member");
                         Toast.makeText(SignUp.this, "Not a board member!", Toast.LENGTH_SHORT).show();
+//                        startActivity(new Intent(getApplicationContext(), AboutActivity.class));
                     }
                     progressBar.setVisibility(View.GONE);
 
                 }
             } else {
                 Log.d("TAG", "get failed with ", task.getException());
+                startActivity(new Intent(getApplicationContext(), NoConnectionActivity.class));
                 progressBar.setVisibility(View.GONE);
-
             }
         });
 
@@ -150,14 +150,16 @@ public class SignUp extends AppCompatActivity {
                 } else {
 
                     if (!found[0]) {
+                        Log.d("TAG", "Not a member");
                         Toast.makeText(SignUp.this, "Not a core member!", Toast.LENGTH_SHORT).show();
+//                        startActivity(new Intent(getApplicationContext(), AboutActivity.class));
                     }
                     progressBar.setVisibility(View.GONE);
-
                 }
             } else {
                 Log.d("TAG", "get failed with ", task.getException());
                 progressBar.setVisibility(View.GONE);
+                startActivity(new Intent(getApplicationContext(), NoConnectionActivity.class));
 
             }
         });
@@ -203,7 +205,7 @@ public class SignUp extends AppCompatActivity {
 
 
             } else {
-                Toast.makeText(SignUp.this, "Failed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUp.this, "Seems like you already have an account!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
                 Bundle bundle = new Bundle();
 

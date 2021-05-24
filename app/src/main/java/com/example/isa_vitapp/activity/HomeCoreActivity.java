@@ -93,7 +93,8 @@ public class HomeCoreActivity extends AppCompatActivity {
                         domain2 = data.getDomain2();
 
                         try {
-                            Toast.makeText(HomeCoreActivity.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();
+                            Log.d("TAG Static", "Static : " + MemberData.member_name);
+//                            Toast.makeText(HomeCoreActivity.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -115,21 +116,18 @@ public class HomeCoreActivity extends AppCompatActivity {
                 Fragment selectedFragment = null;
 
                 if (chipNavigationBar.getSelectedItemId() == R.id.nav_activity) {
-                    Toast.makeText(getApplicationContext(), "Add Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new ActivityCoreFragment();
                 }
 
                 if (chipNavigationBar.getSelectedItemId() == R.id.nav_task) {
-                    Toast.makeText(getApplicationContext(), "Task Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new TaskCoreFragment();
                 }
 
                 if (chipNavigationBar.getSelectedItemId() == R.id.nav_profile) {
-                    Toast.makeText(getApplicationContext(), "Profile Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new Profile_Fragment();

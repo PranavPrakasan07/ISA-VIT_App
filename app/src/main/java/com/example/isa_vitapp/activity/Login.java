@@ -23,7 +23,7 @@ public class Login extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    TextView login, link, login_header, signup_link;
+    TextView login, login_header, signup_link;
 
     EditText email, password, registration_number;
     ProgressBar progressBar;
@@ -43,7 +43,6 @@ public class Login extends AppCompatActivity {
         Log.d("User Status", String.valueOf(FirebaseAuth.getInstance().getCurrentUser()));
 
         login = findViewById(R.id.login_tab);
-        link = findViewById(R.id.not_member);
         signup_link = findViewById(R.id.isavit_member);
         login_header = findViewById(R.id.heading);
         progressBar = findViewById(R.id.progressBar);
@@ -51,9 +50,6 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.email_tab);
         password = findViewById(R.id.password_tab);
         registration_number = findViewById(R.id.regn_tab);
-
-        TextView message = findViewById(R.id.message);
-        message.setVisibility(View.INVISIBLE);
 
         try {
             Bundle bundle = getIntent().getExtras();
@@ -69,8 +65,6 @@ public class Login extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        login_header.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Home.class)));
 
         login.setOnClickListener(view -> {
             String email_text = email.getText().toString();
@@ -96,8 +90,6 @@ public class Login extends AppCompatActivity {
 
         });
 
-        link.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), AboutActivity.class)));
-
         signup_link.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), SignUp.class)));
 
         login_header.setOnLongClickListener(v -> {
@@ -116,6 +108,7 @@ public class Login extends AppCompatActivity {
                 if (document.exists()) {
                     verify_user(email_text, password_text, true);
                 } else {
+                    Log.d("TAG", "Not a board member");
 //                        Toast.makeText(Login.this, "Not a member!", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
 
@@ -135,6 +128,7 @@ public class Login extends AppCompatActivity {
                 if (document.exists()) {
                     verify_user(email_text, password_text,false);
                 } else {
+                    Log.d("TAG", "Not a core member");
 //                        Toast.makeText(Login.this, "Not a member!", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                 }

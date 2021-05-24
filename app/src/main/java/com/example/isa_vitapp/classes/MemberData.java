@@ -64,6 +64,14 @@ public class MemberData {
         this.timestamp = timestamp;
         this.vit_email = vit_email;
 
+        if(domain2.equals("Events and Finance")){
+            this.domain2 = "E&F";
+        }
+
+        if(domain2.equals("Content and Outreach")){
+            this.domain2 = "C&O";
+        }
+
         member_domain1 = domain1;
         member_domain2 = domain2;
         member_name = name;

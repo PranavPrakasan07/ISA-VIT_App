@@ -1,12 +1,6 @@
 package com.example.isa_vitapp.fragment;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,17 +10,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.activity.Home;
 import com.example.isa_vitapp.adapters.SearchHistoryAdapter;
 import com.example.isa_vitapp.classes.MemberData;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import soup.neumorphism.NeumorphCardView;
@@ -116,124 +110,112 @@ public class Search_Fragment extends Fragment {
         recyclerView = view.findViewById(R.id.list_view);
         TextView textView = view.findViewById(R.id.member_name);
 
-        searchbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = searchbar.getText().toString();
+        searchbutton.setOnClickListener(v -> {
+            String name = searchbar.getText().toString();
 
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                db.collection("Board_Member_Data")
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
+            db.collection("Board_Member_Data")
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
 
-                                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                        Log.d("TAG", document.getId() + " => " + document.getData());
+                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                Log.d("TAG", document.getId() + " => " + document.getData());
 
-                                        MemberData memberData = document.toObject(MemberData.class);
+                                MemberData memberData = document.toObject(MemberData.class);
 
-                                        Log.d("TAGDATA", memberData.getVit_email());
-                                        Log.d("TAGDATA", memberData.getName());
+                                Log.d("TAGDATA", memberData.getVit_email());
+                                Log.d("TAGDATA", memberData.getName());
 
-                                        if (memberData.getName().toLowerCase().contains(name.toLowerCase()) ||
-                                                memberData.getName().toLowerCase().equals(name.toLowerCase())) {
-                                            Log.d("TAGDATA", memberData.getName());
-                                            Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
+                                if (memberData.getName().toLowerCase().equals(name.toLowerCase())) {
+                                    Log.d("TAGDATA", memberData.getName());
+                                    Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
 
-                                            if (Home.history_list.size() > 4) {
-                                                Home.history_list.set(Home.counter % 5, memberData.getName());
-                                                Home.vit_email_list.set(Home.counter % 5, memberData.getVit_email());
+                                    if (Home.history_list.size() > 4) {
+                                        Home.history_list.set(Home.counter % 5, memberData.getName());
+                                        Home.vit_email_list.set(Home.counter % 5, memberData.getVit_email());
 
-                                            } else {
-                                                Home.history_list.add(memberData.getName());
-                                                Home.vit_email_list.add(memberData.getVit_email());
-                                            }
-
-                                            if (Home.history_list.size() == 0){
-                                                search_history_card.setVisibility(View.INVISIBLE);
-                                            }else{
-                                                search_history_card.setVisibility(View.VISIBLE);
-                                            }
-
-                                            Home.counter++;
-
-                                            try {
-                                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                                                recyclerView.setAdapter(new SearchHistoryAdapter(Home.history_list, Home.vit_email_list));
-
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-
-                                            searched_member_email = memberData.getVit_email();
-                                            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new SearchMemberFragment()).commit();
-
-                                        }
+                                    } else {
+                                        Home.history_list.add(memberData.getName());
+                                        Home.vit_email_list.add(memberData.getVit_email());
                                     }
-                                } else {
-                                    Log.d("TAG", "Error getting documents: ", task.getException());
+
+                                    if (Home.history_list.size() == 0){
+                                        search_history_card.setVisibility(View.INVISIBLE);
+                                    }else{
+                                        search_history_card.setVisibility(View.VISIBLE);
+                                    }
+
+                                    Home.counter++;
+
+                                    try {
+                                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                                        recyclerView.setAdapter(new SearchHistoryAdapter(Home.history_list, Home.vit_email_list));
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    searched_member_email = memberData.getVit_email();
+                                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new SearchMemberFragment()).commit();
                                 }
                             }
-                        });
+                        } else {
+                            Log.d("TAG", "Error getting documents: ", task.getException());
+                        }
+                    });
 
-                db.collection("Core_Member_Data")
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
+            db.collection("Core_Member_Data")
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
 
-                                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                        Log.d("TAG", document.getId() + " => " + document.getData());
+                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                Log.d("TAG", document.getId() + " => " + document.getData());
 
-                                        MemberData memberData = document.toObject(MemberData.class);
+                                MemberData memberData = document.toObject(MemberData.class);
 
-                                        Log.d("TAGDATA", memberData.getVit_email());
-                                        Log.d("TAGDATA", memberData.getName());
+                                Log.d("TAGDATA", memberData.getVit_email());
+                                Log.d("TAGDATA", memberData.getName());
 
-                                        if (memberData.getName().toLowerCase().contains(name.toLowerCase()) ||
-                                                memberData.getName().toLowerCase().equals(name.toLowerCase())) {
-                                            Log.d("TAGDATA", memberData.getName());
-                                            Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
+                                if (memberData.getName().toLowerCase().equals(name.toLowerCase())) {
+                                    Log.d("TAGDATA", memberData.getName());
+                                    Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
 
-                                            if (Home.history_list.size() > 4) {
-                                                Home.history_list.set(Home.counter % 5, memberData.getName());
-                                                Home.vit_email_list.set(Home.counter % 5, memberData.getVit_email());
-                                            } else {
-                                                Home.history_list.add(memberData.getName());
-                                                Home.vit_email_list.add(memberData.getVit_email());
-                                            }
-
-                                            if (Home.history_list.size() == 0){
-                                                search_history_card.setVisibility(View.INVISIBLE);
-                                            }else{
-                                                search_history_card.setVisibility(View.VISIBLE);
-                                            }
-
-                                            Home.counter++;
-
-                                            try {
-                                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                                                recyclerView.setAdapter(new SearchHistoryAdapter(Home.history_list, Home.vit_email_list));
-
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-
-                                            searched_member_email = memberData.getVit_email();
-                                            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new SearchMemberFragment()).commit();
-
-                                        }
+                                    if (Home.history_list.size() > 4) {
+                                        Home.history_list.set(Home.counter % 5, memberData.getName());
+                                        Home.vit_email_list.set(Home.counter % 5, memberData.getVit_email());
+                                    } else {
+                                        Home.history_list.add(memberData.getName());
+                                        Home.vit_email_list.add(memberData.getVit_email());
                                     }
-                                } else {
-                                    Log.d("TAG", "Error getting documents: ", task.getException());
+
+                                    if (Home.history_list.size() == 0){
+                                        search_history_card.setVisibility(View.INVISIBLE);
+                                    }else{
+                                        search_history_card.setVisibility(View.VISIBLE);
+                                    }
+
+                                    Home.counter++;
+
+                                    try {
+                                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                                        recyclerView.setAdapter(new SearchHistoryAdapter(Home.history_list, Home.vit_email_list));
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    searched_member_email = memberData.getVit_email();
+                                    requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new SearchMemberFragment()).commit();
+
                                 }
                             }
-                        });
-            }
+                        } else {
+                            Log.d("TAG", "Error getting documents: ", task.getException());
+                        }
+                    });
         });
 
         return view;

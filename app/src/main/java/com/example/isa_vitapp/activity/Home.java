@@ -66,13 +66,15 @@ public class Home extends AppCompatActivity {
         Log.d("TAG : i", String.valueOf(R.id.nav_task));
         Log.d("TAG : i", String.valueOf(R.id.projects_header));
 
-        Toast.makeText(this, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(), Toast.LENGTH_SHORT).show();
+        Log.d("TAG", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
+
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         String email = Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
 
-        DocumentReference docRefCore = db.collection("Core_Member_Data").document(email);
+        DocumentReference docRefCore = db.collection("Board_Member_Data").document(email);
         docRefCore.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -90,7 +92,8 @@ public class Home extends AppCompatActivity {
                         MemberData.member_domain2 = data.getDomain2();
 
                         try {
-                            Toast.makeText(Home.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();
+                            Log.d("TAG Static", "Static : " + MemberData.member_name);
+//                            Toast.makeText(Home.this, "Static : " + MemberData.member_name, Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -113,28 +116,24 @@ public class Home extends AppCompatActivity {
                 Fragment selectedFragment = null;
 
                 if (chipNavigationBar.getSelectedItemId() == R.id.nav_new_add) {
-                    Toast.makeText(getApplicationContext(), "Add Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new Add_Fragment();
                 }
 
                 if (chipNavigationBar.getSelectedItemId() == R.id.nav_search) {
-                    Toast.makeText(getApplicationContext(), "Search Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new Search_Fragment();
                 }
 
                 if (chipNavigationBar.getSelectedItemId() == R.id.nav_task) {
-                    Toast.makeText(getApplicationContext(), "Task Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new Task_Fragment();
                 }
 
                 if (chipNavigationBar.getSelectedItemId() == R.id.nav_profile) {
-                    Toast.makeText(getApplicationContext(), "Profile Selected", Toast.LENGTH_SHORT).show();
                     Log.d("TAG : i", String.valueOf(i));
 
                     selectedFragment = new Profile_Fragment();

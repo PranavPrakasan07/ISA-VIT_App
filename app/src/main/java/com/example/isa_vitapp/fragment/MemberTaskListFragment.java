@@ -1,9 +1,11 @@
 package com.example.isa_vitapp.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.isa_vitapp.R;
@@ -174,6 +177,17 @@ public class MemberTaskListFragment extends Fragment {
         member.setText(MemberListFragment.selected_core_member_name);
 
         Toast.makeText(getActivity(), MemberListFragment.selected_core_member_email, Toast.LENGTH_SHORT).show();
+
+
+        ImageButton back_button = view.findViewById(R.id.back_button);
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+            }
+
+        });
 
 
         db.collection("Task_" + Task_Fragment.domain_selected)

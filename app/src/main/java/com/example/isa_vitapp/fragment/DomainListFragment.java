@@ -113,14 +113,14 @@ public class DomainListFragment extends Fragment {
         });
 
         enf.setOnClickListener(v -> {
-            domain_selected = "Events & Finance";
+            domain_selected = "E&F";
             enf.setShapeType(ShapeType.PRESSED);
 
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();
         });
 
         cno.setOnClickListener(v -> {
-            domain_selected = "Content & Outreach";
+            domain_selected = "C&O";
             cno.setShapeType(ShapeType.PRESSED);
 
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();

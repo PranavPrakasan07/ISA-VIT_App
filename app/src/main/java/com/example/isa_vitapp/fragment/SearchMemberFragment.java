@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -99,8 +100,20 @@ public class SearchMemberFragment extends Fragment {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        String email = Search_Fragment.searched_member_email;
+
+        ImageButton back_button = view.findViewById(R.id.back_button);
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Search_Fragment()).commit();
+            }
+        });
+
+
+        String email = Search_Fragment.searched_member_email.trim();
         Toast.makeText(getActivity(), email, Toast.LENGTH_SHORT).show();
+        Log.d("TAGSearchMemberHere", email);
 
         DocumentReference docRef = db.collection("Board_Member_Data").document(email);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -108,11 +121,13 @@ public class SearchMemberFragment extends Fragment {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
+
                     assert document != null;
                     if (document.exists()) {
                         MemberData data = document.toObject(MemberData.class);
 
                         assert data != null;
+                        Log.d("TAGSearchMemberHere", "Found");
 
                         name.setText(data.getName());
                         board_position.setText(data.getPosition());
@@ -134,12 +149,13 @@ public class SearchMemberFragment extends Fragment {
                         }
 
                     } else {
+                        Log.d("TAGSearchMemberHere", "Not Found");
+
 //                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
 
                     }
                 } else {
                     Log.d("TAG", "get failed with ", task.getException());
-
                 }
             }
         });

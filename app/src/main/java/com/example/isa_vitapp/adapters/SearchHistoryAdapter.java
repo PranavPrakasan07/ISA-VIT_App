@@ -79,7 +79,7 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Fragment myFragment = new SearchMemberFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).commit();
 
             }
         });

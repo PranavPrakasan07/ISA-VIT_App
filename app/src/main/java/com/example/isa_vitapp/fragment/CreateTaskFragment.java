@@ -94,7 +94,6 @@ public class CreateTaskFragment extends Fragment {
 
         NeumorphButton domain = view.findViewById(R.id.domain_name);
 
-        ImageButton back_button = view.findViewById(R.id.back_button);
         NeumorphButton add_button = view.findViewById(R.id.add_button);
 
         EditText title = view.findViewById(R.id.title);
@@ -107,6 +106,8 @@ public class CreateTaskFragment extends Fragment {
         String formattedDate = df.format(c);
 
         deadline.setText(formattedDate);
+
+        ImageButton back_button = view.findViewById(R.id.back_button);
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
