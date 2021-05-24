@@ -70,7 +70,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
     @Override
     public EventsAdapter.EventsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.events_layout, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_events_layout, parent, false);
 
         return new EventsViewHolder(v);
     }

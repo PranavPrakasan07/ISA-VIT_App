@@ -57,7 +57,7 @@ public class BoardListAdapter extends RecyclerView.Adapter<BoardListAdapter.Boar
     @Override
     public BoardListAdapter.BoardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.board_layout, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_board_layout, parent, false);
 
         return new BoardViewHolder(v);
     }

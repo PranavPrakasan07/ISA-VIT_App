@@ -8,13 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.isa_vitapp.R;
-import com.example.isa_vitapp.fragment.MemberListFragment;
-import com.example.isa_vitapp.fragment.MemberTaskListFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -35,15 +31,15 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
     public static class TaskListViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
 
-        public TextView member_name;
-        public ImageButton expand_button;
+        public TextView task_name;
+        public ImageButton pass_button;
 
 
         public TaskListViewHolder(View v) {
             super(v);
 
-            member_name = v.findViewById(R.id.member_name);
-            expand_button = v.findViewById(R.id.expand_button);
+            task_name = v.findViewById(R.id.task_title);
+            pass_button = v.findViewById(R.id.pass_button);
 
         }
     }
@@ -65,7 +61,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
     @Override
     public TaskListAdapter.TaskListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_list_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_task_list, parent, false);
 
         return new TaskListViewHolder(v);
     }
@@ -77,9 +73,9 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
         // - replace the contents of the view with that element
 //        holder.poster.setText(mDataset.get(position));
 
-        holder.member_name.setText(title_list.get(position));
+        holder.task_name.setText(title_list.get(position));
 
-        holder.member_name.setOnClickListener(new View.OnClickListener() {
+        holder.task_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), title_list.get(position), Toast.LENGTH_SHORT).show();

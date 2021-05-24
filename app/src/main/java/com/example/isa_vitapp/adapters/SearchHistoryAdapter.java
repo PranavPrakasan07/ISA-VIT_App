@@ -3,7 +3,6 @@ package com.example.isa_vitapp.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,8 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.isa_vitapp.R;
-import com.example.isa_vitapp.fragment.MemberTaskListFragment;
-import com.example.isa_vitapp.fragment.Profile_Fragment;
 import com.example.isa_vitapp.fragment.SearchMemberFragment;
 import com.example.isa_vitapp.fragment.Search_Fragment;
 
@@ -58,7 +55,7 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     @Override
     public SearchHistoryAdapter.SearchHistoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_search, parent, false);
 
         return new SearchHistoryViewHolder(v);
     }

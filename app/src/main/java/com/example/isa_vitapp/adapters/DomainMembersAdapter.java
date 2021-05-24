@@ -58,7 +58,7 @@ public class DomainMembersAdapter extends RecyclerView.Adapter<DomainMembersAdap
     @Override
     public DomainMembersAdapter.DomainMembersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.member_list_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_member_list, parent, false);
 
         return new DomainMembersViewHolder(v);
     }
