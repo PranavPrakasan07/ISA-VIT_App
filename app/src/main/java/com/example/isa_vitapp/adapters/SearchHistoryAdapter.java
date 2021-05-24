@@ -9,9 +9,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.isa_vitapp.R;
+import com.example.isa_vitapp.fragment.MemberTaskListFragment;
+import com.example.isa_vitapp.fragment.Profile_Fragment;
+import com.example.isa_vitapp.fragment.SearchMemberFragment;
+import com.example.isa_vitapp.fragment.Search_Fragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -19,6 +25,7 @@ import java.util.ArrayList;
 
 public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdapter.SearchHistoryViewHolder> {
     public ArrayList<String> name_list;
+    public ArrayList<String> email_list;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -38,10 +45,11 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public SearchHistoryAdapter(ArrayList<String> names) {
+    public SearchHistoryAdapter(ArrayList<String> names, ArrayList<String> emails) {
 //        mDataset.putAll(myDataset);
 
         name_list = names;
+        email_list = emails;
 
     }
 
@@ -68,6 +76,14 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), name_list.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), email_list.get(position), Toast.LENGTH_SHORT).show();
+
+                Search_Fragment.searched_member_email = email_list.get(position);
+
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment myFragment = new SearchMemberFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
+
             }
         });
 

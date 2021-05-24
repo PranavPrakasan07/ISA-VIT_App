@@ -43,6 +43,8 @@
                 android:textColor="@color/blue_button_light"
                 android:textSize="16sp"
                 android:fontFamily="@font/poppins"
+                android:hint="Enter Name"
+                android:textColorHint="@color/field_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/search_button"
                 app:layout_constraintStart_toStartOf="parent" />

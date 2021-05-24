@@ -25,11 +25,17 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Home extends AppCompatActivity {
 
     ChipNavigationBar chipNavigationBar;
+
+    public static ArrayList<String> history_list = new ArrayList<>(5);
+    public static ArrayList<String> vit_email_list = new ArrayList<>(5);
+
+    public static int counter = 0;
 
     @Override
     public void onBackPressed() {
