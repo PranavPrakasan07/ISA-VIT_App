@@ -167,6 +167,10 @@ public class Search_Fragment extends Fragment {
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
+
+                                            searched_member_email = memberData.getVit_email();
+                                            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new SearchMemberFragment()).commit();
+
                                         }
                                     }
                                 } else {
@@ -198,11 +202,9 @@ public class Search_Fragment extends Fragment {
                                             if (Home.history_list.size() > 4) {
                                                 Home.history_list.set(Home.counter % 5, memberData.getName());
                                                 Home.vit_email_list.set(Home.counter % 5, memberData.getVit_email());
-
                                             } else {
                                                 Home.history_list.add(memberData.getName());
                                                 Home.vit_email_list.add(memberData.getVit_email());
-
                                             }
 
                                             if (Home.history_list.size() == 0){
@@ -220,6 +222,10 @@ public class Search_Fragment extends Fragment {
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
+
+                                            searched_member_email = memberData.getVit_email();
+                                            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new SearchMemberFragment()).commit();
+
                                         }
                                     }
                                 } else {

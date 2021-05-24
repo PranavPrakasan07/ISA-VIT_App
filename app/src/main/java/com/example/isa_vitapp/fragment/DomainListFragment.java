@@ -92,7 +92,7 @@ public class DomainListFragment extends Fragment {
         });
 
         aiml.setOnClickListener(v -> {
-            domain_selected = "AI/ML";
+            domain_selected = "AIML";
             aiml.setShapeType(ShapeType.PRESSED);
 
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CreateTaskFragment()).commit();

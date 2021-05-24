@@ -214,7 +214,7 @@ public class TaskCoreFragment extends Fragment {
         if (domain == 1) {
 
             try {
-                Log.d("TAGSET", TaskData.task_title1);
+                Log.d("TAGSET", taskData.getTitle());
                 desc_domain1.setText(taskData.getDescription());
                 deadline_domain1.setText(taskData.getDeadline());
                 title_domain1.setText(taskData.getTitle());
@@ -231,7 +231,7 @@ public class TaskCoreFragment extends Fragment {
         } else {
 
             try {
-                Log.d("TAGSET", TaskData.task_title2);
+                Log.d("TAGSET", taskData.getTitle());
                 desc_domain2.setText(taskData.getDescription());
                 deadline_domain2.setText(taskData.getDeadline());
                 title_domain2.setText(taskData.getTitle());

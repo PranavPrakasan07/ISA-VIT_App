@@ -44,7 +44,11 @@ public class MemberListFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    public static String selected_core_member_name = "";
+    public static String selected_core_member_email = "";
+
     ArrayList<String> name_list = new ArrayList<>();
+    ArrayList<String> email_list = new ArrayList<>();
 
     Map<String, Object> details = new Map<String, Object>() {
         @Override
@@ -185,11 +189,12 @@ public class MemberListFragment extends Fragment {
                             details = (document.getData());
 
                             name_list.add((String) details.get("name"));
+                            email_list.add((String) details.get("vit_email"));
 
                             try {
                                 Log.d("TAG", "Reached here" + details.toString());
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                                recyclerView.setAdapter(new DomainMembersAdapter(name_list));
+                                recyclerView.setAdapter(new DomainMembersAdapter(name_list, email_list));
 
                             } catch (Exception e) {
                                 e.printStackTrace();

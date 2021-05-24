@@ -2,6 +2,8 @@ package com.example.isa_vitapp.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,14 +12,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.isa_vitapp.R;
-import com.example.isa_vitapp.adapters.DomainMembersAdapter;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.isa_vitapp.adapters.TaskListAdapter;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 import soup.neumorphism.NeumorphButton;
 
@@ -36,6 +44,87 @@ public class MemberTaskListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ArrayList<String> deadline_list = new ArrayList<>();
+    ArrayList<Boolean> passed_list = new ArrayList<Boolean>();
+    ArrayList<String> description_list = new ArrayList<>();
+    ArrayList<String> title_list = new ArrayList<>();
+    ArrayList<String> setby_list = new ArrayList<>();
+
+    Map<String, Object> details = new Map<String, Object>() {
+        @Override
+        public int size() {
+            return 0;
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return false;
+        }
+
+        @Override
+        public boolean containsKey(@Nullable @org.jetbrains.annotations.Nullable Object key) {
+            return false;
+        }
+
+        @Override
+        public boolean containsValue(@Nullable @org.jetbrains.annotations.Nullable Object value) {
+            return false;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public Object get(@Nullable @org.jetbrains.annotations.Nullable Object key) {
+            return null;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public Object put(String key, Object value) {
+            return null;
+        }
+
+        @Nullable
+        @org.jetbrains.annotations.Nullable
+        @Override
+        public Object remove(@Nullable @org.jetbrains.annotations.Nullable Object key) {
+            return null;
+        }
+
+        @Override
+        public void putAll(@NonNull @NotNull Map<? extends String, ?> m) {
+
+        }
+
+        @Override
+        public void clear() {
+
+        }
+
+        @NonNull
+        @NotNull
+        @Override
+        public Set<String> keySet() {
+            return null;
+        }
+
+        @NonNull
+        @NotNull
+        @Override
+        public Collection<Object> values() {
+            return null;
+        }
+
+        @NonNull
+        @NotNull
+        @Override
+        public Set<Entry<String, Object>> entrySet() {
+            return null;
+        }
+    };
+
 
     public MemberTaskListFragment() {
         // Required empty public constructor
@@ -82,35 +171,40 @@ public class MemberTaskListFragment extends Fragment {
         NeumorphButton member = view.findViewById(R.id.member_name);
 
         domain.setText(Task_Fragment.domain_selected);
-        member.setText(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName());
+        member.setText(MemberListFragment.selected_core_member_name);
 
-//
-//        db.collection("Task_" + domain_name)
-//                .get()
-//                .addOnCompleteListener(task -> {
-//                    if (task.isSuccessful()) {
-//                        for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-//                            Log.d("TAG", document.getId() + " => " + document.getData());
-//
-//                            details = (document.getData());
-//
-//                            name_list.add((String) details.get("name"));
-//
-//                            try {
-//                                Log.d("TAG", "Reached here" + details.toString());
-//                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-//                                recyclerView.setAdapter(new DomainMembersAdapter(name_list));
-//
-//                            } catch (Exception e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//
-//                    } else {
-//                        Log.d("TAG", "Error getting documents: ", task.getException());
-//                    }
-//                });
+        Toast.makeText(getActivity(), MemberListFragment.selected_core_member_email, Toast.LENGTH_SHORT).show();
 
+
+        db.collection("Task_" + Task_Fragment.domain_selected)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                            Log.d("TAG", document.getId() + " => " + document.getData());
+
+                            details = (document.getData());
+
+                            title_list.add((String) details.get("title"));
+                            passed_list.add((Boolean) details.get("passed"));
+                            description_list.add((String) details.get("description"));
+                            deadline_list.add((String) details.get("deadline"));
+                            setby_list.add((String) details.get("setby"));
+
+                            try {
+                                Log.d("TAG", "Reached here" + details.toString());
+                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                                recyclerView.setAdapter(new TaskListAdapter(title_list, passed_list, description_list, deadline_list, setby_list));
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    } else {
+                        Log.d("TAG", "Error getting documents: ", task.getException());
+                    }
+                });
 
 
         return view;

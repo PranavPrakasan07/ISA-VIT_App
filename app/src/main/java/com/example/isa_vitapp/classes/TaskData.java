@@ -8,16 +8,6 @@ public class TaskData {
     String description;
     Boolean passed;
 
-    public static String task_title1 = "";
-    public static String task_deadline1 = "";
-    public static String task_description1 = "";
-    public static Boolean task_passed1 = false;
-
-    public static String task_title2 = "";
-    public static String task_deadline2 = "";
-    public static String task_description2 = "";
-    public static Boolean task_passed2 = false;
-
     public TaskData() {
         this.title = "title";
         this.deadline = "deadline";

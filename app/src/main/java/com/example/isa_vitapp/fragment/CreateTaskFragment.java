@@ -20,6 +20,7 @@ import com.example.isa_vitapp.classes.MemberData;
 import com.example.isa_vitapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
@@ -28,6 +29,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import soup.neumorphism.NeumorphButton;
 import soup.neumorphism.ShapeType;
@@ -195,12 +197,12 @@ public class CreateTaskFragment extends Fragment {
                     docData.put("title", task_title);
                     docData.put("description", task_desc);
                     docData.put("deadline", task_deadline);
-                    docData.put("setby", MemberData.member_name);
+                    docData.put("setby", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
                     docData.put("passed", false);
 
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                    db.collection("Task_" + DomainListFragment.domain_selected).document(formattedDate)
+                    db.collection("Task_" + DomainListFragment.domain_selected).document(task_deadline)
                             .set(docData)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
