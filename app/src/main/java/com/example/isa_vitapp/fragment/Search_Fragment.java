@@ -11,33 +11,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.isa_vitapp.R;
-import com.example.isa_vitapp.adapters.BoardListAdapter;
-import com.example.isa_vitapp.adapters.SearchAdapter;
 import com.example.isa_vitapp.adapters.SearchHistoryAdapter;
 import com.example.isa_vitapp.classes.MemberData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Objects;
-import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,13 +44,8 @@ public class Search_Fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    String[] history = new String[]{"l", "k", "", "", ""};
     ArrayList<String> history_list = new ArrayList<>(5);
     static int counter = 0;
-
-    final int[] i = {0};
-
-    ArrayBlockingQueue<String> search_content = new ArrayBlockingQueue<>(5);
 
     public Search_Fragment() {
         // Required empty public constructor
@@ -105,22 +89,6 @@ public class Search_Fragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.list_view);
         TextView textView = view.findViewById(R.id.member_name);
-
-//        SearchAdapter customAdapter = new SearchAdapter(getActivity(), history);
-//        listView.setAdapter(customAdapter);
-
-//        final ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
-//                android.R.layout.simple_list_item_1, android.R.id.text1, history);
-//        listView.setAdapter(adapter);
-
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                                            @Override
-//                                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-//                                                // TODO Auto-generated method stub
-//                                                String value = adapter.getItem(position);
-//                                                Toast.makeText(getActivity(), value, Toast.LENGTH_SHORT).show();
-//                                            }
-//                                        });
 
         searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override

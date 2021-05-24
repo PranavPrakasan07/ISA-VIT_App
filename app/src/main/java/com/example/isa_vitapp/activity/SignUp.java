@@ -33,11 +33,6 @@ public class SignUp extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//
-//        if (currentUser != null) {
-//            startActivity(new Intent(getApplicationContext(), HomeCoreActivity.class));
-//        }
     }
 
     @Override

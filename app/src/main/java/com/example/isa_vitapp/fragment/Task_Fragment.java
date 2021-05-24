@@ -104,7 +104,7 @@ public class Task_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 aiml.setShapeType(ShapeType.PRESSED);
-                domain_selected = "AI/ML";
+                domain_selected = "AIML";
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
                 aiml.setShapeType(ShapeType.FLAT);
 

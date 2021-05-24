@@ -1,7 +1,9 @@
 package com.example.isa_vitapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -114,7 +117,15 @@ public class EventsActivity extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("Events")
+        String event_type = "Events";
+
+        try {
+            event_type = getIntent().getStringExtra("eventType");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        db.collection(event_type)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -131,6 +142,13 @@ public class EventsActivity extends AppCompatActivity {
                             youtube_list.add((String) details.get("youtube"));
 
                             Log.d("TAG", "Links" + poster_links.toString());
+
+                            Collections.reverse(poster_links);
+                            Collections.reverse(title_list);
+                            Collections.reverse(content_list);
+                            Collections.reverse(open_list);
+                            Collections.reverse(reg_list);
+                            Collections.reverse(youtube_list);
 
                             try {
                                 Log.d("TAG", "Reached here" + details.toString());

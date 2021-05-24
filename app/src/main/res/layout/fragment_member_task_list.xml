@@ -77,7 +77,6 @@
         app:neumorph_shadowColorLight="@color/shadow_light"
         app:neumorph_shapeType="pressed">
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"

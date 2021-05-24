@@ -5,11 +5,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.isa_vitapp.R;
+import com.example.isa_vitapp.fragment.MemberTaskListFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -17,6 +21,8 @@ import java.util.ArrayList;
 
 public class DomainMembersAdapter extends RecyclerView.Adapter<DomainMembersAdapter.DomainMembersViewHolder> {
     public ArrayList<String> name_list;
+
+
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -62,6 +68,19 @@ public class DomainMembersAdapter extends RecyclerView.Adapter<DomainMembersAdap
 //        holder.poster.setText(mDataset.get(position));
 
         holder.member_name.setText(name_list.get(position));
+
+        holder.member_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), name_list.get(position), Toast.LENGTH_SHORT).show();
+
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment myFragment = new MemberTaskListFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
+
+            }
+        });
+
 
     }
 

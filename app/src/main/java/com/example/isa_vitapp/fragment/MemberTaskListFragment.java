@@ -13,10 +13,13 @@ import android.view.ViewGroup;
 
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.adapters.DomainMembersAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.Objects;
+
+import soup.neumorphism.NeumorphButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,6 +77,13 @@ public class MemberTaskListFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        NeumorphButton domain = view.findViewById(R.id.neumorphButton);
+        NeumorphButton member = view.findViewById(R.id.member_name);
+
+        domain.setText(Task_Fragment.domain_selected);
+        member.setText(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getDisplayName());
+
 //
 //        db.collection("Task_" + domain_name)
 //                .get()

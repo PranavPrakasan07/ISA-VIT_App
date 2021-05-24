@@ -210,16 +210,29 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
+
         flag_ship.setOnClickListener(v -> {
             flag_ship.setShapeType(ShapeType.PRESSED);
-            startActivity(new Intent(getApplicationContext(), EventsActivity.class));
+
+            Bundle bundle = new Bundle();
+            bundle.putString("eventType", "Flagships");
+            Intent intent = new Intent(getApplicationContext(), EventsActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+
             flag_ship.setShapeType(ShapeType.FLAT);
 
         });
 
         technitude.setOnClickListener(v -> {
             technitude.setShapeType(ShapeType.PRESSED);
-            startActivity(new Intent(getApplicationContext(), EventsActivity.class));
+
+            Bundle bundle = new Bundle();
+            bundle.putString("eventType", "Events");
+            Intent intent = new Intent(getApplicationContext(), EventsActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+
             technitude.setShapeType(ShapeType.FLAT);
 
         });
