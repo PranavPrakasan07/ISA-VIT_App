@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -147,11 +148,14 @@ public class AboutActivity extends AppCompatActivity {
 
         NeumorphCardView created_by_card = findViewById(R.id.fixed_card);
 
+        ImageButton back_button = findViewById(R.id.back_button);
         ImageView developer = findViewById(R.id.photo_devl);
         ImageView ldesigner = findViewById(R.id.photo_ld);
         ImageView designer2 = findViewById(R.id.photo_d2);
         ImageView designer3 = findViewById(R.id.photo_d3);
         ImageView designer4 = findViewById(R.id.photo_d4);
+
+        back_button.setOnClickListener(v -> onBackPressed());
 
         Picasso.get()
                 .load("https://firebasestorage.googleapis.com/v0/b/quizapp-ddf42.appspot.com/o/pranav.png?alt=media&token=0aecdc2a-334a-42b8-a94a-717c31184a4b")

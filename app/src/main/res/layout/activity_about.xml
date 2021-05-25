@@ -11,6 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/logo_barrier"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo"
+            app:tint="@color/heading_color" />
+
         <soup.neumorphism.NeumorphCardView
             android:id="@+id/n_about"
             style="@style/Widget.Neumorph.CardView"
@@ -25,7 +50,7 @@
             app:layout_constraintBottom_toTopOf="@+id/n_board_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo_barrier"
             app:neumorph_backgroundColor="@color/transparent"
             app:neumorph_inset="10dp"
             app:neumorph_insetBottom="12dp"
@@ -745,6 +770,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </soup.neumorphism.NeumorphCardView>
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/logo_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="logo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

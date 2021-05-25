@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ISAVITApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.NoConnectionActivity"></activity>
+        <activity android:name=".activity.NoConnectionActivity"/>
         <activity android:name=".activity.HomeCoreActivity" />
         <activity android:name=".activity.EventsActivity" />
         <activity android:name=".activity.AboutActivity" />
