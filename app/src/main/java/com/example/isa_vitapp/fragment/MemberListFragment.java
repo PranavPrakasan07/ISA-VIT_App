@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -161,7 +162,7 @@ public class MemberListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_member_list, container, false);
 
-        NeumorphButton domain = view.findViewById(R.id.neumorphButton);
+        TextView domain_name_tab = view.findViewById(R.id.domain_name_tab);
         ImageButton back_button = view.findViewById(R.id.back_button);
 
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -171,7 +172,7 @@ public class MemberListFragment extends Fragment {
             }
         });
 
-        domain.setText(Task_Fragment.domain_selected);
+        domain_name_tab.setText(Task_Fragment.domain_selected);
 
         RecyclerView recyclerView = view.findViewById(R.id.member_list_recycler_view);
 

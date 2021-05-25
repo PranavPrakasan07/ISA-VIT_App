@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -167,19 +168,17 @@ public class MemberTaskListFragment extends Fragment {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        NeumorphButton domain = view.findViewById(R.id.neumorphButton);
-        NeumorphButton member = view.findViewById(R.id.member_name);
+        TextView domain = view.findViewById(R.id.domain_name_tab);
+        TextView member = view.findViewById(R.id.member_name_tab);
 
         domain.setText(Task_Fragment.domain_selected);
         member.setText(MemberListFragment.selected_core_member_name);
 
         Toast.makeText(getActivity(), MemberListFragment.selected_core_member_email, Toast.LENGTH_SHORT).show();
 
-
         ImageButton back_button = view.findViewById(R.id.back_button);
 
         back_button.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit());
-
 
         db.collection("Task_" + Task_Fragment.domain_selected)
                 .get()

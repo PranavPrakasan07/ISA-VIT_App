@@ -128,9 +128,19 @@ public class Profile_Fragment extends Fragment {
                     reg_number.setText(data.getReg_number());
                     room_number.setText(data.getRoom_number());
                     mobile.setText(data.getContact_number());
-                    domain1.setText(data.getDomain1());
-                    domain2.setText(data.getDomain2());
                     dob.setText(data.getDob());
+
+                    if(data.getDomain1().equals("Events and Finance")){
+                        domain1.setText("E&F");
+                    }else{
+                        domain1.setText(data.getDomain1());
+                    }
+
+                    if(data.getDomain2().equals("Content and Outreach")){
+                        domain2.setText("C&O");
+                    }else{
+                        domain2.setText(data.getDomain2());
+                    }
 
                     try {
                         Picasso.get()
@@ -169,9 +179,19 @@ public class Profile_Fragment extends Fragment {
                     reg_number.setText(data.getReg_number());
                     room_number.setText(data.getRoom_number());
                     mobile.setText(data.getContact_number());
-                    domain1.setText(data.getDomain1());
-                    domain2.setText(data.getDomain2());
                     dob.setText(data.getDob());
+
+                    if(data.getDomain1().equals("Events and Finance")){
+                        domain1.setText("E&F");
+                    }else{
+                        domain1.setText(data.getDomain1());
+                    }
+
+                    if(data.getDomain2().equals("Content and Outreach")){
+                        domain2.setText("C&O");
+                    }else{
+                        domain2.setText(data.getDomain2());
+                    }
 
                     try {
                         Picasso.get()

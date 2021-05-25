@@ -25,8 +25,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-import soup.neumorphism.NeumorphButton;
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link TaskCoreFragment#newInstance} factory method to
@@ -91,8 +89,8 @@ public class TaskCoreFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task_core, container, false);
 
-        NeumorphButton domain1 = view.findViewById(R.id.domain1_header);
-        NeumorphButton domain2 = view.findViewById(R.id.domain2_header);
+        TextView domain1 = view.findViewById(R.id.domain_name1_tab);
+        TextView domain2 = view.findViewById(R.id.domain_name2_tab);
 
         title_domain1 = view.findViewById(R.id.title_domain1);
         title_domain2 = view.findViewById(R.id.title_domain2);
@@ -126,8 +124,6 @@ public class TaskCoreFragment extends Fragment {
 
                             try {
                                 d2 = new SimpleDateFormat("yyyy-MM-dd").parse(taskData1.getDeadline());
-
-                                Toast.makeText(getActivity(), String.valueOf(d1) + d2, Toast.LENGTH_SHORT).show();
 
                                 if (d1.compareTo(d2) > 0) {
                                     deadline_domain1.setTextColor(Color.parseColor(ConstantsClass.BLUE_LIGHT));
@@ -166,8 +162,6 @@ public class TaskCoreFragment extends Fragment {
 
                             try {
                                 d2 = new SimpleDateFormat("yyyy-MM-dd").parse(taskData2.getDeadline());
-
-                                Toast.makeText(getActivity(), String.valueOf(d1) + d2, Toast.LENGTH_SHORT).show();
 
                                 if (d1.compareTo(d2) > 0) {
                                     deadline_domain2.setTextColor(Color.parseColor(ConstantsClass.FIELD_COLOR));

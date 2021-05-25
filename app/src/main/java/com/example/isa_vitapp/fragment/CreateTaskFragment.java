@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import soup.neumorphism.NeumorphButton;
+import soup.neumorphism.NeumorphCardView;
 import soup.neumorphism.ShapeType;
 
 /**
@@ -85,13 +87,17 @@ public class CreateTaskFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_task, container, false);
 
-        NeumorphButton domain = view.findViewById(R.id.domain_name);
+        NeumorphCardView domain = view.findViewById(R.id.n_domain_name_card);
 
-        NeumorphButton add_button = view.findViewById(R.id.add_button);
+        NeumorphCardView add_button_card = view.findViewById(R.id.n_add_button_card);
+
+        TextView add_button_tab = view.findViewById(R.id.add_button_tab);
 
         EditText title = view.findViewById(R.id.title);
         EditText desc = view.findViewById(R.id.description);
         EditText deadline = view.findViewById(R.id.deadline);
+
+        TextView domain_name_tab = view.findViewById(R.id.domain_name_tab);
 
         Date c = Calendar.getInstance().getTime();
 
@@ -115,9 +121,9 @@ public class CreateTaskFragment extends Fragment {
             task_deadline = deadline.getText().toString();
 
             if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
-                add_button.setTextColor(Color.parseColor(GREY));
+                add_button_tab.setTextColor(Color.parseColor(GREY));
             } else {
-                add_button.setTextColor(Color.parseColor(BLUE));
+                add_button_tab.setTextColor(Color.parseColor(BLUE));
             }
         });
 
@@ -128,9 +134,9 @@ public class CreateTaskFragment extends Fragment {
             task_deadline = deadline.getText().toString();
 
             if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
-                add_button.setTextColor(Color.parseColor(GREY));
+                add_button_tab.setTextColor(Color.parseColor(GREY));
             } else {
-                add_button.setTextColor(Color.parseColor(BLUE));
+                add_button_tab.setTextColor(Color.parseColor(BLUE));
             }
         });
 
@@ -141,25 +147,25 @@ public class CreateTaskFragment extends Fragment {
             task_deadline = deadline.getText().toString();
 
             if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
-                add_button.setTextColor(Color.parseColor(GREY));
+                add_button_tab.setTextColor(Color.parseColor(GREY));
             } else {
-                add_button.setTextColor(Color.parseColor(BLUE));
+                add_button_tab.setTextColor(Color.parseColor(BLUE));
             }
         });
 
 
-        add_button.setOnClickListener(v -> {
+        add_button_card.setOnClickListener(v -> {
 
-            add_button.setShapeType(ShapeType.PRESSED);
+            add_button_card.setShapeType(ShapeType.PRESSED);
 
             task_title = title.getText().toString();
             task_desc = desc.getText().toString();
             task_deadline = deadline.getText().toString();
 
             if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
-                add_button.setTextColor(Color.parseColor(GREY));
+                add_button_tab.setTextColor(Color.parseColor(GREY));
             } else {
-                add_button.setTextColor(Color.parseColor(BLUE));
+                add_button_tab.setTextColor(Color.parseColor(BLUE));
 
                 Map<String, Object> docData = new HashMap<>();
                 docData.put("title", task_title);
@@ -174,14 +180,14 @@ public class CreateTaskFragment extends Fragment {
                         .set(docData)
                         .addOnSuccessListener(aVoid -> {
                             Log.d("TAG", "DocumentSnapshot successfully written!");
-                            add_button.setShapeType(ShapeType.FLAT);
-                            add_button.setText("Update");
+                            add_button_card.setShapeType(ShapeType.FLAT);
+                            add_button_tab.setText("Update");
                         })
                         .addOnFailureListener(e -> Log.w("TAG", "Error writing document", e));
             }
         });
 
-        domain.setText(DomainListFragment.domain_selected);
+        domain_name_tab.setText(DomainListFragment.domain_selected);
 
         return view;
     }

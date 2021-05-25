@@ -93,13 +93,11 @@ public class SearchMemberFragment extends Fragment {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
         ImageButton back_button = view.findViewById(R.id.back_button);
 
         back_button.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Search_Fragment()).commit());
 
         String email = Search_Fragment.searched_member_email.trim();
-        Toast.makeText(getActivity(), email, Toast.LENGTH_SHORT).show();
         Log.d("TAGSearchMemberHere", email);
 
         DocumentReference docRef = db.collection("Board_Member_Data").document(email);
@@ -121,9 +119,19 @@ public class SearchMemberFragment extends Fragment {
                     reg_number.setText(data.getReg_number());
                     room_number.setText(data.getRoom_number());
                     mobile.setText(data.getContact_number());
-                    domain1.setText(data.getDomain1());
-                    domain2.setText(data.getDomain2());
                     dob.setText(data.getDob());
+
+                    if(data.getDomain1().equals("Events and Finance")){
+                        domain1.setText("E&F");
+                    }else{
+                        domain1.setText(data.getDomain1());
+                    }
+
+                    if(data.getDomain2().equals("Content and Outreach")){
+                        domain2.setText("C&O");
+                    }else{
+                        domain2.setText(data.getDomain2());
+                    }
 
                     try {
                         Picasso.get()
@@ -161,9 +169,19 @@ public class SearchMemberFragment extends Fragment {
                     reg_number.setText(data.getReg_number());
                     room_number.setText(data.getRoom_number());
                     mobile.setText(data.getContact_number());
-                    domain1.setText(data.getDomain1());
-                    domain2.setText(data.getDomain2());
                     dob.setText(data.getDob());
+
+                    if(data.getDomain1().equals("Events and Finance")){
+                        domain1.setText("E&F");
+                    }else{
+                        domain1.setText(data.getDomain1());
+                    }
+
+                    if(data.getDomain2().equals("Content and Outreach")){
+                        domain2.setText("C&O");
+                    }else{
+                        domain2.setText(data.getDomain2());
+                    }
 
                     try {
                         Picasso.get()

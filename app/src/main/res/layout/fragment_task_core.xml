@@ -8,31 +8,50 @@
     android:background="@drawable/background_gradient"
     tools:context=".fragment.TaskCoreFragment">
 
-    <soup.neumorphism.NeumorphButton
-        android:id="@+id/neumorphButton"
-        style="@style/CustomButtonAppearance1"
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/n_neumorph_card"
+        style="@style/Widget.Neumorph.CardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:paddingStart="32dp"
-        android:paddingTop="18dp"
-        android:paddingEnd="32dp"
-        android:paddingBottom="18dp"
-        android:text="Task"
-        android:textColor="@color/button_text"
-        android:textSize="18sp"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:neumorph_backgroundColor="@color/blue_button_light"
+        app:neumorph_backgroundColor="@color/transparent"
+        app:neumorph_inset="10dp"
+        app:neumorph_insetBottom="12dp"
+        app:neumorph_insetEnd="12dp"
+        app:neumorph_insetStart="12dp"
+        app:neumorph_insetTop="12dp"
         app:neumorph_lightSource="leftTop"
         app:neumorph_shadowColorDark="@color/shadow_dark"
         app:neumorph_shadowColorLight="@color/shadow_light"
         app:neumorph_shadowElevation="4dp"
-        app:neumorph_shapeType="flat" />
+        app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+        app:neumorph_shapeType="flat"
+        app:neumorph_strokeColor="@color/blue_button_light"
+        app:neumorph_strokeWidth="0dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/divider_gradient"
+            android:fontFamily="@font/poppins_semibold"
+            android:paddingStart="28dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="28dp"
+            android:paddingBottom="12dp"
+            android:text="Task"
+            android:textAlignment="gravity"
+            android:textColor="@color/button_text"
+            android:textSize="18sp" />
+
+    </soup.neumorphism.NeumorphCardView>
 
 
     <ScrollView
@@ -45,7 +64,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/neumorphButton">
+        app:layout_constraintTop_toBottomOf="@+id/n_neumorph_card">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -92,32 +111,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp">
 
-                    <soup.neumorphism.NeumorphButton
-                        android:id="@+id/domain1_header"
-                        style="@style/CustomButtonAppearance"
+                    <soup.neumorphism.NeumorphCardView
+                        android:id="@+id/n_neumorph_card0"
+                        style="@style/Widget.Neumorph.CardView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:paddingStart="28dp"
-                        android:paddingTop="16dp"
-                        android:paddingEnd="28dp"
-                        android:paddingBottom="16dp"
-                        android:text="Domain1"
-                        android:textColor="@color/button_text"
-                        android:textSize="18sp"
+                        android:padding="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:neumorph_backgroundColor="@color/dark_button"
+                        app:neumorph_backgroundColor="@color/transparent"
+                        app:neumorph_inset="10dp"
+                        app:neumorph_insetBottom="12dp"
+                        app:neumorph_insetEnd="12dp"
+                        app:neumorph_insetStart="12dp"
+                        app:neumorph_insetTop="12dp"
                         app:neumorph_lightSource="leftTop"
                         app:neumorph_shadowColorDark="@color/shadow_dark"
                         app:neumorph_shadowColorLight="@color/shadow_light"
                         app:neumorph_shadowElevation="4dp"
-                        app:neumorph_shapeType="flat" />
+                        app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+                        app:neumorph_shapeType="flat"
+                        app:neumorph_strokeColor="@color/blue_button_light"
+                        app:neumorph_strokeWidth="0dp">
 
+                        <TextView
+                            android:id="@+id/domain_name1_tab"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@color/dark_button"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:paddingStart="24dp"
+                            android:paddingTop="12dp"
+                            android:paddingEnd="24dp"
+                            android:paddingBottom="12dp"
+                            android:text="Domain 1"
+                            android:textAlignment="gravity"
+                            android:textColor="@color/button_text"
+                            android:textSize="16sp" />
+
+                    </soup.neumorphism.NeumorphCardView>
 
                     <TextView
                         android:id="@+id/title_domain1"
@@ -133,7 +171,7 @@
                         app:layout_constraintBottom_toTopOf="@+id/desc_domain1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/domain1_header" />
+                        app:layout_constraintTop_toBottomOf="@+id/n_neumorph_card0" />
 
                     <TextView
                         android:id="@+id/desc_domain1"
@@ -237,31 +275,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp">
 
-                    <soup.neumorphism.NeumorphButton
-                        android:id="@+id/domain2_header"
-                        style="@style/CustomButtonAppearance"
+                    <soup.neumorphism.NeumorphCardView
+                        android:id="@+id/n_neumorph_card1"
+                        style="@style/Widget.Neumorph.CardView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:paddingStart="28dp"
-                        android:paddingTop="16dp"
-                        android:paddingEnd="28dp"
-                        android:paddingBottom="16dp"
-                        android:text="Domain2"
-                        android:textColor="@color/button_text"
-                        android:textSize="18sp"
+                        android:padding="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:neumorph_backgroundColor="@color/dark_button"
+                        app:neumorph_backgroundColor="@color/transparent"
+                        app:neumorph_inset="10dp"
+                        app:neumorph_insetBottom="12dp"
+                        app:neumorph_insetEnd="12dp"
+                        app:neumorph_insetStart="12dp"
+                        app:neumorph_insetTop="12dp"
                         app:neumorph_lightSource="leftTop"
                         app:neumorph_shadowColorDark="@color/shadow_dark"
                         app:neumorph_shadowColorLight="@color/shadow_light"
                         app:neumorph_shadowElevation="4dp"
-                        app:neumorph_shapeType="flat" />
+                        app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
+                        app:neumorph_shapeType="flat"
+                        app:neumorph_strokeColor="@color/blue_button_light"
+                        app:neumorph_strokeWidth="0dp">
+
+                        <TextView
+                            android:id="@+id/domain_name2_tab"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@color/dark_button"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:paddingStart="24dp"
+                            android:paddingTop="12dp"
+                            android:paddingEnd="24dp"
+                            android:paddingBottom="12dp"
+                            android:text="Domain 2"
+                            android:textAlignment="gravity"
+                            android:textColor="@color/button_text"
+                            android:textSize="16sp" />
+
+                    </soup.neumorphism.NeumorphCardView>
 
 
                     <TextView
@@ -278,7 +336,7 @@
                         app:layout_constraintBottom_toTopOf="@+id/desc_domain2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/domain2_header" />
+                        app:layout_constraintTop_toBottomOf="@+id/n_neumorph_card1" />
 
                     <TextView
                         android:id="@+id/desc_domain2"
