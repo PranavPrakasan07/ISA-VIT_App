@@ -81,22 +81,16 @@ public class BoardListAdapter extends RecyclerView.Adapter<BoardListAdapter.Boar
         holder.board_member_name.setText(name_list.get(position));
         holder.board_position.setText(position_list.get(position));
 
-        holder.instagram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse(instagram_list.get(position)); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                v.getContext().startActivity(intent);
-            }
+        holder.instagram.setOnClickListener(v -> {
+            Uri uri = Uri.parse(instagram_list.get(position)); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            v.getContext().startActivity(intent);
         });
 
-        holder.linkedin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse(linkedin_list.get(position)); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                v.getContext().startActivity(intent);
-            }
+        holder.linkedin.setOnClickListener(v -> {
+            Uri uri = Uri.parse(linkedin_list.get(position)); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            v.getContext().startActivity(intent);
         });
     }
 

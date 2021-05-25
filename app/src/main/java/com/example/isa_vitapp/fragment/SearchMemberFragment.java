@@ -1,10 +1,6 @@
 package com.example.isa_vitapp.fragment;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.isa_vitapp.R;
 import com.example.isa_vitapp.classes.MemberData;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
-
-import java.util.Objects;
 
 import soup.neumorphism.NeumorphCardView;
 
@@ -103,102 +96,88 @@ public class SearchMemberFragment extends Fragment {
 
         ImageButton back_button = view.findViewById(R.id.back_button);
 
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Search_Fragment()).commit();
-            }
-        });
-
+        back_button.setOnClickListener(v -> requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Search_Fragment()).commit());
 
         String email = Search_Fragment.searched_member_email.trim();
         Toast.makeText(getActivity(), email, Toast.LENGTH_SHORT).show();
         Log.d("TAGSearchMemberHere", email);
 
         DocumentReference docRef = db.collection("Board_Member_Data").document(email);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
 
-                    assert document != null;
-                    if (document.exists()) {
-                        MemberData data = document.toObject(MemberData.class);
+                assert document != null;
+                if (document.exists()) {
+                    MemberData data = document.toObject(MemberData.class);
 
-                        assert data != null;
-                        Log.d("TAGSearchMemberHere", "Found");
+                    assert data != null;
+                    Log.d("TAGSearchMemberHere", "Found");
 
-                        name.setText(data.getName());
-                        board_position.setText(data.getPosition());
-                        vit_email.setText(data.getVit_email());
-                        personal_email.setText(data.getPersonal_email());
-                        reg_number.setText(data.getReg_number());
-                        room_number.setText(data.getRoom_number());
-                        mobile.setText(data.getContact_number());
-                        domain1.setText(data.getDomain1());
-                        domain2.setText(data.getDomain2());
-                        dob.setText(data.getDob());
+                    name.setText(data.getName());
+                    board_position.setText(data.getPosition());
+                    vit_email.setText(data.getVit_email());
+                    personal_email.setText(data.getPersonal_email());
+                    reg_number.setText(data.getReg_number());
+                    room_number.setText(data.getRoom_number());
+                    mobile.setText(data.getContact_number());
+                    domain1.setText(data.getDomain1());
+                    domain2.setText(data.getDomain2());
+                    dob.setText(data.getDob());
 
-                        try {
-                            Picasso.get()
-                                    .load(data.getPhoto_link())
-                                    .into(photo);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                    } else {
-                        Log.d("TAGSearchMemberHere", "Not Found");
-
-//                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
-
+                    try {
+                        Picasso.get()
+                                .load(data.getPhoto_link())
+                                .into(photo);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
+
                 } else {
-                    Log.d("TAG", "get failed with ", task.getException());
+                    Log.d("TAG", "failed");
+//                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
                 }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
             }
         });
 
         DocumentReference docRefCore = db.collection("Core_Member_Data").document(email);
-        docRefCore.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    assert document != null;
-                    if (document.exists()) {
-                        MemberData data = document.toObject(MemberData.class);
+        docRefCore.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                assert document != null;
+                if (document.exists()) {
+                    MemberData data = document.toObject(MemberData.class);
 
-                        assert data != null;
+                    assert data != null;
 
-                        position.setVisibility(View.GONE);
+                    position.setVisibility(View.GONE);
 
-                        name.setText(data.getName());
-                        board_position.setText(data.getPosition());
-                        vit_email.setText(data.getVit_email());
-                        personal_email.setText(data.getPersonal_email());
-                        reg_number.setText(data.getReg_number());
-                        room_number.setText(data.getRoom_number());
-                        mobile.setText(data.getContact_number());
-                        domain1.setText(data.getDomain1());
-                        domain2.setText(data.getDomain2());
-                        dob.setText(data.getDob());
+                    name.setText(data.getName());
+                    board_position.setText(data.getPosition());
+                    vit_email.setText(data.getVit_email());
+                    personal_email.setText(data.getPersonal_email());
+                    reg_number.setText(data.getReg_number());
+                    room_number.setText(data.getRoom_number());
+                    mobile.setText(data.getContact_number());
+                    domain1.setText(data.getDomain1());
+                    domain2.setText(data.getDomain2());
+                    dob.setText(data.getDob());
 
-                        try {
-                            Picasso.get()
-                                    .load(data.getPhoto_link())
-                                    .into(photo);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                    } else {
-//                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
+                    try {
+                        Picasso.get()
+                                .load(data.getPhoto_link())
+                                .into(photo);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
+
                 } else {
-                    Log.d("TAG", "get failed with ", task.getException());
+                    Log.d("TAG", "failed");
                 }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
             }
         });
 

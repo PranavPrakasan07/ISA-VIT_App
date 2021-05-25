@@ -75,16 +75,9 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
 
         holder.task_name.setText(title_list.get(position));
 
-        holder.task_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), title_list.get(position), Toast.LENGTH_SHORT).show();
-                Toast.makeText(v.getContext(), deadline_list.get(position), Toast.LENGTH_SHORT).show();
-
-//                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-//                Fragment myFragment = new MemberTaskListFragment();
-//                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
-            }
+        holder.task_name.setOnClickListener(v -> {
+            Toast.makeText(v.getContext(), title_list.get(position), Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext(), deadline_list.get(position), Toast.LENGTH_SHORT).show();
         });
 
     }

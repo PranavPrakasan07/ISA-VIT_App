@@ -18,7 +18,6 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_host_core" />
 
-
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/n_nav_bar"
         style="@style/Widget.Neumorph.CardView"

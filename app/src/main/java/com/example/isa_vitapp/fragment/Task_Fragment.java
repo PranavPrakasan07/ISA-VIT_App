@@ -35,8 +35,6 @@ public class Task_Fragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -78,81 +76,60 @@ public class Task_Fragment extends Fragment {
         NeumorphCardView cno = view.findViewById(R.id.n_content);
         NeumorphCardView enf = view.findViewById(R.id.n_finance);
 
-        app.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                app.setShapeType(ShapeType.PRESSED);
-                domain_selected = "App Dev";
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
-                app.setShapeType(ShapeType.FLAT);
+        app.setOnClickListener(v -> {
+            app.setShapeType(ShapeType.PRESSED);
+            domain_selected = "App Dev";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+            app.setShapeType(ShapeType.FLAT);
 
-            }
         });
 
-        web.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                web.setShapeType(ShapeType.PRESSED);
-                domain_selected = "Web Dev";
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
-                web.setShapeType(ShapeType.FLAT);
+        web.setOnClickListener(v -> {
+            web.setShapeType(ShapeType.PRESSED);
+            domain_selected = "Web Dev";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+            web.setShapeType(ShapeType.FLAT);
 
-            }
         });
 
-        aiml.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                aiml.setShapeType(ShapeType.PRESSED);
-                domain_selected = "AIML";
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
-                aiml.setShapeType(ShapeType.FLAT);
+        aiml.setOnClickListener(v -> {
+            aiml.setShapeType(ShapeType.PRESSED);
+            domain_selected = "AIML";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+            aiml.setShapeType(ShapeType.FLAT);
 
-            }
         });
 
-        iot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iot.setShapeType(ShapeType.PRESSED);
-                domain_selected = "IoT";
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
-                iot.setShapeType(ShapeType.FLAT);
+        iot.setOnClickListener(v -> {
+            iot.setShapeType(ShapeType.PRESSED);
+            domain_selected = "IoT";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+            iot.setShapeType(ShapeType.FLAT);
 
-            }
         });
 
-        design.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                design.setShapeType(ShapeType.PRESSED);
-                domain_selected = "Design";
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
-                design.setShapeType(ShapeType.FLAT);
+        design.setOnClickListener(v -> {
+            design.setShapeType(ShapeType.PRESSED);
+            domain_selected = "Design";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+            design.setShapeType(ShapeType.FLAT);
 
-            }
         });
 
-        cno.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cno.setShapeType(ShapeType.PRESSED);
-                domain_selected = "C&O";
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
-                cno.setShapeType(ShapeType.FLAT);
+        cno.setOnClickListener(v -> {
+            cno.setShapeType(ShapeType.PRESSED);
+            domain_selected = "C&O";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+            cno.setShapeType(ShapeType.FLAT);
 
-            }
         });
 
-        enf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enf.setShapeType(ShapeType.PRESSED);
-                domain_selected = "E&F";
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
-                enf.setShapeType(ShapeType.FLAT);
+        enf.setOnClickListener(v -> {
+            enf.setShapeType(ShapeType.PRESSED);
+            domain_selected = "E&F";
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MemberListFragment()).commit();
+            enf.setShapeType(ShapeType.FLAT);
 
-            }
         });
 
         return view;

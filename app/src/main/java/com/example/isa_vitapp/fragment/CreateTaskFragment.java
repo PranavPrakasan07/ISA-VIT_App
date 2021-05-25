@@ -1,25 +1,18 @@
 package com.example.isa_vitapp.fragment;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-import com.example.isa_vitapp.classes.MemberData;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+
 import com.example.isa_vitapp.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -109,117 +102,82 @@ public class CreateTaskFragment extends Fragment {
 
         ImageButton back_button = view.findViewById(R.id.back_button);
 
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        back_button.setOnClickListener(v -> new AlertDialog.Builder(requireActivity())
+                .setTitle("Logout?")
+                .setMessage("Are you sure you want to go back?").setCancelable(true)
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, (arg0, arg1) -> requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new DomainListFragment()).commit()).create().show());
 
-                new AlertDialog.Builder(requireActivity())
-                        .setTitle("Logout?")
-                        .setMessage("Are you sure you want to go back?").setCancelable(true)
-                        .setNegativeButton(android.R.string.no, null)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+        title.setOnFocusChangeListener((v, hasFocus) -> {
 
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new DomainListFragment()).commit();
-                            }
-                        }).create().show();
-            }
+            task_title = title.getText().toString();
+            task_desc = desc.getText().toString();
+            task_deadline = deadline.getText().toString();
 
-        });
-
-        title.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
-                task_title = title.getText().toString();
-                task_desc = desc.getText().toString();
-                task_deadline = deadline.getText().toString();
-
-                Toast.makeText(getActivity(), "Touched title", Toast.LENGTH_SHORT).show();
-                if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
-                    add_button.setTextColor(Color.parseColor(GREY));
-                } else {
-                    add_button.setTextColor(Color.parseColor(BLUE));
-                }
+            if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
+                add_button.setTextColor(Color.parseColor(GREY));
+            } else {
+                add_button.setTextColor(Color.parseColor(BLUE));
             }
         });
 
-        desc.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
+        desc.setOnFocusChangeListener((v, hasFocus) -> {
 
-                task_title = title.getText().toString();
-                task_desc = desc.getText().toString();
-                task_deadline = deadline.getText().toString();
+            task_title = title.getText().toString();
+            task_desc = desc.getText().toString();
+            task_deadline = deadline.getText().toString();
 
-                Toast.makeText(getActivity(), "Touched desc", Toast.LENGTH_SHORT).show();
-                if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
-                    add_button.setTextColor(Color.parseColor(GREY));
-                } else {
-                    add_button.setTextColor(Color.parseColor(BLUE));
-                }
+            if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
+                add_button.setTextColor(Color.parseColor(GREY));
+            } else {
+                add_button.setTextColor(Color.parseColor(BLUE));
             }
         });
 
-        deadline.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
+        deadline.setOnFocusChangeListener((v, hasFocus) -> {
 
-                task_title = title.getText().toString();
-                task_desc = desc.getText().toString();
-                task_deadline = deadline.getText().toString();
+            task_title = title.getText().toString();
+            task_desc = desc.getText().toString();
+            task_deadline = deadline.getText().toString();
 
-                Toast.makeText(getActivity(), "Touched desc", Toast.LENGTH_SHORT).show();
-                if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
-                    add_button.setTextColor(Color.parseColor(GREY));
-                } else {
-                    add_button.setTextColor(Color.parseColor(BLUE));
-                }
+            if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
+                add_button.setTextColor(Color.parseColor(GREY));
+            } else {
+                add_button.setTextColor(Color.parseColor(BLUE));
             }
         });
 
 
-        add_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        add_button.setOnClickListener(v -> {
 
-                add_button.setShapeType(ShapeType.PRESSED);
+            add_button.setShapeType(ShapeType.PRESSED);
 
-                task_title = title.getText().toString();
-                task_desc = desc.getText().toString();
-                task_deadline = deadline.getText().toString();
+            task_title = title.getText().toString();
+            task_desc = desc.getText().toString();
+            task_deadline = deadline.getText().toString();
 
-                if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
-                    add_button.setTextColor(Color.parseColor(GREY));
-                } else {
-                    add_button.setTextColor(Color.parseColor(BLUE));
+            if (task_title.equals("") || task_desc.equals("") || task_deadline.equals("")) {
+                add_button.setTextColor(Color.parseColor(GREY));
+            } else {
+                add_button.setTextColor(Color.parseColor(BLUE));
 
-                    Map<String, Object> docData = new HashMap<>();
-                    docData.put("title", task_title);
-                    docData.put("description", task_desc);
-                    docData.put("deadline", task_deadline);
-                    docData.put("setby", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
-                    docData.put("passed", false);
+                Map<String, Object> docData = new HashMap<>();
+                docData.put("title", task_title);
+                docData.put("description", task_desc);
+                docData.put("deadline", task_deadline);
+                docData.put("setby", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
+                docData.put("passed", false);
 
-                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                    db.collection("Task_" + DomainListFragment.domain_selected).document(task_deadline)
-                            .set(docData)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d("TAG", "DocumentSnapshot successfully written!");
-                                    add_button.setShapeType(ShapeType.FLAT);
-                                    add_button.setText("Update");
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.w("TAG", "Error writing document", e);
-                                }
-                            });
-                }
+                db.collection("Task_" + DomainListFragment.domain_selected).document(task_deadline)
+                        .set(docData)
+                        .addOnSuccessListener(aVoid -> {
+                            Log.d("TAG", "DocumentSnapshot successfully written!");
+                            add_button.setShapeType(ShapeType.FLAT);
+                            add_button.setText("Update");
+                        })
+                        .addOnFailureListener(e -> Log.w("TAG", "Error writing document", e));
             }
         });
 

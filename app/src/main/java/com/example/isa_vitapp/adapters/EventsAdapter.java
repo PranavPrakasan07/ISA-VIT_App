@@ -94,158 +94,23 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
         holder.title.setText(title_list.get(position));
         holder.content.setText(content_list.get(position));
 
-        holder.poster.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("TAG", "No touch");
+        holder.poster.setOnClickListener(v -> {
+            Log.d("TAG", "No touch");
 
-                //click poster
+            //click poster
 //                flip_animation(holder, v, -1);
 
-                int flag = 1;
+            int flag = 1;
 
-                float scale = v.getContext().getResources().getDisplayMetrics().density;
-                float distance = holder.poster.getCameraDistance() * (scale + (scale / 3));
-                holder.poster.setCameraDistance(distance);
+            float scale = v.getContext().getResources().getDisplayMetrics().density;
+            float distance = holder.poster.getCameraDistance() * (scale + (scale / 3));
+            holder.poster.setCameraDistance(distance);
 // first quarter turn
-                holder.poster.animate().withLayer()
-                        .rotationY(90*flag)
-                        .setDuration(300)
-                        .withEndAction(
-                                new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                        // second quarter turn
-                                        v.setRotationY(-90*flag);
-                                        v.animate().withLayer()
-                                                .rotationY(0)
-                                                .setDuration(300)
-                                                .start();
-
-                                        holder.poster.setVisibility(View.INVISIBLE);
-                                        holder.detail_card.setVisibility(View.VISIBLE);
-
-                                    }
-                                }
-                        ).start();
-
-                holder.youtube_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (!youtube_list.get(position).equals("-")) {
-
-                            holder.youtube_button.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    String url = youtube_list.get(position);
-                                    Intent i = new Intent(Intent.ACTION_VIEW);
-                                    i.setData(Uri.parse(url));
-                                    v.getContext().startActivity(i);
-                                }
-                            });
-
-                        } else {
-
-                            String url = "https://www.youtube.com/channel/UCS-HWnmvs5cYEplDuxfO7PA";
-                            Intent i = new Intent(Intent.ACTION_VIEW);
-                            i.setData(Uri.parse(url));
-                            v.getContext().startActivity(i);
-                        }
-                    }
-                });
-
-                if (open_list.get(position)) {
-                    holder.register_button.setTextColor(Color.parseColor("#0C97E8"));
-
-                    holder.register_button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String url = reg_list.get(position);
-                            Intent i = new Intent(Intent.ACTION_VIEW);
-                            i.setData(Uri.parse(url));
-                            v.getContext().startActivity(i);
-                        }
-                    });
-
-                } else {
-                    holder.register_button.setShapeType(ShapeType.PRESSED);
-                }
-            }
-        });
-
-        holder.detail_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("TAG", "No touch");
-//
-//                holder.detail_card.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        final ObjectAnimator oa1 = ObjectAnimator.ofFloat(holder.detail_card, "scaleX", 1f, 0f);
-//                        final ObjectAnimator oa2 = ObjectAnimator.ofFloat(holder.detail_card, "scaleX", 0f, 1f);
-//                        oa1.setInterpolator(new DecelerateInterpolator());
-//                        oa2.setInterpolator(new AccelerateDecelerateInterpolator());
-//                        oa1.addListener(new AnimatorListenerAdapter() {
-//                            @Override
-//                            public void onAnimationEnd(Animator animation) {
-//                                super.onAnimationEnd(animation);
-//                                holder.poster.setVisibility(View.VISIBLE);
-//                                oa2.start();
-//                            }
-//                        });
-//                        oa1.start();
-//
-//
-//
-//                    }
-//                });
-
-
-                int flag = -1;
-
-                float scale = v.getContext().getResources().getDisplayMetrics().density;
-                float distance = holder.detail_card.getCameraDistance() * (scale + (scale / 3));
-                holder.detail_card.setCameraDistance(distance);
-// first quarter turn
-                holder.detail_card.animate().withLayer()
-                        .rotationY(90*flag)
-                        .setDuration(300)
-                        .withEndAction(
-                                new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                        // second quarter turn
-                                        v.setRotationY(-90*flag);
-                                        v.animate().withLayer()
-                                                .rotationY(0)
-                                                .setDuration(300)
-                                                .start();
-
-                                        holder.poster.setVisibility(View.VISIBLE);
-                                        holder.detail_card.setVisibility(View.INVISIBLE);
-                                    }
-                                }
-                        ).start();
-            }
-        });
-
-    }
-
-    private void flip_animation(EventsViewHolder holder, View v, int flag) {
-
-        float scale = v.getContext().getResources().getDisplayMetrics().density;
-        float distance = holder.poster.getCameraDistance() * (scale + (scale / 3));
-        holder.poster.setCameraDistance(distance);
-// first quarter turn
-        holder.poster.animate().withLayer()
-                .rotationY(90*flag)
-                .setDuration(300)
-                .withEndAction(
-                        new Runnable() {
-                            @Override
-                            public void run() {
+            holder.poster.animate().withLayer()
+                    .rotationY(90*flag)
+                    .setDuration(300)
+                    .withEndAction(
+                            () -> {
 
                                 // second quarter turn
                                 v.setRotationY(-90*flag);
@@ -254,19 +119,73 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
                                         .setDuration(300)
                                         .start();
 
-                                if(flag == 1) {
-                                    holder.poster.setVisibility(View.VISIBLE);
-                                    holder.detail_card.setVisibility(View.VISIBLE);
-
-                                }else{
-                                    holder.poster.setVisibility(View.INVISIBLE);
-                                    holder.detail_card.setVisibility(View.VISIBLE);
-
-                                }
+                                holder.poster.setVisibility(View.INVISIBLE);
+                                holder.detail_card.setVisibility(View.VISIBLE);
 
                             }
-                        }
-                ).start();
+                    ).start();
+
+            holder.youtube_button.setOnClickListener(v1 -> {
+                if (!youtube_list.get(position).equals("-")) {
+
+                    holder.youtube_button.setOnClickListener(v11 -> {
+                        String url = youtube_list.get(position);
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(url));
+                        v11.getContext().startActivity(i);
+                    });
+
+                } else {
+
+                    String url = "https://www.youtube.com/channel/UCS-HWnmvs5cYEplDuxfO7PA";
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    v1.getContext().startActivity(i);
+                }
+            });
+
+            if (open_list.get(position)) {
+                holder.register_button.setTextColor(Color.parseColor("#0C97E8"));
+
+                holder.register_button.setOnClickListener(v12 -> {
+                    String url = reg_list.get(position);
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    v12.getContext().startActivity(i);
+                });
+
+            } else {
+                holder.register_button.setShapeType(ShapeType.PRESSED);
+            }
+        });
+
+        holder.detail_card.setOnClickListener(v -> {
+            Log.d("TAG", "No touch");
+
+            int flag = -1;
+
+            float scale = v.getContext().getResources().getDisplayMetrics().density;
+            float distance = holder.detail_card.getCameraDistance() * (scale + (scale / 3));
+            holder.detail_card.setCameraDistance(distance);
+// first quarter turn
+            holder.detail_card.animate().withLayer()
+                    .rotationY(90*flag)
+                    .setDuration(300)
+                    .withEndAction(
+                            () -> {
+
+                                // second quarter turn
+                                v.setRotationY(-90*flag);
+                                v.animate().withLayer()
+                                        .rotationY(0)
+                                        .setDuration(300)
+                                        .start();
+
+                                holder.poster.setVisibility(View.VISIBLE);
+                                holder.detail_card.setVisibility(View.INVISIBLE);
+                            }
+                    ).start();
+        });
 
     }
 

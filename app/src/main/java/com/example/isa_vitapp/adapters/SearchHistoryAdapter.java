@@ -69,22 +69,17 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
         holder.member_name.setText(name_list.get(position));
 
-        holder.bg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), name_list.get(position), Toast.LENGTH_SHORT).show();
-                Toast.makeText(v.getContext(), email_list.get(position), Toast.LENGTH_SHORT).show();
+        holder.bg.setOnClickListener(v -> {
+            Toast.makeText(v.getContext(), name_list.get(position), Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext(), email_list.get(position), Toast.LENGTH_SHORT).show();
 
-                Search_Fragment.searched_member_email = email_list.get(position);
+            Search_Fragment.searched_member_email = email_list.get(position);
 
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                Fragment myFragment = new SearchMemberFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).commit();
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            Fragment myFragment = new SearchMemberFragment();
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).commit();
 
-            }
         });
-
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)

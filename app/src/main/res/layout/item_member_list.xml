@@ -12,6 +12,7 @@
     android:background="@color/dark_button"
     app:neumorph_backgroundColor="@color/dark_button"
     app:neumorph_lightSource="leftTop"
+    app:neumorph_shadowElevation="4dp"
     app:neumorph_shadowColorDark="@color/shadow_dark"
     app:neumorph_shadowColorLight="@color/shadow_light"
     app:neumorph_shapeType="flat">
@@ -20,7 +21,10 @@
         android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="12dp">
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
         <TextView
             android:id="@+id/member_name"

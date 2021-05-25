@@ -195,20 +195,17 @@ public class FetchFromDB {
         Source source = Source.DEFAULT;
 
         // Get the document, forcing the SDK to use the offline cache
-        docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    // Document found in the offline cache
-                    DocumentSnapshot document = task.getResult();
-                    assert document != null;
-                    Log.d("TAG", "Cached document data: " + document.getData());
+        docRef.get(source).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // Document found in the offline cache
+                DocumentSnapshot document = task.getResult();
+                assert document != null;
+                Log.d("TAG", "Cached document data: " + document.getData());
 
-                    position_name = document.getData();
+                position_name = document.getData();
 
-                } else {
-                    Log.d("TAG", "Cached get failed: ", task.getException());
-                }
+            } else {
+                Log.d("TAG", "Cached get failed: ", task.getException());
             }
         });
 
@@ -223,20 +220,17 @@ public class FetchFromDB {
         Source source = Source.DEFAULT;
 
         // Get the document, forcing the SDK to use the offline cache
-        docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    // Document found in the offline cache
-                    DocumentSnapshot document = task.getResult();
-                    assert document != null;
-                    Log.d("TAG", "Cached document data: " + document.getData());
+        docRef.get(source).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // Document found in the offline cache
+                DocumentSnapshot document = task.getResult();
+                assert document != null;
+                Log.d("TAG", "Cached document data: " + document.getData());
 
-                    member_details = document.getData();
+                member_details = document.getData();
 
-                } else {
-                    Log.d("TAG", "Cached get failed: ", task.getException());
-                }
+            } else {
+                Log.d("TAG", "Cached get failed: ", task.getException());
             }
         });
 

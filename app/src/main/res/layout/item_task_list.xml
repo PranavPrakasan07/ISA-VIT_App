@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="4dp"
     android:background="@color/dark_button"
     app:neumorph_backgroundColor="@color/dark_button"
     app:neumorph_lightSource="leftTop"
+    app:neumorph_shadowElevation="4dp"
     app:neumorph_shadowColorDark="@color/shadow_dark"
     app:neumorph_shadowColorLight="@color/shadow_light"
     app:neumorph_shapeType="flat">
@@ -17,7 +18,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp">
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp">
 
         <TextView
             android:id="@+id/task_title"
@@ -32,8 +36,8 @@
 
         <ImageButton
             android:id="@+id/pass_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"

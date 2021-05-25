@@ -72,19 +72,16 @@ public class DomainMembersAdapter extends RecyclerView.Adapter<DomainMembersAdap
 
         holder.member_name.setText(name_list.get(position));
 
-        holder.member_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), name_list.get(position), Toast.LENGTH_SHORT).show();
-                Toast.makeText(v.getContext(), email_list.get(position), Toast.LENGTH_SHORT).show();
+        holder.member_name.setOnClickListener(v -> {
+            Toast.makeText(v.getContext(), name_list.get(position), Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext(), email_list.get(position), Toast.LENGTH_SHORT).show();
 
-                MemberListFragment.selected_core_member_name = name_list.get(position);
-                MemberListFragment.selected_core_member_email = email_list.get(position);
+            MemberListFragment.selected_core_member_name = name_list.get(position);
+            MemberListFragment.selected_core_member_email = email_list.get(position);
 
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                Fragment myFragment = new MemberTaskListFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
-            }
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            Fragment myFragment = new MemberTaskListFragment();
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
         });
 
     }

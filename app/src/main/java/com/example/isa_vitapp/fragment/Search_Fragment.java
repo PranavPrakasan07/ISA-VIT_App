@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -108,7 +107,6 @@ public class Search_Fragment extends Fragment {
         search_history_card = view.findViewById(R.id.search_history_card);
 
         recyclerView = view.findViewById(R.id.list_view);
-        TextView textView = view.findViewById(R.id.member_name);
 
         searchbutton.setOnClickListener(v -> {
             String name = searchbar.getText().toString();

@@ -103,12 +103,11 @@
     </style>
 
     <style name="CustomButtonAppearance1">
-        <item name="neumorph_cornerFamily">rounded</item>
-        <item name="neumorph_cornerSize">12dp</item>
-        <item name="neumorph_cornerSizeTopLeft">8dp</item>
-        <item name="neumorph_cornerSizeTopRight">8dp</item>
-        <item name="neumorph_cornerSizeBottomLeft">8dp</item>
-        <item name="neumorph_cornerSizeBottomRight">8dp</item>
+        <item name="neumorph_cornerSize">2dp</item>
+        <item name="neumorph_cornerSizeTopLeft">2dp</item>
+        <item name="neumorph_cornerSizeTopRight">2dp</item>
+        <item name="neumorph_cornerSizeBottomLeft">2dp</item>
+        <item name="neumorph_cornerSizeBottomRight">2dp</item>
     </style>
 
     <style name="TextLabel" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">

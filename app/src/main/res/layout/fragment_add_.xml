@@ -140,7 +140,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center_vertical"
             android:padding="32dp"
-            android:text="Add Member"
+            android:text="View Tasks"
             android:textAlignment="gravity"
             android:textAllCaps="false"
             android:textColor="@color/blue_button_light"

@@ -264,22 +264,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/not_member"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        android:fontFamily="@font/poppins_medium"-->
-<!--        android:text="Not a member?"-->
-<!--        android:textColor="@color/heading_color"-->
-<!--        android:textSize="16sp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/message"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/n_login_card" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/not_member"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:layout_marginBottom="16dp"-->
+    <!--        android:fontFamily="@font/poppins_medium"-->
+    <!--        android:text="Not a member?"-->
+    <!--        android:textColor="@color/heading_color"-->
+    <!--        android:textSize="16sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/message"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/n_login_card" />-->
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"

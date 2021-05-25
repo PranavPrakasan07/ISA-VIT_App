@@ -1,11 +1,10 @@
 package com.example.isa_vitapp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.isa_vitapp.R;
 
@@ -18,10 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
         Button crashButton = new Button(this);
         crashButton.setText("Crash!");
-        crashButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                throw new RuntimeException("Test Crash"); // Force a crash
-            }
+
+        crashButton.setOnClickListener(view -> {
+            throw new RuntimeException("Test Crash"); // Force a crash
         });
 
         addContentView(crashButton, new ViewGroup.LayoutParams(

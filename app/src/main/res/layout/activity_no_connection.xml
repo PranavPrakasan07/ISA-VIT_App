@@ -7,7 +7,6 @@
     android:background="@drawable/background_gradient"
     tools:context=".activity.NoConnectionActivity">
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
         android:layout_width="wrap_content"
@@ -29,10 +28,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="0dp"
-        android:textColor="@color/heading_color"
         android:fontFamily="@font/poppins_medium"
-        android:textSize="16sp"
         android:text="Seems like we"
+        android:textColor="@color/heading_color"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -44,11 +43,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="64dp"
-        android:textColor="@color/field_color"
         android:fontFamily="@font/poppins_semibold"
-        android:textSize="18sp"
         android:text="lost connectivity!"
         android:textAllCaps="true"
+        android:textColor="@color/field_color"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -28,7 +28,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:background="@color/transparent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,11 +40,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:backgroundTint="@color/transparent"
-                android:textColor="@color/blue_button_light"
-                android:textSize="16sp"
                 android:fontFamily="@font/poppins"
                 android:hint="Enter Name"
+                android:textColor="@color/blue_button_light"
                 android:textColorHint="@color/field_color"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/search_button"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -86,7 +86,7 @@
             android:id="@+id/list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
+            android:layout_margin="8dp" />
 
     </soup.neumorphism.NeumorphCardView>
 
