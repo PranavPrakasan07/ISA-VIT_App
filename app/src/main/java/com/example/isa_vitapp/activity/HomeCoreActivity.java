@@ -2,7 +2,6 @@ package com.example.isa_vitapp.activity;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,7 +50,7 @@ public class HomeCoreActivity extends AppCompatActivity {
         Log.d("TAG : i", String.valueOf(R.id.nav_task));
         Log.d("TAG : i", String.valueOf(R.id.projects_header));
 
-        Toast.makeText(this, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(), Toast.LENGTH_SHORT).show();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 

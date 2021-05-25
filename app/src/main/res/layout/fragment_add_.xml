@@ -136,7 +136,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical|start"
             android:background="#00FFC700"
-            android:drawableEnd="@drawable/ic_add_user"
+            android:drawableEnd="@drawable/ic_view_task"
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center_vertical"
             android:padding="32dp"

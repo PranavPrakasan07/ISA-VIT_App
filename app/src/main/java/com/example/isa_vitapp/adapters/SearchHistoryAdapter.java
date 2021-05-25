@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -70,8 +69,6 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
         holder.member_name.setText(name_list.get(position));
 
         holder.bg.setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), name_list.get(position), Toast.LENGTH_SHORT).show();
-            Toast.makeText(v.getContext(), email_list.get(position), Toast.LENGTH_SHORT).show();
 
             Search_Fragment.searched_member_email = email_list.get(position);
 

@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -73,8 +72,6 @@ public class DomainMembersAdapter extends RecyclerView.Adapter<DomainMembersAdap
         holder.member_name.setText(name_list.get(position));
 
         holder.member_name.setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), name_list.get(position), Toast.LENGTH_SHORT).show();
-            Toast.makeText(v.getContext(), email_list.get(position), Toast.LENGTH_SHORT).show();
 
             MemberListFragment.selected_core_member_name = name_list.get(position);
             MemberListFragment.selected_core_member_email = email_list.get(position);
