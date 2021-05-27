@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/profile_Fragment"
-        android:name="com.example.isa_vitapp.fragment.Profile_Fragment"
+        android:name="com.pranavprksn.isa_vitapp.fragment.Profile_Fragment"
         android:label="fragment_profile_"
         tools:layout="@layout/fragment_profile_" />
 
@@ -16,12 +16,12 @@
 
     <fragment
         android:id="@+id/activityCoreFragment"
-        android:name="com.example.isa_vitapp.fragment.ActivityCoreFragment"
+        android:name="com.pranavprksn.isa_vitapp.fragment.ActivityCoreFragment"
         android:label="fragment_activity_core"
         tools:layout="@layout/fragment_activity_core" />
     <fragment
         android:id="@+id/taskCoreFragment"
-        android:name="com.example.isa_vitapp.fragment.TaskCoreFragment"
+        android:name="com.pranavprksn.isa_vitapp.fragment.TaskCoreFragment"
         android:label="fragment_task_core"
         tools:layout="@layout/fragment_task_core" />
 

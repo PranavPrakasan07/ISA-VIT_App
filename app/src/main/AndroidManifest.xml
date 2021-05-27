@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.isa_vitapp">
+    package="com.pranavprksn.isa_vitapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,23 +13,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ISAVITApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.NoConnectionActivity"/>
-        <activity android:name=".activity.HomeCoreActivity" />
-        <activity android:name=".activity.EventsActivity" />
-        <activity android:name=".activity.AboutActivity" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.NoConnectionActivity"/>
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.HomeCoreActivity" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.EventsActivity" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.AboutActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".activity.LoginSplash" />
-        <activity android:name=".activity.LogoutSplash" />
-        <activity android:name=".activity.Login" />
-        <activity android:name=".activity.SignUp" />
-        <activity android:name=".activity.Home" />
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.NotMemberPage" />
-        <activity android:name=".activity.SplashScreen">
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.LoginSplash" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.LogoutSplash" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.Login" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.SignUp" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.Home" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.MainActivity" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.NotMemberPage" />
+        <activity android:name="com.pranavprksn.isa_vitapp.activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
