@@ -50,6 +50,9 @@ public class MemberTaskListFragment extends Fragment {
     ArrayList<String> title_list = new ArrayList<>();
     ArrayList<String> setby_list = new ArrayList<>();
 
+    public static String task_clicked_title = "";
+    public static String task_clicked_deadline = "";
+
     Map<String, Object> details = new Map<String, Object>() {
         @Override
         public int size() {
@@ -172,7 +175,7 @@ public class MemberTaskListFragment extends Fragment {
         domain.setText(Task_Fragment.domain_selected);
         member.setText(MemberListFragment.selected_core_member_name);
 
-        Toast.makeText(getActivity(), MemberListFragment.selected_core_member_email, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), MemberListFragment.selected_core_member_email, Toast.LENGTH_SHORT).show();
 
         ImageButton back_button = view.findViewById(R.id.back_button);
 

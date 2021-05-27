@@ -68,8 +68,6 @@ public class Add_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_, container, false);
 
-
-
         add_task = view.findViewById(R.id.n_add_task_card);
         remove_task = view.findViewById(R.id.n_del_task_card);
 

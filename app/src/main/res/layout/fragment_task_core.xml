@@ -167,7 +167,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="TextView"
                         android:textColor="@color/heading_color"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/desc_domain1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +184,7 @@
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textColor="@color/heading_color"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -210,7 +210,7 @@
                             android:fontFamily="@font/poppins_semibold"
                             android:text="Deadline : "
                             android:textColor="@color/field_color"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/deadline_domain1"
@@ -218,8 +218,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
                             android:text="-"
-                            android:textColor="@color/blue_button_light"
-                            android:textSize="18sp" />
+                            android:textColor="@color/field_color"
+                            android:textSize="16sp" />
 
 
                     </LinearLayout>
@@ -332,7 +332,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="TextView"
                         android:textColor="@color/heading_color"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/desc_domain2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -349,7 +349,7 @@
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textColor="@color/heading_color"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -375,7 +375,7 @@
                             android:fontFamily="@font/poppins_semibold"
                             android:text="Deadline : "
                             android:textColor="@color/field_color"
-                            android:textSize="18sp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/deadline_domain2"
@@ -383,8 +383,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
                             android:text="-"
-                            android:textColor="@color/blue_button_light"
-                            android:textSize="18sp" />
+                            android:textColor="@color/field_color"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <ImageButton

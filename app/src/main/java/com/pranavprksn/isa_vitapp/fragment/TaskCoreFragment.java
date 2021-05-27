@@ -124,12 +124,15 @@ public class TaskCoreFragment extends Fragment {
                             try {
                                 d2 = new SimpleDateFormat("yyyy-MM-dd").parse(taskData1.getDeadline());
 
-                                if (d1.compareTo(d2) > 0) {
-                                    deadline_domain1.setTextColor(Color.parseColor(ConstantsClass.BLUE_LIGHT));
+                                if (d1.after(d2)) {
                                     setTaskDetails(taskData1, 1);
-                                } else if (d1.compareTo(d2) <= 0) {
-                                    deadline_domain1.setTextColor(Color.parseColor(ConstantsClass.BLUE_LIGHT));
+                                    deadline_domain1.setTextColor(Color.parseColor(ConstantsClass.FIELD_COLOR));
+                                    done1.setImageResource(R.drawable.ic_grey_round);
+
+                                } else if (d1.before(d2)) {
                                     setTaskDetails(taskData1, 1);
+                                    deadline_domain1.setTextColor(Color.parseColor(ConstantsClass.BLUE_LIGHT));
+                                    done1.setImageResource(R.drawable.ic_blue_round);
 
                                 }
                             } catch (ParseException e) {
@@ -162,12 +165,16 @@ public class TaskCoreFragment extends Fragment {
                             try {
                                 d2 = new SimpleDateFormat("yyyy-MM-dd").parse(taskData2.getDeadline());
 
-                                if (d1.compareTo(d2) > 0) {
+                                if (d1.after(d2)) {
+                                    setTaskDetails(taskData2, 2);
                                     deadline_domain2.setTextColor(Color.parseColor(ConstantsClass.FIELD_COLOR));
+                                    done2.setImageResource(R.drawable.ic_grey_round);
+
+                                } else if (d1.before(d2)) {
                                     setTaskDetails(taskData2, 2);
-                                } else if (d1.compareTo(d2) <= 0) {
                                     deadline_domain2.setTextColor(Color.parseColor(ConstantsClass.BLUE_LIGHT));
-                                    setTaskDetails(taskData2, 2);
+                                    done2.setImageResource(R.drawable.ic_blue_round);
+
                                 }
                             } catch (ParseException e) {
                                 e.printStackTrace();

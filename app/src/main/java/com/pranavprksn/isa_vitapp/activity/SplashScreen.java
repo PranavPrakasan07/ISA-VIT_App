@@ -25,11 +25,11 @@ public class SplashScreen extends AppCompatActivity {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-       new Handler().postDelayed(() -> {
+        new Handler().postDelayed(() -> {
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-            if(user != null){
+            if (user != null) {
                 Log.d("TAG", user.getEmail());
 
                 DocumentReference docRefCore = db.collection("Core_Member_Data").document(Objects.requireNonNull(user.getEmail()));
@@ -39,10 +39,12 @@ public class SplashScreen extends AppCompatActivity {
                         assert document != null;
                         if (document.exists()) {
                             startActivity(new Intent(getApplicationContext(), HomeCoreActivity.class));
+                            finish();
                         }
                     } else {
                         Log.d("TAG", "get failed with ", task.getException());
                         startActivity(new Intent(getApplicationContext(), NoConnectionActivity.class));
+
                     }
                 });
 
@@ -53,14 +55,16 @@ public class SplashScreen extends AppCompatActivity {
                         assert document != null;
                         if (document.exists()) {
                             startActivity(new Intent(getApplicationContext(), Home.class));
+                            finish();
                         }
                     } else {
                         Log.d("TAG", "get failed with ", task.getException());
                         startActivity(new Intent(getApplicationContext(), NoConnectionActivity.class));
                     }
                 });
-            }else{
+            } else {
                 startActivity(new Intent(getApplicationContext(), SignUp.class));
+                finish();
             }
         }, 2000);
     }

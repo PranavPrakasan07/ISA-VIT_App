@@ -1,5 +1,6 @@
 package com.pranavprksn.isa_vitapp.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pranavprksn.isa_vitapp.R;
+import com.pranavprksn.isa_vitapp.fragment.MemberTaskFragment;
+import com.pranavprksn.isa_vitapp.fragment.MemberTaskListFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -23,7 +28,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
     public ArrayList<String> description_list = new ArrayList<>();
     public ArrayList<String> title_list = new ArrayList<>();
     public ArrayList<String> setby_list = new ArrayList<>();
-
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -76,8 +80,19 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
         holder.task_name.setText(title_list.get(position));
 
         holder.task_name.setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), title_list.get(position), Toast.LENGTH_SHORT).show();
-            Toast.makeText(v.getContext(), deadline_list.get(position), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(v.getContext(), title_list.get(position), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(v.getContext(), deadline_list.get(position), Toast.LENGTH_SHORT).show();
+
+            Log.d("TAG", title_list.get(position));
+            Log.d("TAG", deadline_list.get(position));
+
+            MemberTaskListFragment.task_clicked_title = title_list.get(position);
+            MemberTaskListFragment.task_clicked_deadline = deadline_list.get(position);
+
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            Fragment myFragment = new MemberTaskFragment();
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
+
         });
 
     }

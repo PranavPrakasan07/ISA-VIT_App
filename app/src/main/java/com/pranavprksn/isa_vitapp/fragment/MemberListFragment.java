@@ -163,12 +163,12 @@ public class MemberListFragment extends Fragment {
         TextView domain_name_tab = view.findViewById(R.id.domain_name_tab);
         ImageButton back_button = view.findViewById(R.id.back_button);
 
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Task_Fragment()).commit();
-            }
-        });
+        back_button.setOnClickListener(v -> requireActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment, new Task_Fragment())
+                .commit()
+        );
 
         domain_name_tab.setText(Task_Fragment.domain_selected);
 

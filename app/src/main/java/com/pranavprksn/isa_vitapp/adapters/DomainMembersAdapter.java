@@ -23,6 +23,8 @@ public class DomainMembersAdapter extends RecyclerView.Adapter<DomainMembersAdap
     public ArrayList<String> name_list;
     public ArrayList<String> email_list;
 
+    public static String member_clicked_name = "";
+    public static String member_clicked_email = "";
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -76,9 +78,16 @@ public class DomainMembersAdapter extends RecyclerView.Adapter<DomainMembersAdap
             MemberListFragment.selected_core_member_name = name_list.get(position);
             MemberListFragment.selected_core_member_email = email_list.get(position);
 
+            member_clicked_name = name_list.get(position);
+            member_clicked_email = email_list.get(position);
+
             AppCompatActivity activity = (AppCompatActivity) v.getContext();
             Fragment myFragment = new MemberTaskListFragment();
-            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
+
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment, myFragment)
+                    .addToBackStack(null).commit();
         });
 
     }

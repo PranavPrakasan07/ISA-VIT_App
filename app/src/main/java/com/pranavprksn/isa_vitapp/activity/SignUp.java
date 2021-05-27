@@ -150,7 +150,7 @@ public class SignUp extends AppCompatActivity {
 
                     if (!found[0]) {
                         Log.d("TAG", "Not a member");
-                        Toast.makeText(SignUp.this, "Not a core member!", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(SignUp.this, "Not a core member!", Toast.LENGTH_SHORT).show();
 //                        startActivity(new Intent(getApplicationContext(), AboutActivity.class));
                     }
                     progressBar.setVisibility(View.GONE);
