@@ -11,17 +11,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.classes.ConstantsClass;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,20 +25,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link MemberTaskFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * For board members to comment on the tasks submitted, blue button to submit remarks
  */
+
 public class MemberTaskFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     String remarks_text = "";
 
@@ -73,8 +63,9 @@ public class MemberTaskFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            // TODO: Rename and change types of parameters
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -114,7 +105,6 @@ public class MemberTaskFragment extends Fragment {
         task_title.setText(task_title_text);
         task_deadline.setText(task_deadline_text);
 
-        SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
         Date d1 = new Date();
         Date d2 = null;
 
@@ -150,13 +140,13 @@ public class MemberTaskFragment extends Fragment {
                     .set(task_details, SetOptions.merge())
                     .addOnSuccessListener(unused -> {
                         Log.d("TAG", "Successful to write document");
-                        ;
                         Toast.makeText(getActivity(), "Remarks submitted!", Toast.LENGTH_SHORT).show();
 
                     })
                     .addOnFailureListener(e -> {
                         Log.d("TAG", "Failed to write document");
-                        ;
+                        Toast.makeText(getActivity(), "Failed to submit remarks!", Toast.LENGTH_SHORT).show();
+
                     });
         });
 

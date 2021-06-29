@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.fragment.MemberTaskFragment;
 import com.pranavprksn.isa_vitapp.fragment.MemberTaskListFragment;
+import com.pranavprksn.isa_vitapp.fragment.MyTaskFragment;
+import com.pranavprksn.isa_vitapp.fragment.MyTaskListFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,6 +30,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
     public ArrayList<String> description_list = new ArrayList<>();
     public ArrayList<String> title_list = new ArrayList<>();
     public ArrayList<String> setby_list = new ArrayList<>();
+
+    boolean fromMember = true;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -49,7 +53,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public TaskListAdapter(ArrayList<String> title, ArrayList<Boolean> passed, ArrayList<String> description, ArrayList<String> deadline, ArrayList<String> setby) {
+    public TaskListAdapter(ArrayList<String> title, ArrayList<Boolean> passed, ArrayList<String> description, ArrayList<String> deadline, ArrayList<String> setby, boolean from) {
 //        mDataset.putAll(myDataset);
 
         title_list = title;
@@ -57,6 +61,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
         deadline_list = deadline;
         description_list = description;
         passed_list = passed;
+
+        fromMember = from;
 
     }
 
@@ -86,13 +92,22 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
             Log.d("TAG", title_list.get(position));
             Log.d("TAG", deadline_list.get(position));
 
-            MemberTaskListFragment.task_clicked_title = title_list.get(position);
-            MemberTaskListFragment.task_clicked_deadline = deadline_list.get(position);
-
             AppCompatActivity activity = (AppCompatActivity) v.getContext();
-            Fragment myFragment = new MemberTaskFragment();
-            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
 
+            Fragment myFragment;
+            if (!fromMember) {
+                //For board side
+                MemberTaskListFragment.task_clicked_title = title_list.get(position);
+                MemberTaskListFragment.task_clicked_deadline = deadline_list.get(position);
+                myFragment = new MemberTaskFragment();
+            }
+            else{
+                // or core side
+                MyTaskListFragment.task_clicked_title = title_list.get(position);
+                MyTaskListFragment.task_clicked_deadline = deadline_list.get(position);
+                myFragment = new MyTaskFragment();
+            }
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment, myFragment).addToBackStack(null).commit();
         });
 
     }

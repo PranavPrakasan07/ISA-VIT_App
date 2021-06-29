@@ -1,6 +1,12 @@
 package com.pranavprksn.isa_vitapp.fragment;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,45 +14,33 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.pranavprksn.isa_vitapp.R;
-import com.pranavprksn.isa_vitapp.adapters.TaskListAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link MemberTaskListFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * For the core member to view the remarks given by the board
  */
-public class MemberTaskListFragment extends Fragment {
+
+public class MyTaskFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    ArrayList<String> deadline_list = new ArrayList<>();
-    ArrayList<Boolean> passed_list = new ArrayList<>();
-    ArrayList<String> description_list = new ArrayList<>();
-    ArrayList<String> title_list = new ArrayList<>();
-    ArrayList<String> setby_list = new ArrayList<>();
-
-    public static String task_clicked_title = "";
-    public static String task_clicked_deadline = "";
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
 
     Map<String, Object> details = new Map<String, Object>() {
         @Override
@@ -122,8 +116,7 @@ public class MemberTaskListFragment extends Fragment {
         }
     };
 
-
-    public MemberTaskListFragment() {
+    public MyTaskFragment() {
         // Required empty public constructor
     }
 
@@ -133,11 +126,11 @@ public class MemberTaskListFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MemberTaskFragment.
+     * @return A new instance of fragment MyTaskFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MemberTaskListFragment newInstance(String param1, String param2) {
-        MemberTaskListFragment fragment = new MemberTaskListFragment();
+    public static MyTaskFragment newInstance(String param1, String param2) {
+        MyTaskFragment fragment = new MyTaskFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -149,9 +142,8 @@ public class MemberTaskListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            // TODO: Rename and change types of parameters
-            String mParam1 = getArguments().getString(ARG_PARAM1);
-            String mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -159,55 +151,66 @@ public class MemberTaskListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_member_task_list, container, false);
-
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        TextView domain = view.findViewById(R.id.domain_name_tab);
-        TextView member = view.findViewById(R.id.member_name_tab);
-
-        domain.setText(Task_Fragment.domain_selected);
-        member.setText(MemberListFragment.selected_core_member_name);
+        View view = inflater.inflate(R.layout.fragment_my_task, container, false);
 
         ImageButton back_button = view.findViewById(R.id.back_button);
+
+        TextView domain_tab = view.findViewById(R.id.domain_name_tab);
+        TextView title = view.findViewById(R.id.task_title);
+        TextView deadline = view.findViewById(R.id.status);
+        TextView remarks = view.findViewById(R.id.remarks_space);
+
+        domain_tab.setOnClickListener(v -> {
+            try {
+                if(details.get("remarks") != null){
+                    remarks.setText(String.valueOf(details.get("remarks")));
+                }else{
+                    remarks.setText("Not reviewed yet!");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                remarks.setText("Not reviewed yet!");
+            }
+        });
 
         back_button.setOnClickListener(v -> requireActivity().
                 getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment, new MemberListFragment())
+                .replace(R.id.fragment, new MyTaskListFragment())
                 .commit()
         );
 
-        db.collection("Task_" + Task_Fragment.domain_selected)
+        domain_tab.setText(ActivityCoreFragment.selected_domain);
+        title.setText(MyTaskListFragment.task_clicked_title);
+        deadline.setText(MyTaskListFragment.task_clicked_deadline);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("Tasks")
+                .document(Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail()))
+                .collection(ActivityCoreFragment.selected_domain)
+                .document(MyTaskListFragment.task_clicked_deadline)
                 .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                            Log.d("TAG", document.getId() + " => " + document.getData());
+                .addOnSuccessListener(documentSnapshot -> {
+                    Log.d("TAG", String.valueOf(documentSnapshot.getData()));
 
-                            details = (document.getData());
+                    details = documentSnapshot.getData();
 
-                            title_list.add((String) details.get("title"));
-                            passed_list.add((Boolean) details.get("passed"));
-                            description_list.add((String) details.get("description"));
-                            deadline_list.add((String) details.get("deadline"));
-                            setby_list.add((String) details.get("setby"));
-
-                            try {
-                                Log.d("TAG", "Reached here" + details.toString());
-                                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                                recyclerView.setAdapter(new TaskListAdapter(title_list, passed_list, description_list, deadline_list, setby_list, false));
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                    new Handler().postDelayed(() -> {
+                        try {
+                            if(details.get("remarks") != null){
+                                remarks.setText(String.valueOf(details.get("remarks")));
+                            }else{
+                                remarks.setText("Not reviewed yet!");
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            remarks.setText("Not reviewed yet!");
                         }
+                    }, 750);
 
-                    } else {
-                        Log.d("TAG", "Error getting documents: ", task.getException());
-                    }
+
+
                 });
 
         return view;

@@ -1,18 +1,19 @@
 package com.pranavprksn.isa_vitapp.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -29,15 +30,16 @@ import java.util.Set;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MemberTaskListFragment#newInstance} factory method to
+ * Use the {@link MyTaskListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MemberTaskListFragment extends Fragment {
+public class MyTaskListFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
 
     ArrayList<String> deadline_list = new ArrayList<>();
     ArrayList<Boolean> passed_list = new ArrayList<>();
@@ -123,7 +125,7 @@ public class MemberTaskListFragment extends Fragment {
     };
 
 
-    public MemberTaskListFragment() {
+    public MyTaskListFragment() {
         // Required empty public constructor
     }
 
@@ -133,11 +135,11 @@ public class MemberTaskListFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MemberTaskFragment.
+     * @return A new instance of fragment MyTaskListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MemberTaskListFragment newInstance(String param1, String param2) {
-        MemberTaskListFragment fragment = new MemberTaskListFragment();
+    public static MyTaskListFragment newInstance(String param1, String param2) {
+        MyTaskListFragment fragment = new MyTaskListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -159,28 +161,26 @@ public class MemberTaskListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_member_task_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_task_list, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         TextView domain = view.findViewById(R.id.domain_name_tab);
-        TextView member = view.findViewById(R.id.member_name_tab);
 
-        domain.setText(Task_Fragment.domain_selected);
-        member.setText(MemberListFragment.selected_core_member_name);
+        domain.setText(ActivityCoreFragment.selected_domain);
 
         ImageButton back_button = view.findViewById(R.id.back_button);
 
         back_button.setOnClickListener(v -> requireActivity().
                 getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment, new MemberListFragment())
+                .replace(R.id.fragment, new ActivityCoreFragment())
                 .commit()
         );
 
-        db.collection("Task_" + Task_Fragment.domain_selected)
+        db.collection("Task_" + ActivityCoreFragment.selected_domain)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -198,7 +198,7 @@ public class MemberTaskListFragment extends Fragment {
                             try {
                                 Log.d("TAG", "Reached here" + details.toString());
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                                recyclerView.setAdapter(new TaskListAdapter(title_list, passed_list, description_list, deadline_list, setby_list, false));
+                                recyclerView.setAdapter(new TaskListAdapter(title_list, passed_list, description_list, deadline_list, setby_list, true));
 
                             } catch (Exception e) {
                                 e.printStackTrace();
