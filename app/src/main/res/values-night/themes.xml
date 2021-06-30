@@ -23,6 +23,7 @@
 
         <item name="materialCalendarFullscreenTheme">@style/CustomThemeOverlay_MaterialCalendar_Fullscreen</item>
 
+<!--        <item name="fontFamily">@font/poppins</item>-->
 
     </style>
 

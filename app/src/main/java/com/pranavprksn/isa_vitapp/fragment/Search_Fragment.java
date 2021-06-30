@@ -1,10 +1,13 @@
 package com.pranavprksn.isa_vitapp.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -102,10 +105,18 @@ public class Search_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search_, container, false);
 
-        EditText searchbar = view.findViewById(R.id.search_bar);
+        AutoCompleteTextView searchbar = view.findViewById(R.id.search_bar);
         ImageButton searchbutton = view.findViewById(R.id.search_button);
 
         ConstraintLayout fragment_search_layout = view.findViewById(R.id.fragment_search_layout);
+
+        String[] member_list = getResources().getStringArray(R.array.member_list);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_activated_1, member_list);
+        //Getting the instance of AutoCompleteTextView
+        searchbar.setThreshold(1);//will start working from first character
+        searchbar.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
+        searchbar.setTextColor(getResources().getColor(R.color.blue_button_light));
 
         fragment_search_layout.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
             public void onSwipeTop() {

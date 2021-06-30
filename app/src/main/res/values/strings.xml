@@ -8,4 +8,60 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string-array name="member_list">
+        <item>Rushabh Kankariya</item>
+        <item>Lakshmi K Sathyan</item>
+        <item>Manav Goel</item>
+        <item>Urvi</item>
+        <item>Aditya Avinash Namjoshi</item>
+        <item>Shlok Aggarwal</item>
+        <item>Manya S</item>
+        <item>Sri Krishna Sai K.S</item>
+        <item>Varun Bhattacharya</item>
+        <item>Sritam Mishra</item>
+        <item>Daniya Deo</item>
+        <item>Teerth Amin</item>
+        <item>Ayush Jain</item>
+        <item>Rishabh Agrawal</item>
+        <item>Paarth jain</item>
+        <item>Tejas Kalekar</item>
+        <item>Jayendra Awasthi</item>
+        <item>Janakiraman S</item>
+        <item>Madanagopal Chandrasekhar</item>
+        <item>Adithiyan Rajan </item>
+        <item>Nimesh Thakur</item>
+        <item>Sammriddh Gupta</item>
+        <item>Adithya Narayan Samal</item>
+        <item>Achinthya R Hemmanna</item>
+        <item>A Dhruva Krishnama Raju</item>
+        <item>S. Raaj Kumar</item>
+        <item>Fahad Dalwai</item>
+        <item>Hitesh Daga</item>
+        <item>Keerthika Reddy</item>
+        <item>Riya Mathew</item>
+        <item>Aaron Mathew</item>
+        <item>Karan ravi</item>
+        <item>Parag </item>
+        <item>Manjunadha Sarma Dandibhotla</item>
+        <item>Jerome Joseph</item>
+        <item>Arya rohit shidore</item>
+        <item>name</item>
+        <item>Aniruddh Pandey</item>
+        <item>Nitish J S </item>
+        <item>Johann Kyle Pinto</item>
+        <item>Binayak Bishnu</item>
+        <item>Ayush Verma</item>
+        <item>Vansh Chinda</item>
+        <item>Samriddh Prasad</item>
+        <item>Anupam Dash</item>
+        <item>Prakhar Jain</item>
+        <item>Rahul Agarwal</item>
+        <item>Harsh Singh</item>
+        <item>Vedanshu Patel</item>
+        <item>Indu Bhushan</item>
+        <item>Vinjamuri Manojna</item>
+        <item>Kaushal Agrawal</item>
+        <item>Shivam Dheer</item>
+    </string-array>
+
 </resources>
