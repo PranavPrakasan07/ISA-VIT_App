@@ -1,4 +1,4 @@
-package com.pranavprksn.isa_vitapp;
+package com.pranavprksn.isa_vitapp.classes;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.activity.SplashScreen;
 
 import org.jetbrains.annotations.NotNull;

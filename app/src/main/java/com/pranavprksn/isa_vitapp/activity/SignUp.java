@@ -10,12 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.pranavprksn.isa_vitapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 
 public class SignUp extends AppCompatActivity {
 
@@ -42,6 +44,8 @@ public class SignUp extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        ConstraintLayout signup_layout = findViewById(R.id.signup_layout);
+
         signup = findViewById(R.id.signup_tab);
         link = findViewById(R.id.login_link);
         email = findViewById(R.id.email_tab);
@@ -66,6 +70,20 @@ public class SignUp extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        signup_layout.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
+            public void onSwipeTop() {
+            }
+            public void onSwipeRight() {
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+            }
+            public void onSwipeLeft() {
+            }
+            public void onSwipeBottom() {
+            }
+        });
 
         signup.setOnClickListener(v -> {
             email_text = email.getText().toString();
@@ -220,4 +238,11 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
+    }
+
 }

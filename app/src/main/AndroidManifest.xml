@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true">
 
         <service
-            android:name=".MyFirebaseMessagingService"
+            android:name=".classes.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -48,11 +48,9 @@
             android:name=".activity.LogoutSplash"
             android:launchMode="singleTop" />
         <activity
-            android:name=".activity.Login"
-            android:launchMode="singleTop" />
+            android:name=".activity.Login"/>
         <activity
-            android:name=".activity.SignUp"
-            android:launchMode="singleTop" />
+            android:name=".activity.SignUp"/>
         <activity
             android:name=".activity.Home"
             android:launchMode="singleTop" />

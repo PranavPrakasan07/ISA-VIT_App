@@ -10,12 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.pranavprksn.isa_vitapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 
 public class Login extends AppCompatActivity {
 
@@ -33,12 +35,15 @@ public class Login extends AppCompatActivity {
         super.onStart();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+
+        ConstraintLayout login_layout = findViewById(R.id.login_layout);
 
         Log.d("User Status", String.valueOf(FirebaseAuth.getInstance().getCurrentUser()));
 
@@ -65,6 +70,20 @@ public class Login extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        login_layout.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
+            public void onSwipeTop() {
+            }
+            public void onSwipeRight() {
+            }
+            public void onSwipeLeft() {
+                startActivity(new Intent(getApplicationContext(), SignUp.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+            public void onSwipeBottom() {
+            }
+        });
+
 
         login.setOnClickListener(view -> {
             String email_text = email.getText().toString();
@@ -155,6 +174,12 @@ public class Login extends AppCompatActivity {
             }
             progressBar.setVisibility(View.GONE);
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);
     }
 
 }

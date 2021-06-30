@@ -81,7 +81,7 @@ public class ActivityCoreFragment extends Fragment {
                 domain1.setText(HomeCoreActivity.domain1);
                 domain2.setText(HomeCoreActivity.domain2);
             }
-        }, 500);
+        }, 250);
 
 
         domain1_card.setOnClickListener(v -> {

@@ -220,6 +220,8 @@ public class Profile_Fragment extends Fragment {
             }
 
             startActivity(new Intent(getContext(), LogoutSplash.class));
+            requireActivity().finish();
+
         });
 
         home.setOnClickListener(v -> {
