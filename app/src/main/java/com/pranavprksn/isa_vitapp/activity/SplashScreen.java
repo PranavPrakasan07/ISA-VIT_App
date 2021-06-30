@@ -7,6 +7,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.pranavprksn.isa_vitapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,6 +18,24 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Objects;
 
 public class SplashScreen extends AppCompatActivity {
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                        return;
+                    }
+
+                    // Get new FCM registration token
+                    String token = task.getResult();
+
+//                        String msg = getString(R.string.msg_token_fmt, token);
+                    Log.d("Token_TAG", token);
+                });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,5 +86,11 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
             }
         }, 2000);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
     }
 }

@@ -1,12 +1,19 @@
 package com.pranavprksn.isa_vitapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.pranavprksn.isa_vitapp.MyFirebaseMessagingService;
 import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.classes.MemberData;
 import com.pranavprksn.isa_vitapp.fragment.Add_Fragment;
@@ -58,6 +65,8 @@ public class Home extends AppCompatActivity {
 
         Log.d("TAG", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
 
+//        Intent intentBackgroundService = new Intent(this, MyFirebaseMessagingService.class);
+//        startService(intentBackgroundService);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 

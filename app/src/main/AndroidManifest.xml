@@ -13,29 +13,78 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ISAVITApp"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.NoConnectionActivity"/>
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.HomeCoreActivity" />
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.EventsActivity" />
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.AboutActivity" />
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".activity.NoConnectionActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.HomeCoreActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.EventsActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.AboutActivity"
+            android:launchMode="singleTop" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.LoginSplash" />
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.LogoutSplash" />
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.Login" />
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.SignUp" />
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.Home" />
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.MainActivity" />
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.NotMemberPage" />
-        <activity android:name="com.pranavprksn.isa_vitapp.activity.SplashScreen">
+        <activity
+            android:name=".activity.LoginSplash"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.LogoutSplash"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.Login"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.SignUp"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.Home"
+            android:launchMode="singleTop" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.NotMemberPage" />
+        <activity
+            android:name=".activity.SplashScreen"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/logo" />
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/blue_button_light" /> <!-- <meta-data -->
+        <!-- android:name="com.google.firebase.messaging.default_notification_channel_id" -->
+        <!-- android:value="@string/default_notification_channel_id" /> -->
 
         <meta-data
             android:name="preloaded_fonts"
