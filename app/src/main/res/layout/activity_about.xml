@@ -471,6 +471,15 @@
                 android:layout_weight="1"
                 android:src="@drawable/ic_youtube_icon" />
 
+            <ImageView
+                android:id="@+id/isa_twitter_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_twitter_icon" />
+
         </LinearLayout>
 
         <soup.neumorphism.NeumorphCardView

@@ -43,7 +43,7 @@ import soup.neumorphism.ShapeType;
 public class AboutActivity extends AppCompatActivity {
 
     NeumorphCardView flag_ship, technitude;
-    ImageView isa_instagram, isa_linkedin, isa_github, isa_medium, isa_youtube;
+    ImageView isa_instagram, isa_linkedin, isa_github, isa_medium, isa_youtube, isa_twitter, logo;
     Button github_isa;
 
     ArrayList<String> name_list = new ArrayList<>();
@@ -141,6 +141,8 @@ public class AboutActivity extends AppCompatActivity {
         isa_medium = findViewById(R.id.isa_medium_icon);
         isa_youtube = findViewById(R.id.isa_youtube_icon);
         github_isa = findViewById(R.id.github_link);
+        isa_twitter = findViewById(R.id.isa_twitter_icon);
+        logo = findViewById(R.id.logo);
 
         LinearLayout hiddenView = findViewById(R.id.hidden_view);
         NeumorphCardView cardView = findViewById(R.id.base_cardview);
@@ -247,6 +249,12 @@ public class AboutActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        logo.setOnClickListener(v -> {
+            Uri uri = Uri.parse("https://isavit.co.in/"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        });
+
 //----------------------------------------------------------------------------------------------------------
 
         isa_instagram.setOnClickListener(v -> {
@@ -278,6 +286,14 @@ public class AboutActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });
+
+        isa_twitter.setOnClickListener(v -> {
+            Uri uri = Uri.parse("https://twitter.com/isa_vit_"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        });
+
+
 
         RecyclerView recyclerView = findViewById(R.id.scroller);
 

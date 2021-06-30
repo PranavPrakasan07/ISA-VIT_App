@@ -1,6 +1,7 @@
 package com.pranavprksn.isa_vitapp.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,8 +75,14 @@ public class ActivityCoreFragment extends Fragment {
         TextView domain1 = view.findViewById(R.id.textView0);
         TextView domain2 = view.findViewById(R.id.textView1);
 
-        domain1.setText(HomeCoreActivity.domain1);
-        domain2.setText(HomeCoreActivity.domain2);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                domain1.setText(HomeCoreActivity.domain1);
+                domain2.setText(HomeCoreActivity.domain2);
+            }
+        }, 500);
+
 
         domain1_card.setOnClickListener(v -> {
             selected_domain = HomeCoreActivity.domain1;

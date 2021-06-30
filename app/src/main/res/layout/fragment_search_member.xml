@@ -196,7 +196,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/poppins"
                     android:gravity="center_horizontal"
-                    android:text="Room Number"
+                    android:text="-"
                     android:textAlignment="gravity"
                     android:textColor="@color/heading_color"
                     android:textSize="14sp"

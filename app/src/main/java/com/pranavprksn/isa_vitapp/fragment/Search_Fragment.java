@@ -7,18 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.activity.Home;
 import com.pranavprksn.isa_vitapp.adapters.SearchHistoryAdapter;
 import com.pranavprksn.isa_vitapp.classes.MemberData;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.Objects;
 
@@ -128,7 +127,6 @@ public class Search_Fragment extends Fragment {
 
                                 if (memberData.getName().toLowerCase().equals(name.toLowerCase())) {
                                     Log.d("TAGDATA", memberData.getName());
-                                    Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
 
                                     if (Home.history_list.size() > 4) {
                                         Home.history_list.set(Home.counter % 5, memberData.getName());
@@ -179,7 +177,6 @@ public class Search_Fragment extends Fragment {
 
                                 if (memberData.getName().toLowerCase().equals(name.toLowerCase())) {
                                     Log.d("TAGDATA", memberData.getName());
-                                    Toast.makeText(getActivity(), memberData.getName(), Toast.LENGTH_SHORT).show();
 
                                     if (Home.history_list.size() > 4) {
                                         Home.history_list.set(Home.counter % 5, memberData.getName());
