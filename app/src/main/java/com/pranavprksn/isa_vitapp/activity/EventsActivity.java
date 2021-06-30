@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.adapters.EventsAdapter;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -110,6 +112,8 @@ public class EventsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+
+        ConstraintLayout events_activity_layout = findViewById(R.id.events_activity_layout);
 
         RecyclerView recyclerView = findViewById(R.id.events_recycler_view);
 

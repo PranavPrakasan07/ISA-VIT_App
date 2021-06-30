@@ -11,11 +11,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.pranavprksn.isa_vitapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.pranavprksn.isa_vitapp.activity.Home;
+import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -85,6 +88,8 @@ public class CreateTaskFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_create_task, container, false);
+
+        ConstraintLayout fragment_create_task_layout = view.findViewById(R.id.fragment_create_task_layout);
 
         NeumorphCardView domain = view.findViewById(R.id.n_domain_name_card);
 

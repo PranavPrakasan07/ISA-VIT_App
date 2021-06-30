@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +19,7 @@ import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.activity.Home;
 import com.pranavprksn.isa_vitapp.adapters.SearchHistoryAdapter;
 import com.pranavprksn.isa_vitapp.classes.MemberData;
+import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 
 import java.util.Objects;
 
@@ -102,6 +104,25 @@ public class Search_Fragment extends Fragment {
 
         EditText searchbar = view.findViewById(R.id.search_bar);
         ImageButton searchbutton = view.findViewById(R.id.search_button);
+
+        ConstraintLayout fragment_search_layout = view.findViewById(R.id.fragment_search_layout);
+
+        fragment_search_layout.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
+            public void onSwipeTop() {
+            }
+            public void onSwipeRight() {
+                Fragment domainList = new Add_Fragment();
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
+                Home.chipNavigationBar.setItemSelected(R.id.nav_new_add, true);
+            }
+            public void onSwipeLeft() {
+                Fragment domainList = new Task_Fragment();
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
+                Home.chipNavigationBar.setItemSelected(R.id.nav_task, true);
+            }
+            public void onSwipeBottom() {
+            }
+        });
 
         search_history_card = view.findViewById(R.id.search_history_card);
 

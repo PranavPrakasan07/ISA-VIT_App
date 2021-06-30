@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.adapters.BoardListAdapter;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -131,6 +133,8 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        ScrollView about_layout = findViewById(R.id.about_layout);
 
         flag_ship = findViewById(R.id.n_flagship_card);
         technitude = findViewById(R.id.n_technitude_card);

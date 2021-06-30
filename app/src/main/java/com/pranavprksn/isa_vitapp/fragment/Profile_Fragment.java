@@ -11,16 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.activity.AboutActivity;
+import com.pranavprksn.isa_vitapp.activity.Home;
 import com.pranavprksn.isa_vitapp.activity.LogoutSplash;
 import com.pranavprksn.isa_vitapp.classes.MemberData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -87,6 +90,23 @@ public class Profile_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile_, container, false);
+
+        ConstraintLayout fragment_profile_layout = view.findViewById(R.id.constraint_layout);
+
+        fragment_profile_layout.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
+            public void onSwipeTop() {
+            }
+            public void onSwipeRight() {
+                Fragment domainList = new Task_Fragment();
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
+                Home.chipNavigationBar.setItemSelected(R.id.nav_task, true);
+            }
+            public void onSwipeLeft() {
+
+            }
+            public void onSwipeBottom() {
+            }
+        });
 
         logout = view.findViewById(R.id.logout);
         home = view.findViewById(R.id.home_button);

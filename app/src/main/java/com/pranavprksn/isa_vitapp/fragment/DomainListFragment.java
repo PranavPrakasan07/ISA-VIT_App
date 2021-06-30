@@ -2,13 +2,17 @@ package com.pranavprksn.isa_vitapp.fragment;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 
 import com.pranavprksn.isa_vitapp.R;
+import com.pranavprksn.isa_vitapp.activity.Home;
+import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 
 import soup.neumorphism.NeumorphCardView;
 import soup.neumorphism.ShapeType;
@@ -67,6 +71,23 @@ public class DomainListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_domain_list, container, false);
+
+        ScrollView fragment_domain_list = view.findViewById(R.id.fragment_domain_list);
+
+        fragment_domain_list.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
+            public void onSwipeTop() {
+            }
+            public void onSwipeRight() {
+                Fragment domainList = new Add_Fragment();
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
+                Home.chipNavigationBar.setItemSelected(R.id.nav_new_add, true);
+            }
+            public void onSwipeLeft() {
+
+            }
+            public void onSwipeBottom() {
+            }
+        });
 
         domain_selected = "";
 

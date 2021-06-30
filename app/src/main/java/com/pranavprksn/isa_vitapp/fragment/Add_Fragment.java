@@ -1,13 +1,18 @@
 package com.pranavprksn.isa_vitapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.pranavprksn.isa_vitapp.R;
+import com.pranavprksn.isa_vitapp.activity.Home;
+import com.pranavprksn.isa_vitapp.activity.SignUp;
+import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 
 import soup.neumorphism.NeumorphCardView;
 import soup.neumorphism.ShapeType;
@@ -86,6 +91,23 @@ public class Add_Fragment extends Fragment {
 //            Toast.makeText(getActivity(), "Button remove clicked", Toast.LENGTH_SHORT).show();
 //            startActivity(new Intent(getActivity(), RemoveTaskActivity.class));
 //        });
+
+        ConstraintLayout fragment_add_layout = view.findViewById(R.id.fragment_add_layout);
+
+        fragment_add_layout.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
+            public void onSwipeTop() {
+            }
+            public void onSwipeRight() {
+
+            }
+            public void onSwipeLeft() {
+                Fragment domainList = new Search_Fragment();
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
+                Home.chipNavigationBar.setItemSelected(R.id.nav_search, true);
+            }
+            public void onSwipeBottom() {
+            }
+        });
 
         return view;
     }

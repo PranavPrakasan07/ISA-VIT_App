@@ -23,7 +23,7 @@ import java.util.Objects;
 
 public class Home extends AppCompatActivity {
 
-    ChipNavigationBar chipNavigationBar;
+    public static ChipNavigationBar chipNavigationBar;
 
     public static ArrayList<String> history_list = new ArrayList<>(5);
     public static ArrayList<String> vit_email_list = new ArrayList<>(5);
