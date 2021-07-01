@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.firestore.SetOptions;
 import com.pranavprksn.isa_vitapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -180,8 +181,9 @@ public class CreateTaskFragment extends Fragment {
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                db.collection("Task_" + DomainListFragment.domain_selected).document(task_deadline)
-                        .set(docData)
+                db.collection("Task_" + DomainListFragment.domain_selected)
+                        .document(task_deadline)
+                        .set(docData, SetOptions.merge())
                         .addOnSuccessListener(aVoid -> {
                             Log.d("TAG", "DocumentSnapshot successfully written!");
                             add_button_card.setShapeType(ShapeType.FLAT);

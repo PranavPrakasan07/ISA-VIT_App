@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.pranavprksn.isa_vitapp.R;
@@ -23,6 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+
+import soup.neumorphism.ShapeType;
 
 /**
  * For board members to comment on the tasks submitted, blue button to submit remarks
@@ -123,6 +127,18 @@ public class MemberTaskFragment extends Fragment {
         }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+        Map<String, Object> docData = new HashMap<>();
+        docData.put("passed", true);
+
+        db.collection("Task_" + domain_name_text)
+                .document(task_deadline_text)
+                .set(docData, SetOptions.merge())
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TAG", "DocumentSnapshot successfully written!");
+                })
+                .addOnFailureListener(e -> Log.w("TAG", "Error writing document", e));
 
         done_button.setOnClickListener(v -> {
 

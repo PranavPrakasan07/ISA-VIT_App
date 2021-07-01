@@ -93,20 +93,20 @@ public class Profile_Fragment extends Fragment {
 
         ConstraintLayout fragment_profile_layout = view.findViewById(R.id.constraint_layout);
 
-        fragment_profile_layout.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
-            public void onSwipeTop() {
-            }
-            public void onSwipeRight() {
-                Fragment domainList = new Task_Fragment();
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
-                Home.chipNavigationBar.setItemSelected(R.id.nav_task, true);
-            }
-            public void onSwipeLeft() {
-
-            }
-            public void onSwipeBottom() {
-            }
-        });
+//        fragment_profile_layout.setOnTouchListener(new OnSwipeTouchListener(getActivity()) {
+//            public void onSwipeTop() {
+//            }
+//            public void onSwipeRight() {
+//                Fragment domainList = new Task_Fragment();
+//                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, domainList).commit();
+//                Home.chipNavigationBar.setItemSelected(R.id.nav_task, true);
+//            }
+//            public void onSwipeLeft() {
+//
+//            }
+//            public void onSwipeBottom() {
+//            }
+//        });
 
         logout = view.findViewById(R.id.logout);
         home = view.findViewById(R.id.home_button);

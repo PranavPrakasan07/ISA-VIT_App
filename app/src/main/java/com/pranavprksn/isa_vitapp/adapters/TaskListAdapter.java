@@ -85,12 +85,20 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
 
         holder.task_name.setText(title_list.get(position));
 
+        if(passed_list.get(position)){
+            holder.pass_button.setImageResource(R.drawable.ic_blue_round);
+        }else{
+            holder.pass_button.setImageResource(R.drawable.ic_grey_round);
+        }
+
         holder.task_name.setOnClickListener(v -> {
 //            Toast.makeText(v.getContext(), title_list.get(position), Toast.LENGTH_SHORT).show();
 //            Toast.makeText(v.getContext(), deadline_list.get(position), Toast.LENGTH_SHORT).show();
 
             Log.d("TAG", title_list.get(position));
             Log.d("TAG", deadline_list.get(position));
+
+
 
             AppCompatActivity activity = (AppCompatActivity) v.getContext();
 

@@ -194,6 +194,7 @@ public class SignUp extends AppCompatActivity {
                 } else {
                     startActivity(new Intent(getApplicationContext(), HomeCoreActivity.class));
                 }
+                finish();
 
                 // send verification link
 //
