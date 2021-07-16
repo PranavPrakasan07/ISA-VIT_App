@@ -19,6 +19,8 @@ import java.util.Objects;
 
 public class SplashScreen extends AppCompatActivity {
 
+    public static Boolean isFaculty = false;
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -51,6 +53,12 @@ public class SplashScreen extends AppCompatActivity {
             if (user != null) {
                 Log.d("TAG", user.getEmail());
 
+                if(Objects.requireNonNull(user.getEmail()).contains("@vit.ac.in")){
+                    isFaculty = true;
+                    startActivity(new Intent(getApplicationContext(), Home.class));
+                    finish();
+                }
+
                 DocumentReference docRefCore = db.collection("Core_Member_Data").document(Objects.requireNonNull(user.getEmail()));
                 docRefCore.get().addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -81,6 +89,8 @@ public class SplashScreen extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), NoConnectionActivity.class));
                     }
                 });
+
+
             } else {
                 startActivity(new Intent(getApplicationContext(), SignUp.class));
                 finish();

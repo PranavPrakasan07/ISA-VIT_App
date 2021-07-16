@@ -2,6 +2,7 @@ package com.pranavprksn.isa_vitapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.pranavprksn.isa_vitapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -30,6 +32,8 @@ public class SignUp extends AppCompatActivity {
     EditText email, password, retype_password, registration_number;
     String email_text, password_text, retype_password_text, registration_text;
 
+    public static Boolean isFaculty = false;
+
     ProgressBar progressBar;
 
     @Override
@@ -41,6 +45,15 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        LottieAnimationView animationView = findViewById(R.id.animationView);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                animationView.setVisibility(View.GONE);
+            }
+        }, 1100);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -101,10 +114,19 @@ public class SignUp extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Password is too short!", Toast.LENGTH_SHORT).show();
             } else if (!password_text.equals(retype_password_text)) {
                 Toast.makeText(SignUp.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
-            } else if (!email_text.contains("@vitstudent.ac.in")) {
+            } else if (!(email_text.contains("@vitstudent.ac.in") || email_text.contains("@vit.ac.in"))) {
                 Toast.makeText(SignUp.this, "Enter VIT Email address", Toast.LENGTH_SHORT).show();
-            } else {
+            }
+            else {
                 progressBar.setVisibility(View.VISIBLE);
+
+                if(email_text.equals("svivekanandan@vit.ac.in")){
+                    isFaculty = true;
+                    createAccount(email_text, password_text, registration_text, true);
+                }else if(email_text.contains("@vit.ac.in")){
+                    Toast.makeText(SignUp.this, "Incorrect credentials", Toast.LENGTH_SHORT).show();
+                }
+
                 check_if_member(email_text, password_text, registration_text);
             }
         });

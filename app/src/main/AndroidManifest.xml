@@ -48,9 +48,9 @@
             android:name=".activity.LogoutSplash"
             android:launchMode="singleTop" />
         <activity
-            android:name=".activity.Login"/>
+            android:name=".activity.Login" android:launchMode="singleTop"/>
         <activity
-            android:name=".activity.SignUp"/>
+            android:name=".activity.SignUp" android:launchMode="singleTop"/>
         <activity
             android:name=".activity.Home"
             android:launchMode="singleTop" />

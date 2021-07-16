@@ -17,7 +17,10 @@ import androidx.fragment.app.Fragment;
 import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.activity.AboutActivity;
 import com.pranavprksn.isa_vitapp.activity.Home;
+import com.pranavprksn.isa_vitapp.activity.Login;
 import com.pranavprksn.isa_vitapp.activity.LogoutSplash;
+import com.pranavprksn.isa_vitapp.activity.SignUp;
+import com.pranavprksn.isa_vitapp.activity.SplashScreen;
 import com.pranavprksn.isa_vitapp.classes.MemberData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -36,6 +39,22 @@ import soup.neumorphism.NeumorphCardView;
  * create an instance of this fragment.
  */
 public class Profile_Fragment extends Fragment {
+
+    NeumorphCardView position, domain1_card, domain2_card;
+
+    TextView name;
+    TextView board_position;
+    TextView vit_email;
+    TextView personal_email;
+    TextView reg_number;
+    TextView room_number;
+    TextView mobile;
+    TextView dob;
+
+    TextView domain1;
+    TextView domain2;
+
+    ImageView photo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,6 +105,14 @@ public class Profile_Fragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        if(Login.isFaculty || SignUp.isFaculty || SplashScreen.isFaculty){
+            setFacultyDetails();
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -113,21 +140,33 @@ public class Profile_Fragment extends Fragment {
 
         NeumorphCardView position = view.findViewById(R.id.n_position_card);
 
-        TextView name = view.findViewById(R.id.name_tab);
-        TextView board_position = view.findViewById(R.id.board_position_name);
-        TextView vit_email = view.findViewById(R.id.vit_email);
-        TextView personal_email = view.findViewById(R.id.p_email);
-        TextView reg_number = view.findViewById(R.id.reg_n);
-        TextView room_number = view.findViewById(R.id.room_n);
-        TextView mobile = view.findViewById(R.id.mobile_n);
-        TextView dob = view.findViewById(R.id.dob);
+        name = view.findViewById(R.id.name_tab);
+        board_position = view.findViewById(R.id.board_position_name);
+        vit_email = view.findViewById(R.id.vit_email);
+        personal_email = view.findViewById(R.id.p_email);
+        reg_number = view.findViewById(R.id.reg_n);
+        room_number = view.findViewById(R.id.room_n);
+        mobile = view.findViewById(R.id.mobile_n);
+        dob = view.findViewById(R.id.dob);
 
-        TextView domain1 = view.findViewById(R.id.domain1);
-        TextView domain2 = view.findViewById(R.id.domain2);
+        domain1 = view.findViewById(R.id.domain1);
+        domain2 = view.findViewById(R.id.domain2);
 
-        ImageView photo = view.findViewById(R.id.photo);
+        domain1_card = view.findViewById(R.id.n_domain1_card);
+        domain2_card = view.findViewById(R.id.n_domain2_card);
+
+        domain1_card.setVisibility(View.VISIBLE);
+        domain2_card.setVisibility(View.VISIBLE);
+
+
+        photo = view.findViewById(R.id.photo);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        if(Login.isFaculty || SignUp.isFaculty || SplashScreen.isFaculty){
+            setFacultyDetails();
+        }
+
 
         String email = Objects.requireNonNull(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail());
 
@@ -250,5 +289,31 @@ public class Profile_Fragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void setFacultyDetails(){
+
+        domain1.setVisibility(View.INVISIBLE);
+        domain2.setVisibility(View.INVISIBLE);
+        domain1_card.setVisibility(View.INVISIBLE);
+        domain2_card.setVisibility(View.INVISIBLE);
+        personal_email.setVisibility(View.GONE);
+
+        name.setText(R.string.fac_name);
+        board_position.setText(R.string.position);
+        vit_email.setText(R.string.vemail);
+        personal_email.setText(R.string.pemail);
+        reg_number.setText(R.string.empid);
+        room_number.setText(R.string.cabin);
+        mobile.setText(R.string.mobile);
+        dob.setText(R.string.dob);
+
+        try {
+            Picasso.get()
+                    .load("https://firebasestorage.googleapis.com/v0/b/isa-vit.appspot.com/o/Faculty%2Fsir.png?alt=media&token=aa2b20bd-6027-41c5-be52-e47508690d7b")
+                    .into(photo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

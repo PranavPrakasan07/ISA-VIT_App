@@ -3,6 +3,7 @@ package com.pranavprksn.isa_vitapp.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.pranavprksn.isa_vitapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -33,6 +35,8 @@ public class Login extends AppCompatActivity {
     EditText email, password, registration_number;
     ProgressBar progressBar;
 
+    public static Boolean isFaculty = false;
+
     @Override
     public void onStart() {
         super.onStart();
@@ -43,9 +47,9 @@ public class Login extends AppCompatActivity {
 
         // The value will be default as empty string because for
         // the very first time when the app is opened, there is nothing to show
-        String remembered_email = sh.getString("email", "-");
-        String remembered_password = sh.getString("password", "-");
-        String remembered_reg_number = sh.getString("reg_number", "-");
+        String remembered_email = sh.getString("email", "");
+        String remembered_password = sh.getString("password", "");
+        String remembered_reg_number = sh.getString("reg_number", "");
         boolean remembered_checkbox = sh.getBoolean("remember", false);
 
         checkBox.setChecked(remembered_checkbox);
@@ -60,6 +64,15 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        LottieAnimationView animationView = findViewById(R.id.animationView);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                animationView.setVisibility(View.GONE);
+            }
+        }, 2200);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -122,12 +135,18 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Fill in your registration number", Toast.LENGTH_SHORT).show();
             } else if (password_text.length() < 6) {
                 Toast.makeText(getApplicationContext(), "Password is too short!", Toast.LENGTH_SHORT).show();
-            } else if (!email_text.contains("@vitstudent.ac.in")) {
+            } else if (!(email_text.contains("@vitstudent.ac.in") || email_text.contains("@vit.ac.in"))) {
                 Toast.makeText(Login.this, "Enter VIT Email address", Toast.LENGTH_SHORT).show();
             } else {
 
                 progressBar.setVisibility(View.VISIBLE);
 
+                if(email_text.equals("svivekanandan@vit.ac.in")){
+                    isFaculty = true;
+                    verify_user(email_text, password_text, true);
+                }else if(email_text.contains("@vit.ac.in")){
+                    Toast.makeText(Login.this, "Incorrect credentials", Toast.LENGTH_SHORT).show();
+                }
                 check_if_member(email_text, password_text);
             }
 

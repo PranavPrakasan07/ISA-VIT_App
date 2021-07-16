@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/login_layout"
     android:background="@drawable/background_gradient"
     tools:context=".activity.MainActivity">
 
@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/transparent"
                 android:fontFamily="@font/poppins_medium"
-                android:hint="Registration Number"
+                android:hint="Emp. ID / Reg. Number"
                 android:inputType="text"
                 android:maxLength="9"
                 android:paddingStart="32dp"
@@ -183,12 +183,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:textSize="16sp"
-            android:buttonTint="@color/blue_button_light"
-            android:textColor="@color/field_color"
             android:layout_marginTop="8dp"
+            android:buttonTint="@color/blue_button_light"
             android:fontFamily="@font/poppins"
-            android:text="Remember Me" />
+            android:text="Remember Me"
+            android:textColor="@color/field_color"
+            android:textSize="16sp" />
 
         <!--    <soup.neumorphism.NeumorphButton-->
         <!--        android:layout_width="wrap_content"-->
@@ -331,5 +331,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="swipe_left.json"
+        app:lottie_loop="false"
+        app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_ihykb5tn.json" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 package com.pranavprksn.isa_vitapp.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import androidx.fragment.app.Fragment;
 
 import com.pranavprksn.isa_vitapp.R;
 import com.pranavprksn.isa_vitapp.activity.Home;
-import com.pranavprksn.isa_vitapp.activity.SignUp;
 import com.pranavprksn.isa_vitapp.classes.OnSwipeTouchListener;
 
 import soup.neumorphism.NeumorphCardView;

@@ -114,8 +114,8 @@ public class CreateTaskFragment extends Fragment {
         ImageButton back_button = view.findViewById(R.id.back_button);
 
         back_button.setOnClickListener(v -> new AlertDialog.Builder(requireActivity())
-                .setTitle("Logout?")
-                .setMessage("Are you sure you want to go back?").setCancelable(true)
+                .setTitle("Confirmation")
+                .setMessage("Are you sure you want to go back? If you haven't pressed 'add'/'update' your task, the details would be lost").setCancelable(true)
                 .setNegativeButton(android.R.string.no, null)
                 .setPositiveButton(android.R.string.yes, (arg0, arg1) -> requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new DomainListFragment()).commit()).create().show());
 

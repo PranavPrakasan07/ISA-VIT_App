@@ -8,6 +8,17 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+
+    <string name="pemail">svivekanandan@vit.ac.in</string>
+    <string name="vemail">svivekanandan@vit.ac.in</string>
+    <string name="fac_name">Vivekanandan S</string>
+    <string name="position">Faculty Coordinator</string>
+    <string name="empid">11051</string>
+    <string name="mobile">+91 81242 74447</string>
+    <string name="cabin">TT-319-A</string>
+    <string name="dob">-</string>
+
+
     <string-array name="member_list">
         <item>Rushabh Kankariya</item>
         <item>Lakshmi K Sathyan</item>
