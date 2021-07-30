@@ -27,15 +27,15 @@ public class HomeCoreActivity extends AppCompatActivity {
 
     public static String domain1, domain2;
 
-//    @Override
-//    public void onBackPressed() {
+    @Override
+    public void onBackPressed() {
 //        new AlertDialog.Builder(this)
 //                .setTitle("Logout?")
 //                .setMessage("Are you sure you want to logout?").setCancelable(true)
 //                .setNegativeButton(android.R.string.no, null)
 //                .setPositiveButton(android.R.string.yes, (arg0, arg1) -> HomeCoreActivity.super.onBackPressed()).create().show();
 //
-//    }
+    }
 
 //    @Override
 //    public void onBackPressed() {
